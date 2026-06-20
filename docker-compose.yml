@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  nuxt-app:
+    build: .
+    container_name: huerto_lobras_frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/.nuxt
+      - /app/node_modules
+    environment:
+      - HOST=0.0.0.0
+      - NODE_ENV=development

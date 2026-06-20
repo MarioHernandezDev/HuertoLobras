@@ -1,0 +1,44 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  :root {
+    --color-principal: #2d4a22; /* Verde oliva rústico */
+    --color-secundario: #c29b68; /* Tono arcilla/arena */
+    --color-fondo: #fcfbfa; /* Blanco roto típico de pueblo */
+  }
+
+  body {
+    background-color: var(--color-fondo);
+    color: #1c2816;
+    /* Aplicamos Plus Jakarta Sans como fuente por defecto para todo el cuerpo */
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  /* Los títulos usarán Merriweather para ese toque elegante e histórico */
+  h1 {
+    @apply font-serif text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[var(--color-principal)] mb-6;
+  }
+
+  h2 {
+    @apply font-serif text-2xl md:text-3xl font-semibold text-[var(--color-principal)] mb-4;
+  }
+
+  p {
+    @apply font-sans text-base md:text-lg leading-relaxed text-stone-600 mb-4;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-block bg-[var(--color-principal)] text-white font-semibold font-sans px-6 py-3 rounded-xl 
+           shadow-md hover:bg-opacity-90 hover:-translate-y-0.5 transition-all duration-300 text-center;
+  }
+
+  .btn-secondary {
+    @apply inline-block border-2 border-[var(--color-secundario)] text-[var(--color-principal)] 
+           font-semibold font-sans px-6 py-3 rounded-xl hover:bg-[var(--color-secundario)] hover:text-white 
+           hover:-translate-y-0.5 transition-all duration-300 text-center;
+  }
+}
