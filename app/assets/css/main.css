@@ -4,41 +4,63 @@
 
 @layer base {
   :root {
-    --color-principal: #2d4a22; /* Verde oliva rústico */
-    --color-secundario: #c29b68; /* Tono arcilla/arena */
-    --color-fondo: #fcfbfa; /* Blanco roto típico de pueblo */
+    /* Paleta Identitaria: Identidad rural, auténtica y próxima al territorio */
+    --color-principal: #2d4a22;    /* Verde oliva profundo y sofisticado */
+    --color-secundario: #c29b68;   /* Tono arcilla/arena de la arquitectura alpujarreña */
+    --color-fondo: #fcfbfa;        /* Blanco roto/cal típico de pueblo andaluz */
+    --color-texto: #1c2816;        /* Antracita vegetal orgánico para máxima legibilidad */
+    --color-borde: rgba(45, 74, 34, 0.1); /* Líneas de separación ultra-finas */
   }
 
   body {
     background-color: var(--color-fondo);
-    color: #1c2816;
-    /* Aplicamos Plus Jakarta Sans como fuente por defecto para todo el cuerpo */
+    color: var(--color-texto);
     font-family: 'Plus Jakarta Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Los títulos usarán Merriweather para ese toque elegante e histórico */
+  /* Títulos editoriales: Toque elegante, histórico y de autor (Merriweather/Serif) */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', serif;
+    color: var(--color-texto);
+  }
+
   h1 {
-    @apply font-serif text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[var(--color-principal)] mb-6;
+    @apply text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.15] mb-6;
   }
 
   h2 {
-    @apply font-serif text-2xl md:text-3xl font-semibold text-[var(--color-principal)] mb-4;
+    @apply text-2xl md:text-3xl lg:text-4xl font-light tracking-tight leading-snug mb-4;
   }
 
+  h3 {
+    @apply text-xl md:text-2xl font-light text-[var(--color-principal)] tracking-wide mb-3;
+  }
+
+  /* Párrafos e información descriptiva */
   p {
-    @apply font-sans text-base md:text-lg leading-relaxed text-stone-600 mb-4;
+    @apply font-sans text-sm md:text-base leading-relaxed text-stone-600/90 mb-4;
+  }
+
+  /* Enlaces globales del sitio */
+  a {
+    @apply transition-colors duration-300;
   }
 }
 
 @layer components {
-  .btn-primary {
-    @apply inline-block bg-[var(--color-principal)] text-white font-semibold font-sans px-6 py-3 rounded-xl 
-           shadow-md hover:bg-opacity-90 hover:-translate-y-0.5 transition-all duration-300 text-center;
+  /* Contenedores de diseño editorial con soporte estructural para efectos */
+  .card-boutique {
+    @apply bg-white rounded-none border border-stone-200/60 
+           shadow-[0_10px_40px_rgba(0,0,0,0.01)] transition-all duration-700 
+           hover:shadow-[0_40px_80px_rgba(45,74,34,0.06)];
   }
 
-  .btn-secondary {
-    @apply inline-block border-2 border-[var(--color-secundario)] text-[var(--color-principal)] 
-           font-semibold font-sans px-6 py-3 rounded-xl hover:bg-[var(--color-secundario)] hover:text-white 
-           hover:-translate-y-0.5 transition-all duration-300 text-center;
+  /* Tags finos de equipamientos y servicios */
+  .tag-servicio {
+    @apply text-[11px] font-medium font-sans bg-white text-stone-600 
+           px-3.5 py-1.5 rounded-none border border-stone-200/70 
+           shadow-[0_1px_2px_rgba(0,0,0,0.01)];
   }
 }

@@ -1,84 +1,49 @@
 <template>
-  <div class="min-h-screen bg-[#faf9f6] flex flex-col md:flex-row antialiased select-none font-sans">
+  <div class="min-h-screen bg-[var(--color-fondo)] antialiased font-sans relative">
     
-    <header class="md:hidden bg-white/90 backdrop-blur-md text-stone-900 p-5 flex justify-between items-center sticky top-0 z-50 border-b border-stone-100 shadow-[0_2px_25px_rgba(0,0,0,0.03)]">
-      <NuxtLink to="/" class="flex items-center">
-        <img :src="logoUrl" alt="El Huerto de Lobras" class="h-9 w-auto mix-blend-multiply" />
-      </NuxtLink>
-      
-      <button @click="isOpen = !isOpen" class="p-2 text-stone-900 focus:outline-none" aria-label="Menú">
-        <div class="w-6 h-5 flex flex-col justify-between items-end">
-          <span class="h-[1.5px] bg-stone-900 transition-all duration-300" :class="isOpen ? 'w-6 rotate-45 translate-y-[9px]' : 'w-6'"></span>
-          <span class="h-[1.5px] bg-stone-900 transition-all duration-300" :class="isOpen ? 'w-0 opacity-0' : 'w-4'"></span>
-          <span class="h-[1.5px] bg-stone-900 transition-all duration-300" :class="isOpen ? 'w-6 -rotate-45 -translate-y-[9px]' : 'w-5'"></span>
-        </div>
-      </button>
-
-      <Transition
-        enter-active-class="transition duration-300 ease-out"
-        enter-from-class="opacity-0 -translate-y-4"
-        enter-to-class="opacity-100 translate-y-0"
-        leave-active-class="transition duration-200 ease-in"
-        leave-from-class="opacity-100 translate-y-0"
-        leave-to-class="opacity-0 -translate-y-4"
-      >
-        <nav v-if="isOpen" class="absolute top-full left-0 w-full bg-white border-t border-stone-100 flex flex-col p-6 space-y-4 shadow-xl">
-          <NuxtLink 
-            v-for="item in menuItems" 
-            :key="item.path" 
-            :to="item.path" 
-            @click="isOpen = false" 
-            class="text-base font-semibold tracking-widest text-stone-500 uppercase hover:text-[var(--color-principal)] transition-colors"
-            active-class="text-[var(--color-principal)] !font-bold"
-          >
-            {{ item.name }}
-          </NuxtLink>
-        </nav>
-      </Transition>
-    </header>
-
-    <aside class="hidden md:flex md:w-64 lg:w-72 flex-col justify-between p-8 lg:p-10 fixed h-screen top-0 left-0 z-40 bg-white/80 backdrop-blur-xl border-r border-stone-200/40 shadow-[4px_0_24px_rgba(0,0,0,0.03),_12px_0_48px_rgba(0,0,0,0.03)]">
-      
-      <div class="flex flex-col items-center pt-2 text-center shrink-0">
-        <NuxtLink to="/" class="block transition-all duration-500 hover:opacity-80">
-          <img 
-            :src="logoUrl" 
-            alt="El Huerto de Lobras" 
-            class="w-32 lg:w-36 h-auto object-contain mix-blend-multiply contrast-[1.03]" 
-          />
+    <aside 
+      class="fixed left-4 top-4 bottom-4 z-50 hidden md:flex flex-col w-64 bg-[#1e221a]/95 backdrop-blur-md text-stone-200 overflow-hidden shadow-[0_10px_40px_rgba(26,31,22,0.2)] rounded-lg border border-stone-800/30"
+    >
+      <div class="relative flex flex-col items-center justify-center pt-8 pb-6 px-4 border-b border-stone-800/40 shrink-0">
+        <NuxtLink to="/">
+          <img :src="logoUrl" alt="El Huerto de Lobras" class="object-contain w-32 h-auto" />
         </NuxtLink>
-        <span class="text-[11px] uppercase tracking-[0.25em] text-stone-400 font-bold mt-4 font-sans block">Alojamiento Rural</span>
-        <div class="h-[1px] w-12 bg-stone-200/80 mt-6"></div>
+        <div class="mt-4 text-center">
+          <span class="text-[10px] uppercase tracking-[0.3em] font-bold text-stone-400 block">Alojamiento Rural</span>
+        </div>
       </div>
 
-      <nav class="flex flex-col justify-center flex-grow space-y-8 py-12 lg:py-16">
-        <NuxtLink 
-          v-for="item in menuItems" 
-          :key="item.path" 
-          :to="item.path" 
-          class="desktop-nav-link group" 
-          active-class="desktop-nav-link-active"
-        >
-          <span class="w-2 h-2 rounded-full bg-[var(--color-principal)] opacity-0 -ml-4 mr-2.5 transition-all duration-300 ease-out [.desktop-nav-link-active_&]:opacity-100 [.desktop-nav-link-active_&]:ml-0"></span>
-          
-          <span class="transition-transform duration-300 group-hover:translate-x-1.5">
-            {{ item.name }}
-          </span>
+      <nav class="flex-1 py-8 overflow-y-auto space-y-2 scrollbar-premium">
+        <NuxtLink v-for="item in menuItems" :key="item.path" :to="item.path" class="nav-sidebar-link group px-8">
+          <span class="indicador-activo-linea"></span>
+          <span class="text-xs font-bold uppercase tracking-[0.2em] whitespace-nowrap">{{ item.name }}</span>
         </NuxtLink>
       </nav>
 
-      <div class="flex flex-col items-center text-center text-stone-500 font-sans tracking-wide shrink-0 border-t border-stone-200/60 pt-6 mb-2">
-        <p class="text-sm font-serif italic text-stone-600 font-medium tracking-normal">Lobras, La Alpujarra</p>
-        <p class="text-[10px] font-bold uppercase mt-2 text-stone-400 tracking-[0.2em]">&copy; 2026 Huerto de Lobras</p>
+      <div class="p-6 border-t border-stone-800/40 bg-[#171a14]/60 text-center shrink-0">
+        <p class="text-[9px] uppercase tracking-widest text-stone-500 font-bold">Lobras, Alpujarra</p>
       </div>
     </aside>
 
-    <div class="flex-1 md:ml-64 lg:ml-72 min-h-screen flex flex-col bg-[#faf9f6]">
-      <main class="flex-1 p-8 md:p-14 lg:p-20 max-w-6xl w-full mx-auto">
-        <div class="animate-fade-in">
-          <slot />
-        </div>
+    <div class="flex flex-col min-h-screen w-full">
+      
+      <header class="md:hidden w-full bg-[#1e221a] h-20 px-6 flex items-center justify-between z-40 sticky top-0 shadow-md">
+        <img :src="logoUrl" alt="Logo" class="h-10 w-auto" />
+        <button @click="isMobileMenuOpen = !isMobileMenuOpen" class="text-stone-300 text-xs font-bold uppercase tracking-widest border border-stone-700 px-4 py-2 rounded">
+          {{ isMobileMenuOpen ? 'Cerrar' : 'Menú' }}
+        </button>
+      </header>
+
+      <main class="flex-1 w-full content-fade-in">
+        <slot />
       </main>
+
+      <footer class="w-full bg-stone-900 text-stone-500 py-10 border-t border-stone-800 mt-auto md:pl-72">
+        <div class="w-full max-w-5xl mx-auto px-6 md:px-12 flex flex-col sm:flex-row justify-between items-center gap-6 text-[10px] uppercase tracking-widest font-bold">
+          <p class="m-0 text-stone-400">Lobras, La Alpujarra Granadina</p>
+          <p class="m-0">&copy; 2026 El Huerto de Lobras</p>
+        </div>
+      </footer>
     </div>
 
   </div>
@@ -88,42 +53,21 @@
 import { ref } from 'vue'
 import logoUrl from '~/assets/img/logo.jpg'
 
-const isOpen = ref(false)
-
+const isMobileMenuOpen = ref(false)
 const menuItems = [
   { name: 'Inicio', path: '/' },
-  { name: 'Apartamentos', path: '/apartamentos' },
-  { name: 'Experiencias', path: '/actividades' },
-  { name: 'Ofertas', path: '/ofertas' },
+  { name: 'Alojamientos', path: '/apartamentos' },
+  { name: 'Actividades', path: '/actividades' },
+  { name: 'Temporadas', path: '/ofertas' },
   { name: 'El Entorno', path: '/entorno' },
   { name: 'Contacto', path: '/contacto' }
 ]
 </script>
 
 <style scoped>
-/* --- CONFIGURACIÓN ESTILOS PREMIUM CORREGIDOS --- */
-.desktop-nav-link {
-  /* Aumentado a text-sm en pantallas estándar y lg:text-base en pantallas grandes */
-  @apply flex items-center text-sm lg:text-base font-semibold tracking-[0.2em] text-stone-400 uppercase
-         hover:text-stone-900 transition-all duration-300 ease-out font-sans py-1;
-}
-
-.desktop-nav-link-active {
-  @apply text-[var(--color-principal)] font-bold tracking-[0.22em];
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+.nav-sidebar-link { position: relative; display: flex; align-items: center; height: 3.5rem; color: #78716c; text-decoration: none; transition: all 0.3s ease; }
+.nav-sidebar-link:hover { color: #d6d3d1; background-color: rgba(255, 255, 255, 0.02); }
+.nav-sidebar-link.router-link-active { color: #ffffff; background-color: rgba(45, 74, 34, 0.15); }
+.indicador-activo-linea { position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background-color: var(--color-secundario); transform: scaleY(0); transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+.nav-sidebar-link.router-link-active .indicador-activo-linea { transform: scaleY(1); }
 </style>
