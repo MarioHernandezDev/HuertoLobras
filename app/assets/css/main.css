@@ -2,6 +2,16 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+/* assets/css/main.css (o el nombre de tu archivo de estilos principales) */
+
+@font-face {
+  font-family: 'Modern Romance';
+  src: url('~/assets/fonts/modern_romance/ModernRomance.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     /* Paleta Identitaria: Identidad rural, auténtica y próxima al territorio */

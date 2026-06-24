@@ -1,31 +1,7 @@
 <template>
-  <div class="overflow-x-hidden bg-[var(--color-fondo)]">
+  <div class="overflow-x-hidden bg-[#fcfbf9]">
     
-    <section class="relative h-screen w-full flex items-center justify-center bg-stone-900">
-      <div class="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000&auto=format&fit=crop" 
-          alt="Paisaje de la Alpujarra" 
-          class="w-full h-full object-cover opacity-60 grayscale-[10%]"
-        />
-        <div class="absolute inset-0 bg-gradient-to-b from-stone-950/40 via-transparent to-stone-950/20"></div>
-      </div>
-
-      <div class="relative z-10 text-center space-y-4 px-6 md:pl-72">
-        <span class="text-[10px] md:text-xs uppercase tracking-[0.5em] text-stone-200 font-bold block animate-fade-in">
-          Alojamiento Boutique Rural
-        </span>
-        <h1 class="text-5xl md:text-8xl font-serif italic text-white leading-none drop-shadow-sm">
-          El Huerto de Lobras
-        </h1>
-        <p class="text-sm md:text-base text-stone-200 font-sans font-light tracking-widest uppercase">
-          La calma tiene un nuevo refugio.
-        </p>
-        <div class="pt-8">
-          <div class="w-[1px] h-16 bg-white/40 mx-auto animate-bounce"></div>
-        </div>
-      </div>
-    </section>
+    <TheHero />
 
     <section class="py-24 md:py-32 max-w-7xl mx-auto px-6 md:pl-72 md:pr-12 lg:pr-16">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -48,9 +24,9 @@
       </div>
     </section>
 
-    <section class="py-24 bg-stone-100/50">
+    <section class="py-24 bg-stone-100/40 border-t border-b border-stone-200/30">
       <div class="max-w-7xl mx-auto px-6 md:pl-72 md:pr-12 lg:pr-16 space-y-16">
-        <div class="flex justify-between items-end border-b border-stone-200 pb-8">
+        <div class="flex justify-between items-end border-b border-stone-200/60 pb-8">
           <h2 class="text-3xl font-serif italic text-stone-900">Casas con Historia</h2>
           <NuxtLink to="/apartamentos" class="text-[10px] uppercase font-bold tracking-widest text-stone-500 border-b border-stone-400 pb-1">Ver todos</NuxtLink>
         </div>
@@ -97,17 +73,17 @@
     <section class="py-24 md:py-32 max-w-7xl mx-auto px-6 md:pl-72 md:pr-12 lg:pr-16">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
         <div class="space-y-4">
-          <div class="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-stone-800 font-serif italic">1</div>
+          <div class="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-stone-800 font-serif italic border border-stone-200/60">1</div>
           <h4 class="font-bold uppercase tracking-widest text-xs text-stone-900">Slow Food</h4>
           <p class="text-xs text-stone-500 leading-relaxed font-light">Acceso a nuestro huerto ecológico y recomendaciones de la mejor gastronomía local de Lobras y Tímar.</p>
         </div>
         <div class="space-y-4">
-          <div class="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-stone-800 font-serif italic">2</div>
+          <div class="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-stone-800 font-serif italic border border-stone-200/60">2</div>
           <h4 class="font-bold uppercase tracking-widest text-xs text-stone-900">Senderismo</h4>
           <p class="text-xs text-stone-500 leading-relaxed font-light">Rutas circulares que nacen en la misma puerta, cruzando acequias árabes y castañares centenarios.</p>
         </div>
         <div class="space-y-4">
-          <div class="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-stone-800 font-serif italic">3</div>
+          <div class="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-stone-800 font-serif italic border border-stone-200/60">3</div>
           <h4 class="font-bold uppercase tracking-widest text-xs text-stone-900">Astroturismo</h4>
           <p class="text-xs text-stone-500 leading-relaxed font-light">Uno de los cielos más limpios de Europa. Disponemos de equipo básico para observación de estrellas.</p>
         </div>
@@ -136,12 +112,9 @@ definePageMeta({
 </script>
 
 <style scoped>
-.animate-fade-in {
-  animation: fadeIn 1.5s ease-out forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Estilos específicos de optimización tipográfica para la página index */
+section {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 </style>
