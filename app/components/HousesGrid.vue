@@ -1,0 +1,142 @@
+<template>
+  <section id="alojamientos-galeria" class="w-full bg-[#fcfaf7] pt-24 pb-32 antialiased select-none">
+    
+    <div class="mb-16 px-4 md:px-6 w-full mx-auto flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div class="max-w-2xl">
+        <span class="text-sm uppercase tracking-[0.3em] text-[#3b6e4c] font-black block mb-3">
+          El refugio por dentro
+        </span>
+        <h2 class="text-5xl sm:text-7xl font-manual text-stone-900 tracking-wide leading-[0.9] m-0">
+          Un vistazo sincero <br />
+          <span class="text-[#3b6e4c] font-black">a nuestras casas.</span>
+        </h2>
+      </div>
+      
+      <NuxtLink 
+        to="/apartamentos" 
+        class="btn-minimal-premium group no-underline text-center"
+      >
+        <span>Visitar apartamentos</span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 transition-all duration-500 cubic-bezier group-hover:translate-x-1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+        </svg>
+      </NuxtLink>
+    </div>
+
+    <div class="w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-0 p-0 m-0 bg-transparent">
+      <div 
+        v-for="index in 12" 
+        :key="index"
+        @click="openLightbox(index)"
+        class="relative aspect-square overflow-hidden bg-stone-900 cursor-pointer group p-0 m-0"
+      >
+        <img 
+          :src="defaultImage" 
+          :alt="'Imagen galería ' + index" 
+          class="w-full h-full object-cover block transition-opacity duration-300 group-hover:opacity-85" 
+        />
+        <div class="absolute inset-0 bg-stone-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.604 10.604z" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <Teleport to="body">
+      <Transition name="fade">
+        <div 
+          v-if="isOpen" 
+          class="fixed inset-0 z-[9999] bg-stone-950/95 backdrop-blur-md flex flex-col items-center justify-center p-4"
+          @click="closeLightbox"
+        >
+          <button class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors p-2" @click="closeLightbox">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          
+          <div class="max-w-5xl max-h-[80vh] flex flex-col items-center justify-center" @click.stop>
+            <img 
+              :src="defaultImage" 
+              alt="Vista ampliada" 
+              class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl block" 
+            />
+            <p class="text-stone-400 font-mono text-sm uppercase tracking-widest text-center mt-6 font-bold">
+              Fotografía {{ activeIndex }} de 12
+            </p>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
+    
+  </section>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import defaultImage from '~/assets/img/default.jpg'
+
+// Si ya no necesitas propagar el evento hacia arriba, puedes borrar o dejar este defineEmits
+defineEmits(['navigate'])
+
+const isOpen = ref(false)
+const activeIndex = ref(null)
+
+const openLightbox = (index) => {
+  activeIndex.value = index
+  isOpen.value = true
+  if (typeof window !== 'undefined') {
+    document.body.style.overflow = 'hidden'
+  }
+}
+
+const closeLightbox = () => {
+  isOpen.value = false
+  if (typeof window !== 'undefined') {
+    document.body.style.overflow = ''
+  }
+}
+</script>
+
+<style scoped>
+.btn-minimal-premium {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 18px 44px;
+  background: #1c1917;
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  box-shadow: 0 10px 30px -10px rgba(28, 25, 23, 0.3);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-minimal-premium:hover {
+  background: #3b6e4c;
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px -8px rgba(59, 110, 76, 0.4);
+}
+
+.cubic-bezier {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

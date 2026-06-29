@@ -12,12 +12,12 @@
 
 @layer base {
   :root {
-    /* Paleta Identitaria: Identidad rural, auténtica y sofisticada */
-    --color-principal: #53433c;    /* El marrón ocre/tierra de tu logo que da consistencia */
-    --color-acento: #2d4a22;       /* Verde oliva profundo para detalles de naturaleza */
-    --color-secundario: #c29b68;   /* Tono arcilla/arena de la arquitectura alpujarreña */
-    --color-fondo: #fcfbf9;        /* El blanco roto/hueso exacto que usamos en el layout */
-    --color-texto: #1c2816;        /* Antracita vegetal orgánico para máxima legibilidad */
+    /* NUEVA PALETA PRIMAVERAL: Luminosa, alegre, natural y familiar */
+    --color-principal: #3b6e4c;    /* Verde Brote: fresco, alegre y lleno de vida */
+    --color-acento: #d9923b;       /* Ocre Albaricoque: calidez solar, acogedor y vibrante */
+    --color-secundario: #e6c594;   /* Arena Claro: una versión más lavada y luminosa de la arcilla */
+    --color-fondo: #fdfdfb;        /* Blanco Lino: aún más limpio y luminoso, pero sin ser frío */
+    --color-texto: #1e251c;        /* Antracita botánico para mantener la lectura perfecta */
   }
 
   body {
@@ -29,7 +29,7 @@
     overflow-x: hidden;
   }
 
-  /* Títulos editoriales: Toque elegante, histórico y de autor (Merriweather/Serif) */
+  /* Títulos editoriales: Toque elegante, histórico y de autor */
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Merriweather', serif;
     color: var(--color-texto);
@@ -47,7 +47,7 @@
     @apply text-xl md:text-2xl lg:text-3xl font-light text-[var(--color-principal)] tracking-wide mb-3;
   }
 
-  /* Párrafos e información descriptiva */
+  /* Párrafos e información descriptiva acogedora */
   p {
     @apply font-sans text-sm md:text-base leading-relaxed text-stone-600/90 mb-4;
   }
@@ -63,13 +63,14 @@
   .font-manual {
     font-family: 'Modern Romance', cursive;
     text-transform: none;
-    letter-spacing: 0.02em; /* <--- Esto separa las letras sutilmente dándole aire y elegancia */
+    letter-spacing: 0.02em;
   }
-  /* Tarjetas Boutique (Alineadas con los cantos rectos del nuevo estilo) */
+
+  /* Tarjetas Boutique (Cantos rectos, sombras suaves basadas en el verde oliva) */
   .card-boutique {
     @apply bg-white rounded-none border border-stone-200/80 
-           shadow-[0_4px_30px_rgba(0,0,0,0.01)] transition-all duration-700 
-           hover:shadow-[0_30px_60px_rgba(83,67,60,0.05)] overflow-hidden;
+           shadow-[0_4px_30_rgba(0,0,0,0.01)] transition-all duration-700 
+           hover:shadow-[0_30px_60px_rgba(74,78,65,0.06)] overflow-hidden;
   }
 
   /* Tags finos de equipamientos y servicios */
@@ -78,29 +79,28 @@
            px-4 py-2 rounded-none border border-stone-200/40;
   }
 
-  /* NUEVO: Botón Editorial Principal (Ideal para los "Ver Alojamientos" o "Reservar" del Index) */
-  /* BOTÓN EDITORIAL PRINCIPAL (Estilo pastilla/bloque sólido de alta visibilidad) */
+  /* BOTÓN EDITORIAL PRINCIPAL (Bloque sólido con el nuevo verde oliva de bienvenida) */
   .btn-editorial {
     @apply inline-flex items-center justify-center px-8 py-4 text-[10px] font-black uppercase tracking-[0.25em] 
-           bg-[#53433c] text-white rounded-none transition-all duration-500 relative overflow-hidden border border-[#53433c]
-           hover:bg-[#43352f] hover:border-[#43352f] hover:shadow-xl hover:shadow-[#53433c]/10;
+           bg-[var(--color-principal)] text-white rounded-none transition-all duration-500 relative overflow-hidden border border-[var(--color-principal)]
+           hover:bg-[var(--color-acento)] hover:border-[var(--color-acento)] hover:shadow-xl hover:shadow-[#4a4e41]/10;
   }
 
-  /* BOTÓN EDITORIAL SECUNDARIO / OUTLINE (Línea fina calada, ideal para fondos claros) */
+  /* BOTÓN EDITORIAL SECUNDARIO / OUTLINE (Línea fina calada para airear el diseño) */
   .btn-editorial-outline {
     @apply inline-flex items-center justify-center px-8 py-4 text-[10px] font-black uppercase tracking-[0.25em] 
            bg-transparent text-stone-800 rounded-none border border-stone-300 transition-all duration-500
-           hover:bg-stone-900 hover:text-white hover:border-stone-900;
+           hover:bg-[var(--color-principal)] hover:text-white hover:border-[var(--color-principal)];
   }
 
-  /* BOTÓN RESERVA DIRECTA / DESTACADO (Sólido blanco de alto contraste para el motor de reservas) */
+  /* BOTÓN RESERVA DIRECTA / DESTACADO (Sólido de alto contraste) */
   .btn-editorial-accent {
     @apply inline-flex items-center justify-center px-6 py-3.5 text-[10px] font-black uppercase tracking-[0.25em] 
            bg-white text-stone-900 rounded-none transition-all duration-500 border border-white shadow-md
-           hover:bg-stone-100 hover:scale-[1.02];
+           hover:bg-stone-50 hover:scale-[1.02] hover:shadow-lg;
   }
 
-  /* NUEVO: Contenedor de imágenes de autor (Efecto zoom elegante sin salirse de los bordes rectos) */
+  /* Contenedor de imágenes de autor (Efecto zoom elegante) */
   .img-zoom-container {
     @apply overflow-hidden rounded-none relative block bg-stone-100;
   }
@@ -109,7 +109,7 @@
   }
 }
 
-/* NUEVO: Animación de revelado suave para secciones del Index al hacer scroll */
+/* Animación de revelado suave para secciones al hacer scroll */
 .reveal-on-scroll {
   opacity: 0;
   transform: translateY(30px);

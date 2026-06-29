@@ -1,65 +1,128 @@
 <template>
-  <section class="relative h-screen w-full flex flex-col justify-end antialiased overflow-hidden select-none bg-stone-900">
+  <section class="relative min-h-screen w-full bg-[#fcfaf7] pt-24 pb-6 px-3 md:px-6 flex flex-col justify-between overflow-hidden antialiased select-none">
     
-    <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat bg-fixed hero-bg">
-      <div class="absolute inset-0 bg-gradient-to-t from-stone-950/95 via-stone-950/40 to-transparent"></div>
-    </div>
+    <div class="absolute -right-20 top-20 w-[35rem] h-[35rem] bg-emerald-100/40 rounded-full blur-[120px] pointer-events-none animate-pulse-slow"></div>
+    <div class="absolute left-10 bottom-10 w-[30rem] h-[30rem] bg-amber-100/50 rounded-full blur-[100px] pointer-events-none"></div>
 
-    <div class="relative z-10 w-full max-w-[95rem] mx-auto px-6 md:px-12 lg:px-16 pb-12 md:pb-20">
+    <div class="w-full max-w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 my-auto z-10 items-stretch">
       
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center border-b border-white/20 pb-12">
-        
-        <div class="lg:col-span-6 flex flex-col items-start space-y-0">
-          <span class="text-xs sm:text-sm uppercase tracking-[0.5em] text-emerald-400 font-bold mb-4 animate-fade-in text-shadow-md">
-            Estancia Rural & Eco
-          </span>
-          <h1 class="text-6xl sm:text-8xl lg:text-[10rem] font-romance text-white tracking-tighter leading-[0.85] font-light text-shadow-xl">
-            El Huerto <br />
-            <span class="lg:pl-12 text-stone-200">de Lobras</span>
-          </h1>
-        </div>
+      <div class="lg:col-span-7 bg-[#f6f3eb] rounded-[1.5rem] p-8 sm:p-12 lg:p-14 flex flex-col justify-between shadow-[0_25px_60px_-15px_rgba(42,53,44,0.06)] transition-all duration-500 hover:shadow-[0_30px_70px_-10px_rgba(42,53,44,0.1)] hover:-translate-y-0.5">
+        <div class="space-y-6">
 
-        <div class="lg:col-span-4 flex flex-col space-y-5 lg:px-4 w-full max-w-md">
-          <p class="text-sm sm:text-base text-white font-medium leading-relaxed mb-1 text-shadow-lg opacity-95">
-            Explora senderos milenarios y vive la magia de la Alpujarra en un entorno natural diseñado para disfrutar con toda la familia.
-          </p>
-          
-          <button class="btn-accessible-primary shadow-2xl" aria-label="Reservar estancia">
-            <span class="btn-text">Reservar estancia</span>
-            <span class="btn-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-4 h-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-              </svg>
+          <h1 class="text-5xl sm:text-7xl lg:text-[8.5rem] font-manual text-stone-900 tracking-wide leading-[0.85] font-normal m-0">
+            Nuestro Huerto <br />
+            <span class="text-[#3b6e4c] font-black tracking-wideer block mt-2">
+              de Lobras.
             </span>
-          </button>
-          
-          <button class="btn-accessible-secondary shadow-xl" aria-label="Ver alojamientos disponibles">
-            <span class="btn-text">Ver Alojamientos</span>
-          </button>
+          </h1>
+
+          <p class="text-stone-600 text-base sm:text-xl font-medium leading-relaxed max-w-2xl m-0 normal-case">
+            Tu refugio natural en la Alpujarra Alta. Ven a pasarlo en grande en familia o como <span class="text-[#3b6e4c] font-bold underline decoration-amber-400 decoration-2">disfrutador profesional</span> además respirar aire puro.
+          </p>
         </div>
 
-        <div class="lg:col-span-2 flex justify-start lg:justify-end">
-          <button 
-            @click="scrollDown"
-            class="group relative flex items-center justify-center w-24 h-24 lg:w-32 lg:h-32 rounded-full border-2 border-white/30 backdrop-blur-md bg-white/10 hover:bg-white transition-all duration-700 ease-in-out shadow-2xl"
-            aria-label="Desplazar hacia abajo para ver más contenido"
+        <div class="flex flex-col sm:flex-row gap-4 pt-10 w-full sm:w-auto">
+          <NuxtLink 
+            to="/apartamentos" 
+            class="btn-organic-primary group w-full sm:w-auto no-underline text-center" 
+            aria-label="Reservar ya"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 lg:w-14 lg:h-14 text-white group-hover:text-stone-900 icon-arrow-smooth">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" />
+            <span>Reservar</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
-            
-            <div class="absolute inset-0 rounded-full border border-solid border-white/20 transition-all duration-700 group-hover:border-stone-900/30"></div>
-          </button>
+          </NuxtLink>
+          
+          <NuxtLink 
+            to="/apartamentos" 
+            class="btn-organic-secondary w-full sm:w-auto no-underline text-center" 
+            aria-label="Ver casas"
+          >
+            <span>Ver Alojamientos</span>
+          </NuxtLink>
         </div>
-
       </div>
 
+      <div class="lg:col-span-5 relative rounded-[1.5rem] overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.08)] transition-all duration-500 hover:shadow-[0_30px_70px_-10px_rgba(0,0,0,0.12)] hover:-translate-y-0.5 group min-h-[380px] lg:min-h-auto flex flex-col justify-end p-8 sm:p-10">
+        <div class="absolute inset-0 bg-cover bg-center main-frame-img group-hover:scale-105 transition-transform duration-1000"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-900/20 to-transparent z-10"></div>
+        
+        <div class="relative z-20">
+          <span class="font-sans text-sm tracking-widest bg-white/20 backdrop-blur-md text-white px-3 py-1.5 rounded-full font-bold uppercase mb-3 inline-block">
+            El Entorno
+          </span>
+          <h3 class="font-manual text-3xl sm:text-4xl lg:text-5xl text-white font-normal tracking-wide leading-none m-0">Nuestro huerto escondido in Lobras</h3>
+        </div>
+      </div>
+
+      <div class="lg:col-span-4 relative rounded-[1.5rem] overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.08)] transition-all duration-500 hover:shadow-[0_30px_70px_-10px_rgba(0,0,0,0.12)] hover:-translate-y-0.5 group min-h-[420px] lg:min-h-auto flex flex-col justify-between p-8 sm:p-10 text-white">
+        <div class="absolute inset-0 bg-cover bg-center secondary-frame-img group-hover:scale-105 transition-transform duration-1000"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-900/40 to-transparent z-10"></div>
+        
+        <div class="relative z-20 flex justify-between items-center w-full">
+          <div class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center text-2xl border border-white/10 text-amber-400">
+            <i class="fa-solid fa-people-group"></i>
+          </div>
+          <span class="font-sans text-sm tracking-widest bg-white/20 backdrop-blur-md text-white px-4 py-1.5 rounded-full font-bold uppercase">
+            Grandes espacios
+          </span>
+        </div>
+        
+        <div class="relative z-20 mt-16 lg:mt-24">
+          <h3 class="font-manual text-3xl sm:text-4xl lg:text-5xl text-white font-normal tracking-wide leading-none mb-4">
+            Pensado para <br />
+            <span class="text-amber-400 font-black">viajar juntos.</span>
+          </h3>
+          <p class="text-stone-200 text-sm sm:text-base font-medium leading-relaxed normal-case m-0">
+            Casas conectadas, porche con barbacoa, piscina y rincones libres bajo los árboles para disfrutar de grandes sobremesas en total libertad.
+          </p>
+        </div>
+      </div>
+
+      <div class="lg:col-span-8 bg-[#e9f2eb] rounded-[1.5rem] p-8 sm:p-12 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 shadow-[0_25px_60px_-15px_rgba(59,110,76,0.06)] transition-all duration-500 hover:shadow-[0_30px_70px_-10px_rgba(59,110,76,0.1)] hover:-translate-y-0.5">
+        <div class="space-y-3 max-w-xl">
+          <span class="font-sans font-bold text-sm text-emerald-800 uppercase tracking-[0.2em] block">Entorno salvaje</span>
+          <h4 class="font-manual text-3xl sm:text-4xl lg:text-5xl text-stone-900 font-normal tracking-wide leading-none">Lobras &bull; Alpujarra Alta</h4>
+          <p class="text-stone-600 text-sm sm:text-base font-medium leading-relaxed normal-case m-0">
+            Un pequeño pueblo andaluz rodeado de bancales y frutales. Aire limpio de montaña, senderos infinitos y desconexión total para recargar pilas con los tuyos.
+          </p>
+        </div>
+        
+        <button 
+          @click="$emit('navigate', 'features')"
+          class="btn-organic-action group shrink-0 w-full lg:w-auto justify-center"
+        >
+          <span>Quiero Divertirme</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 text-[#3b6e4c] group-hover:text-white transition-all duration-300 group-hover:translate-x-1">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <div class="w-full max-w-full mx-auto pt-6 px-2 border-t border-stone-200 flex justify-between items-center z-10 mt-8">
+      <div class="text-sm font-mono text-stone-500 uppercase tracking-widest font-bold">
+        El Huerto de Lobras &bull; 2026
+      </div>
+      
+      <button 
+        @click="scrollDown"
+        class="flex items-center gap-2 bg-transparent border-0 cursor-pointer font-bold text-sm uppercase tracking-widest text-stone-700 hover:text-[#3b6e4c] transition-colors"
+      >
+        <span>Descubre la experiencia</span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 animate-bounce">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7-7m7 7V3" />
+        </svg>
+      </button>
     </div>
 
   </section>
 </template>
 
 <script setup>
+defineEmits(['navigate'])
+
 const scrollDown = () => {
   window.scrollTo({
     top: window.innerHeight,
@@ -69,106 +132,77 @@ const scrollDown = () => {
 </script>
 
 <style scoped>
-.hero-bg {
-  background-image: url('~/assets/img/lobras.jpg');
+.main-frame-img, .secondary-frame-img {
+  background-image: url('~/assets/img/lobras.png');
 }
 
-h1 {
-  font-feature-settings: "ss01" on, "ss02" on, "liga" on;
-}
-
-section {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* --- ANIMACIÓN FLUIDA DE LA FLECHA (SMOOTH HOVER) --- */
-.icon-arrow-smooth {
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), color 0.7s ease-in-out;
-  transform: translateY(0);
-}
-
-.group:hover .icon-arrow-smooth {
-  transform: translateY(8px); /* Desplazamiento progresivo y limpio hacia abajo */
-}
-
-/* --- BOTONES ACCESIBLES --- */
-.btn-accessible-primary, .btn-accessible-secondary {
+.btn-organic-primary {
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 12px;
-  width: 100%;
-  padding: 18px 28px;
-  border-radius: 6px;
+  padding: 18px 42px; 
+  background: #3b6e4c;
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px; 
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 13px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 25px -5px rgba(59, 110, 76, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-organic-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px -5px rgba(59, 110, 76, 0.5);
+  background: #315c3f;
+}
+
+.btn-organic-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 42px;
+  background: rgba(42, 53, 44, 0.04);
+  color: #2a352c;
+  border: none;
+  border-radius: 9999px; 
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-organic-secondary:hover {
+  background: rgba(42, 53, 44, 0.08);
+  color: #1a211b;
+}
+
+.btn-organic-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 42px;
+  background: #ffffff;
+  border: 2px solid #e5e5e0;
+  border-radius: 9999px; 
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: 0.1em;
+  color: #292524;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
-
-/* Botón de Reserva (Marrón Ocre Premium) */
-.btn-accessible-primary {
-  background: #53433c;
-  border: 2px solid #53433c;
+.btn-organic-action:hover {
+  background: #3b6e4c;
+  border-color: #3b6e4c;
   color: #ffffff;
+  box-shadow: 0 12px 30px -8px rgba(59, 110, 76, 0.35);
 }
 
-.btn-accessible-primary:hover {
-  background: #3e322d;
-  border-color: #3e322d;
-  transform: translateY(-3px);
-}
-
-.btn-icon {
-  display: flex;
-  align-items: center;
-  transition: transform 0.3s ease;
-}
-
-.btn-accessible-primary:hover .btn-icon {
-  transform: translateX(4px);
-}
-
-/* Botón Secundario (Cristal espeso) */
-.btn-accessible-secondary {
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(16px);
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  color: #ffffff;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
-}
-
-.btn-accessible-secondary:hover {
-  background: #ffffff;
-  color: #1c1917;
-  border-color: #ffffff;
-  text-shadow: none;
-  transform: translateY(-3px);
-}
-
-/* Sombras protectoras de capa de texto */
-.text-shadow-xl {
-  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 4px 8px rgba(0, 0, 0, 0.4);
-}
-
-.text-shadow-lg {
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
-}
-
-.text-shadow-md {
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fade-in {
-  animation: fadeIn 1.2s ease forwards;
-}
+@keyframes pulseSlow { 0%, 100% { opacity: 0.8; transform: scale(1); } 50% { opacity: 1; transform: scale(1.05); } }
+.animate-pulse-slow { animation: pulseSlow 6s ease-in-out infinite; }
 </style>

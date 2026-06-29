@@ -1,223 +1,285 @@
 <template>
-  <div class="overflow-x-hidden bg-[#fcfbf9]">
+  <main class="w-full bg-[#fcfaf7] min-h-screen antialiased">
     
-    <TheMiniHero 
-      title="Apartamentos" 
-      subtitle="Casas de piedra independientes y mimadas al detalle" 
+    <MiniHero 
+      title="Espacios con alma." 
+      subtitle="Nuestros alojamientos"
+      :backgroundImage="heroImage" 
     />
 
-    <section class="py-24 md:py-32 max-w-[85rem] mx-auto px-6 lg:px-16 reveal-on-scroll">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24">
+    <section class="py-16 px-4 md:px-6 w-full mx-auto select-none">
+      <div class="max-w-[98%] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
-        <div class="card-boutique group flex flex-col justify-between">
-          <div>
-            <div class="img-zoom-container aspect-[16/10]">
-              <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1200&auto=format&fit=crop" alt="Las Golondrinas" />
-              <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-stone-900 text-[9px] font-black uppercase tracking-[0.3em] px-4 py-2">
-                Ideal 2 Personas
-              </div>
-            </div>
-            <div class="p-8 md:p-10 space-y-5">
-              <h3 class="font-serif italic text-2xl text-stone-900 m-0">Las Golondrinas</h3>
-              <p class="text-stone-600 text-sm font-medium leading-relaxed m-0">
-                Un espacio amplio de <strong>1 dormitorio</strong> que destaca por su acogedor salón equipado con <strong>chimenea tradicional</strong> y un sofá cama adicional. Perfecto para quienes buscan el calor del hogar original.
-              </p>
-              <div class="grid grid-cols-2 gap-3 text-xs text-stone-500 font-medium pt-2 border-t border-stone-200/60">
-                <div class="flex items-center gap-2"><i class="fa-solid fa-bed text-stone-400 w-4"></i> 1 Dormitorio + Sofá Cama</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-fire text-stone-400 w-4"></i> Chimenea Privada</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-temperature-arrow-up text-stone-400 w-4"></i> Calefacción Central</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-bath text-stone-400 w-4"></i> 1 Baño Completo</div>
-              </div>
-            </div>
+        <aside class="lg:col-span-3 bg-[#f6f3eb] rounded-[2rem] p-6 md:p-8 border border-stone-200/40 shadow-[0_15px_40px_-20px_rgba(42,53,44,0.04)] lg:sticky lg:top-28 z-20 space-y-6">
+          
+          <div class="space-y-1 pb-4 border-b border-stone-200/60">
+            <span class="text-xs font-mono text-stone-500 uppercase tracking-[0.2em] block font-bold">
+              Buscador
+            </span>
           </div>
-          <div class="px-8 md:px-10 pb-8 md:pb-10">
-            <a href="https://www.booking.com" target="_blank" rel="noopener noreferrer" class="btn-editorial w-full text-center">
-              Reservar Las Golondrinas <i class="fa-solid fa-bolt ml-2 text-[9px] text-amber-400"></i>
-            </a>
-          </div>
-        </div>
 
-        <div class="card-boutique group flex flex-col justify-between lg:mt-16">
-          <div>
-            <div class="img-zoom-container aspect-[16/10]">
-              <img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?q=80&w=1200&auto=format&fit=crop" alt="La Seda" />
-              <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-stone-900 text-[9px] font-black uppercase tracking-[0.3em] px-4 py-2">
-                Capacidad: 4 Personas
-              </div>
-            </div>
-            <div class="p-8 md:p-10 space-y-5">
-              <h3 class="font-serif italic text-2xl text-stone-900 m-0">La Seda</h3>
-              <p class="text-stone-600 text-sm font-medium leading-relaxed m-0">
-                Una de nuestras casas más amplias y luminosas. Cuenta con <strong>2 dormitorios</strong> y espectaculares <strong>2 terrazas privadas</strong> orientadas al paisaje alpujarreño para disfrutar de veladas memorables.
-              </p>
-              <div class="grid grid-cols-2 gap-3 text-xs text-stone-500 font-medium pt-2 border-t border-stone-200/60">
-                <div class="flex items-center gap-2"><i class="fa-solid fa-bed text-stone-400 w-4"></i> 2 Dormitorios</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-cloud-sun text-stone-400 w-4"></i> 2 Terrazas</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-fire text-stone-400 w-4"></i> Salón con Chimenea</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-kitchen-set text-stone-400 w-4"></i> Cocina Equipada</div>
+          <div class="space-y-3">
+            <label for="capacity-select" class="text-sm font-sans font-black uppercase tracking-wider text-stone-700 block">
+              ¿Cuántos vais a ser?
+            </label>
+            <div class="relative w-full">
+              <select 
+                id="capacity-select"
+                v-model="selectedCapacity"
+                class="w-full bg-white border border-stone-200/80 text-stone-800 rounded-xl px-4 py-4 text-sm font-sans font-bold shadow-sm focus:outline-none focus:border-[#3b6e4c] focus:ring-1 focus:ring-[#3b6e4c] appearance-none cursor-pointer"
+              >
+                <option value="all">Cualquier capacidad</option>
+                <option value="2">Ideal Parejas (2 plazas)</option>
+                <option value="4">Medianos (4-5 plazas)</option>
+                <option value="6">Grandes grupos (6+ plazas)</option>
+              </select>
+              <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none text-stone-500">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
               </div>
             </div>
           </div>
-          <div class="px-8 md:px-10 pb-8 md:pb-10">
-            <a href="https://www.booking.com" target="_blank" rel="noopener noreferrer" class="btn-editorial w-full text-center">
-              Reservar La Seda <i class="fa-solid fa-bolt ml-2 text-[9px] text-amber-400"></i>
-            </a>
-          </div>
-        </div>
 
-        <div class="card-boutique group flex flex-col justify-between">
-          <div>
-            <div class="img-zoom-container aspect-[16/10]">
-              <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=1200&auto=format&fit=crop" alt="Los Trovos" />
-              <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-stone-900 text-[9px] font-black uppercase tracking-[0.3em] px-4 py-2">
-                Parejas &bull; Vistas
-              </div>
-            </div>
-            <div class="p-8 md:p-10 space-y-5">
-              <h3 class="font-serif italic text-2xl text-stone-900 m-0">Los Trovos</h3>
-              <p class="text-stone-600 text-sm font-medium leading-relaxed m-0">
-                Diseñado para una escapada romántica de dos personas, ofrece un refugio íntimo con <strong>1 dormitorio</strong>, salón con chimenea de obra y una acogedora <strong>terraza mirador</strong> orientada al amanecer.
-              </p>
-              <div class="grid grid-cols-2 gap-3 text-xs text-stone-500 font-medium pt-2 border-t border-stone-200/60">
-                <div class="flex items-center gap-2"><i class="fa-solid fa-bed text-stone-400 w-4"></i> 1 Dormitorio</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-map text-stone-400 w-4"></i> 1 Terraza Privada</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-fire text-stone-400 w-4"></i> Calefacción + Leña</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-utensils text-stone-400 w-4"></i> Cocina Completa</div>
-              </div>
+          <div class="space-y-3 pb-2">
+            <span class="text-sm font-sans font-black uppercase tracking-wider text-stone-700 block">
+              Extras Clave
+            </span>
+            <div class="space-y-2.5">
+              <label class="flex items-center gap-3 cursor-pointer text-sm font-sans text-stone-800 font-bold select-none">
+                <input 
+                  type="checkbox" 
+                  v-model="filterFireplace"
+                  class="rounded text-[#3b6e4c] focus:ring-[#3b6e4c] border-stone-300 w-5 h-5 accent-[#3b6e4c]"
+                />
+                <span>Con Chimenea / Leña</span>
+              </label>
             </div>
           </div>
-          <div class="px-8 md:px-10 pb-8 md:pb-10">
-            <a href="https://www.booking.com" target="_blank" rel="noopener noreferrer" class="btn-editorial w-full text-center">
-              Reservar Los Trovos <i class="fa-solid fa-bolt ml-2 text-[9px] text-amber-400"></i>
-            </a>
-          </div>
-        </div>
 
-        <div class="card-boutique group flex flex-col justify-between lg:mt-16">
-          <div>
-            <div class="img-zoom-container aspect-[16/10]">
-              <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1200&auto=format&fit=crop" alt="Los Cerezos" />
-              <div class="absolute top-4 left-4 bg-[#53433c] text-white text-[9px] font-black uppercase tracking-[0.3em] px-4 py-2">
-                <i class="fa-solid fa-wheelchair mr-1"></i> Accesible
-              </div>
-            </div>
-            <div class="p-8 md:p-10 space-y-5">
-              <h3 class="font-serif italic text-2xl text-stone-900 m-0">Los Cerezos</h3>
-              <p class="text-stone-600 text-sm font-medium leading-relaxed m-0">
-                Nuestra estancia totalmente <strong>adaptada para personas con movilidad reducida</strong>. Cuenta con espacios holgados, salón con sofá cama, chimenea integrada y un baño libre de barreras.
-              </p>
-              <div class="grid grid-cols-2 gap-3 text-xs text-stone-500 font-medium pt-2 border-t border-stone-200/60">
-                <div class="flex items-center gap-2 font-bold text-[#53433c]"><i class="fa-solid fa-universal-access w-4"></i> 100% Adaptado</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-bed text-stone-400 w-4"></i> 1 Dormitorio (2 Pax)</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-fire text-stone-400 w-4"></i> Salón y Chimenea</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-snowflake text-stone-400 w-4"></i> Climatización Central</div>
-              </div>
-            </div>
+          <div v-if="selectedCapacity !== 'all' || filterFireplace" class="pb-2">
+            <button 
+              @click="resetFilters" 
+              class="w-full bg-stone-900/10 hover:bg-stone-900/20 text-stone-800 font-sans font-black text-xs uppercase tracking-wider py-3.5 rounded-xl transition-colors cursor-pointer border-none"
+            >
+              Limpiar Filtros
+            </button>
           </div>
-          <div class="px-8 md:px-10 pb-8 md:pb-10">
-            <a href="https://www.booking.com" target="_blank" rel="noopener noreferrer" class="btn-editorial w-full text-center">
-              Reservar Los Cerezos <i class="fa-solid fa-bolt ml-2 text-[9px] text-amber-400"></i>
-            </a>
-          </div>
-        </div>
 
-        <div class="card-boutique group flex flex-col justify-between">
-          <div>
-            <div class="img-zoom-container aspect-[16/10]">
-              <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=1200&auto=format&fit=crop" alt="La Contraviesa" />
-              <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-stone-900 text-[9px] font-black uppercase tracking-[0.3em] px-4 py-2">
-                Confort &bull; Exterior
-              </div>
-            </div>
-            <div class="p-8 md:p-10 space-y-5">
-              <h3 class="font-serif italic text-2xl text-stone-900 m-0">La Contraviesa</h3>
-              <p class="text-stone-600 text-sm font-medium leading-relaxed m-0">
-                Un alojamiento sumamente completo que dispone de <strong>1 dormitorio</strong>, salón independiente, un agradable sofá cama, <strong>chimenea de leña</strong> y una fantástica terraza orientada a la mítica sierra homónima.
-              </p>
-              <div class="grid grid-cols-2 gap-3 text-xs text-stone-500 font-medium pt-2 border-t border-stone-200/60">
-                <div class="flex items-center gap-2"><i class="fa-solid fa-sun text-stone-400 w-4"></i> Terraza Panorámica</div>
-                <div class="flex items-center gap-2"><i class="fa-solid =fa-bed text-stone-400 w-4"></i> 1 Dormitorio + Sofá Cama</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-couch text-stone-400 w-4"></i> Salón Confortable</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-sink text-stone-400 w-4"></i> Cocina de Autor</div>
-              </div>
-            </div>
-          </div>
-          <div class="px-8 md:px-10 pb-8 md:pb-10">
-            <a href="https://www.booking.com" target="_blank" rel="noopener noreferrer" class="btn-editorial w-full text-center">
-              Reservar La Contraviesa <i class="fa-solid fa-bolt ml-2 text-[9px] text-amber-400"></i>
-            </a>
-          </div>
-        </div>
+          <div class="pt-6 border-t border-stone-200/60 space-y-4">
+            <span class="text-sm font-sans font-black uppercase tracking-wider text-stone-700 block">
+              ¿Prefieres ayuda directa?
+            </span>
+            
+            <div class="flex flex-col gap-2.5">
+              <a 
+                href="https://www.booking.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="flex items-center justify-center gap-3 bg-[#003580] hover:bg-[#00224f] text-white font-sans font-bold text-sm py-4 px-4 rounded-xl transition-colors shadow-sm text-center no-underline"
+              >
+                <span>Booking.com</span>
+              </a>
 
-        <div class="card-boutique group flex flex-col justify-between lg:mt-16">
-          <div>
-            <div class="img-zoom-container aspect-[16/10]">
-              <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=1200&auto=format&fit=crop" alt="El Estudio" />
-              <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-stone-900 text-[9px] font-black uppercase tracking-[0.3em] px-4 py-2">
-                Esencia Minimalista
-              </div>
-            </div>
-            <div class="p-8 md:p-10 space-y-5">
-              <h3 class="font-serif italic text-2xl text-stone-900 m-0">El Estudio</h3>
-              <p class="text-stone-600 text-sm font-medium leading-relaxed m-0">
-                La opción idónea para estancias individuales o parejas en busca de sencillez. Un concepto loft compacto de <strong>1 dormitorio</strong>, dotado de calefacción central, cocina funcional y una estupenda <strong>terraza privada</strong>.
-              </p>
-              <div class="grid grid-cols-2 gap-3 text-xs text-stone-500 font-medium pt-2 border-t border-stone-200/60">
-                <div class="flex items-center gap-2"><i class="fa-solid fa-user-friends text-stone-400 w-4"></i> 1 Dormitorio (2 Pax)</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-door-open text-stone-400 w-4"></i> Terraza Independiente</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-temperature-arrow-up text-stone-400 w-4"></i> Calefacción Central</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-shower text-stone-400 w-4"></i> Baño Privado</div>
-              </div>
+              <a 
+                href="tel:+34600000000" 
+                class="flex items-center justify-center gap-3 bg-white border border-stone-200 hover:border-stone-400 text-stone-800 font-sans font-bold text-sm py-4 px-4 rounded-xl transition-colors shadow-sm text-center no-underline"
+              >
+                <i class="fa-solid fa-phone text-[#3b6e4c] text-base"></i>
+                <span>Llamar: 600 00 00 00</span>
+              </a>
             </div>
           </div>
-          <div class="px-8 md:px-10 pb-8 md:pb-10">
-            <a href="https://www.booking.com" target="_blank" rel="noopener noreferrer" class="btn-editorial w-full text-center">
-              Reservar El Estudio <i class="fa-solid fa-bolt ml-2 text-[9px] text-amber-400"></i>
-            </a>
+
+        </aside>
+
+        <div class="lg:col-span-9 space-y-8">
+          
+          <div class="text-sm font-mono text-stone-500 uppercase tracking-widest pl-2 font-bold">
+            Mostrando {{ filteredApartments.length }} de {{ apartments.length }} estancias
           </div>
+
+          <div v-if="filteredApartments.length > 0" class="space-y-8">
+            <ApartmentCard 
+              v-for="apt in filteredApartments" 
+              :key="apt.id" 
+              :apartment="apt"
+            />
+          </div>
+
+          <div v-else class="bg-white rounded-[2.5rem] p-12 md:p-16 text-center border border-stone-200/40 shadow-sm space-y-4">
+            <div class="text-stone-300">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-16 h-16 mx-auto">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
+              </svg>
+            </div>
+            <h4 class="font-manual text-3xl text-stone-900 m-0">No encontramos coincidencias</h4>
+            <p class="text-stone-600 text-base max-w-md mx-auto m-0 leading-relaxed font-medium">
+              Prueba a cambiar tus criterios o utiliza las opciones de asistencia directa a la izquierda para diseñar una alternativa a tu medida.
+            </p>
+          </div>
+
         </div>
 
       </div>
     </section>
-
-    <section class="py-24 bg-stone-900 text-white relative overflow-hidden">
-      <div class="absolute inset-0 z-0 opacity-10">
-        <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=2000&auto=format&fit=crop" class="w-full h-full object-cover" />
-      </div>
-      
-      <div class="relative z-10 max-w-4xl mx-auto px-6 text-center space-y-8">
-        <span class="text-[9px] uppercase tracking-[0.4em] text-stone-400 font-black block">El Escenario Perfecto</span>
-        
-        <h2 class="font-manual text-5xl md:text-7xl text-stone-200 font-normal leading-tight m-0">
-          Un rincón para dar gusto al placer de la lectura
-        </h2>
-        
-        <div class="w-16 h-[1px] bg-white/20 mx-auto"></div>
-        
-        <p class="text-stone-300 font-light text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
-          Rodeado de imponentes montañas, suspendido entre la naturaleza más pura y una <strong>brisa impregnada por la paz y la tranquilidad</strong>, se encuentra El Huerto de Lobras. Un escenario fantástico minuciosamente ideado para apartar el ruido cotidiano, concentrarse y <strong>reencontrarse definitivamente con la calma</strong>.
-        </p>
-
-        <div class="pt-4">
-          <NuxtLink to="/contacto" class="btn-editorial-accent px-10">
-            Contactar con Recepción
-          </NuxtLink>
-        </div>
-      </div>
-    </section>
-
-  </div>
+  </main>
 </template>
 
 <script setup>
-definePageMeta({
-  layout: 'default'
+import { ref, computed } from 'vue'
+import heroImage from '~/assets/img/default.jpg'
+
+// ESTADOS DE FILTRADO REACTIVOS
+const selectedCapacity = ref('all')
+const filterFireplace = ref(false)
+
+const resetFilters = () => {
+  selectedCapacity.value = 'all'
+  filterFireplace.value = false
+}
+
+// DATA OFICIAL DE LOS 10 APARTAMENTOS
+const apartments = [
+  {
+    id: 'casa-el-olivo',
+    code: 'Casa El Olivo',
+    name: 'La Casa Principal',
+    capacity: '4 a 6 plazas',
+    maxGuests: 6,
+    hasFireplace: true,
+    tag: 'Recomendado para grupos',
+    description: 'Perfecta para grupos que quieren compartirlo todo. Cuenta con un salón enorme con chimenea tradicional andaluza, cocina rústica equipada al completo y acceso directo al porche principal de las barbacoas.',
+    features: ['Cancelación flexible', 'Leña de cortesía incluida', 'Acceso directo a barbacoas'],
+    image: null
+  },
+  {
+    id: 'casa-el-almendro',
+    code: 'Casa El Almendro',
+    name: 'El Refugio del Valle',
+    capacity: '2 a 4 plazas',
+    maxGuests: 4,
+    hasFireplace: false,
+    tag: 'Vistas panorámicas',
+    description: 'Un rincón independiente y acogedor, pensado para parejas o familias pequeñas que buscan intimidad. Disfruta de las mañanas con vistas infinitas a los bancales frutales y valles de la Alpujarra Alta.',
+    features: ['Balcón privado al valle', 'Espacio independiente', 'Soporte directo 24/7'],
+    image: null
+  },
+  {
+    id: 'casa-la-acequia',
+    code: 'Casa La Acequia',
+    name: 'El Rincón del Agua',
+    capacity: '2 plazas',
+    maxGuests: 2,
+    hasFireplace: false,
+    tag: 'Ideal parejas',
+    description: 'Un apartamento íntimo donde el murmullo del agua es el único sonido de fondo. Cuenta con un dormitorio abovedado de piedra, baño artesanal y una pequeña cocina de leña completamente funcional.',
+    features: ['Entrada independiente', 'Vistas al riachuelo', 'Cama King Size'],
+    image: null
+  },
+  {
+    id: 'casa-la-parra',
+    code: 'Casa La Parra',
+    name: 'El Porche Secreto',
+    capacity: '4 plazas',
+    maxGuests: 4,
+    hasFireplace: false,
+    tag: 'Sombra natural',
+    description: 'Destaca por su espectacular terraza privada techada por una parra centenaria. Ideal para almuerzos frescos al aire libre y largas conversaciones al atardecer contemplando la sierra alta.',
+    features: ['Terraza exclusiva', 'Barbacoa individual', 'Wifi de alta velocidad'],
+    image: null
+  },
+  {
+    id: 'casa-el-castano',
+    code: 'Casa El Castaño',
+    name: 'La Estancia de la Sierra',
+    capacity: '6 plazas',
+    maxGuests: 6,
+    hasFireplace: true,
+    tag: 'Gran formato familiar',
+    description: 'Espacio masivo distribuido en dos plantas de arquitectura tradicional alpujarreña. Grandes muros de piedra que mantienen la temperatura perfecta y ventanales orientados al sol de la mañana.',
+    features: ['Dos niveles completos', 'Chimenea de forja', 'Parking próximo'],
+    image: null
+  },
+  {
+    id: 'casa-el-mirador',
+    code: 'Casa El Mirador',
+    name: 'La Atalaya de Lobras',
+    capacity: '2 a 3 plazas',
+    maxGuests: 3,
+    hasFireplace: false,
+    tag: 'Máxima altura',
+    description: 'Ubicado en el punto más alto del complejo, ofrece una perspectiva de 360 grados del entorno rural. Perfecto para desconectar del mundo y disfrutar del cielo estrellado más limpio de Andalucía.',
+    features: ['Solárium privado', 'Techos de vigas vistas', 'Cafetera de especialidad'],
+    image: null
+  },
+  {
+    id: 'casa-la-higuera',
+    code: 'Casa La Higuera',
+    name: 'El Patio Escondido',
+    capacity: '4 plazas',
+    maxGuests: 4,
+    hasFireplace: false,
+    tag: 'Arquitectura viva',
+    description: 'Organizado alrededor de un patio interior tradicional andaluz dominado por una higuera frondosa. Ofrece frescor absoluto en verano y una privacidad total ideal para familias con niños.',
+    features: ['Patio privado andaluz', 'Cocina equipada premium', 'Pet friendly bajo petición'],
+    image: null
+  },
+  {
+    id: 'casa-el-granado',
+    code: 'Casa El Granado',
+    name: 'La Suite del Huerto',
+    capacity: '2 plazas',
+    maxGuests: 2,
+    hasFireplace: false,
+    tag: 'Detalles de autor',
+    description: 'Un estudio de diseño rústico minimalista con acceso directo a los frutales del complejo. Ideal para estancias largas de teletrabajo rural o escapadas románticas de desconexión absoluta.',
+    features: ['Salida directo al huerto', 'Escritorio de castaño', 'Baño con ducha de piedra'],
+    image: null
+  },
+  {
+    id: 'casa-la-solana',
+    code: 'Casa La Solana',
+    name: 'El Refugio del Sol',
+    capacity: '4 a 5 plazas',
+    maxGuests: 5,
+    hasFireplace: false,
+    tag: 'Luz natural continua',
+    description: 'Orientado completamente al sur, este apartamento goza de una iluminación espectacular durante todo el año. Su salón integrado conecta fluidamente con un comedor exterior empedrado.',
+    features: ['Orientación sur total', 'Comedor exterior', 'Calefacción ecológica'],
+    image: null
+  },
+  {
+    id: 'casa-la-bodega',
+    code: 'Casa La Bodega',
+    name: 'El Santuario de Piedra',
+    capacity: '2 plazas',
+    maxGuests: 2,
+    hasFireplace: false,
+    tag: 'Experiencia inmersiva',
+    description: 'Construido sobre las bases de una antigua bodega subterránea, este alojamiento ofrece una experiencia arquitectónica única, con muros de roca pura expuesta y un aislamiento acústico insuperable.',
+    features: ['Muros de piedra nativa', 'Temperatura autorregulada', 'Iluminación cálida de autor'],
+    image: null
+  }
+]
+
+// LÓGICA DE FILTRADO
+const filteredApartments = computed(() => {
+  return apartments.filter(apt => {
+    let matchCapacity = true
+    if (selectedCapacity.value !== 'all') {
+      const target = parseInt(selectedCapacity.value)
+      if (target === 2) matchCapacity = (apt.maxGuests === 2)
+      else if (target === 4) matchCapacity = (apt.maxGuests === 4 || apt.maxGuests === 5)
+      else if (target === 6) matchCapacity = (apt.maxGuests >= 6)
+    }
+
+    let matchFireplace = true
+    if (filterFireplace.value) {
+      matchFireplace = apt.hasFireplace
+    }
+
+    return matchCapacity && matchFireplace
+  })
 })
 </script>
-
-<style scoped>
-section {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-}
-</style>
