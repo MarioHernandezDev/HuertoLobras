@@ -137,11 +137,12 @@ import logoUrl from '~/assets/img/logo.jpg'
 const isMenuOpen = ref(false)
 const isScrolled = ref(false)
 
+// Reorganización estratégica de las secciones y enlaces
 const menuItems = [
   { name: 'Inicio', path: '/' },
   { name: 'Alojamientos', path: '/apartamentos' },
-  { name: 'Actividades', path: '/actividades' },
-  { name: 'Ofertas', path: '/ofertas' },
+  { name: 'Rutas', path: '/rutas' },
+  { name: 'Cultura', path: '/cultura' },
   { name: 'Entorno', path: '/entorno' },
   { name: 'Contacto', path: '/contacto' }
 ]
