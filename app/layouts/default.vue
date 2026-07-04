@@ -137,13 +137,13 @@ import logoUrl from '~/assets/img/logo.jpg'
 const isMenuOpen = ref(false)
 const isScrolled = ref(false)
 
-// Reorganización estratégica de las secciones y enlaces
+// Modificado enlace "Entorno" por "Talleres"
 const menuItems = [
   { name: 'Inicio', path: '/' },
   { name: 'Alojamientos', path: '/apartamentos' },
   { name: 'Rutas', path: '/rutas' },
   { name: 'Cultura', path: '/cultura' },
-  { name: 'Entorno', path: '/entorno' },
+  { name: 'Talleres', path: '/talleres' },
   { name: 'Contacto', path: '/contacto' }
 ]
 
@@ -162,7 +162,6 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-/* Manejo del enlace activo */
 .desktop-nav-item.router-link-active span:last-child {
   color: #3b6e4c !important;
   transform: translateX(8px);
@@ -171,7 +170,6 @@ onUnmounted(() => {
   color: #d9923b !important;
 }
 
-/* ANIMACIÓN DE ENTRADA DEL MENÚ FULLSCREEN */
 .menu-fullscreen-enter-active, 
 .menu-fullscreen-leave-active {
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -182,7 +180,6 @@ onUnmounted(() => {
   transform: translateY(-8px);
 }
 
-/* Animación cinética para el renderizado suave de páginas */
 .content-reveal {
   animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
