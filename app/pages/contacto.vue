@@ -1,10 +1,11 @@
 <template>
-  <main class="w-full bg-[#fcfaf7] min-h-screen antialiased">
+  <main class="w-full bg-[#fcfaf7] bg-texture min-h-screen antialiased relative">
     
     <MiniHero 
       title="Contacto & Reservas" 
       subtitle="Tu refugio en la Alpujarra"
       :backgroundImage="heroImage" 
+      :backgroundVideo="heroVideo"
     />
 
     <section class="w-full bg-[#fcfaf7] pt-28 pb-24 px-4 md:px-8 lg:px-12 select-none">
@@ -12,13 +13,13 @@
         
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           
-          <div class="lg:col-span-5 space-y-12">
+          <div class="lg:col-span-5 space-y-12 animate-slide-left">
             <div class="space-y-6">
               <span class="font-sans font-black text-xs text-[#3b6e4c] uppercase tracking-[0.2em] block">
                 ¿Hablamos?
               </span>
               
-              <h2 class="text-5xl sm:text-6xl font-manual text-stone-900 tracking-wide leading-[0.9] m-0 font-normal">
+              <h2 class="text-5xl sm:text-6xl font-manual text-stone-900 tracking-wide leading-[0.9] m-0 font-normal pb-2">
                 Encuentra tu <br />
                 <span class="text-[#3b6e4c] font-black block mt-2">momento de paz.</span>
               </h2>
@@ -28,9 +29,9 @@
               </p>
             </div>
 
-            <div class="space-y-8 pt-4 border-t border-stone-200/60">
-              <div class="flex items-start gap-4">
-                <div class="w-10 h-10 rounded-full bg-[#f6f3eb] flex items-center justify-center text-[#3b6e4c] shrink-0">
+            <div class="space-y-8 pt-8 border-t border-stone-200/60">
+              <div class="flex items-start gap-4 group/item">
+                <div class="w-10 h-10 rounded-full bg-[#f6f3eb] flex items-center justify-center text-[#3b6e4c] shrink-0 group-hover/item:bg-[#3b6e4c] group-hover/item:text-white transition-all duration-300">
                   <i class="fa-solid fa-phone text-base"></i>
                 </div>
                 <div>
@@ -41,8 +42,8 @@
                 </div>
               </div>
 
-              <div class="flex items-start gap-4">
-                <div class="w-10 h-10 rounded-full bg-[#f6f3eb] flex items-center justify-center text-[#3b6e4c] shrink-0">
+              <div class="flex items-start gap-4 group/item">
+                <div class="w-10 h-10 rounded-full bg-[#f6f3eb] flex items-center justify-center text-[#3b6e4c] shrink-0 group-hover/item:bg-[#3b6e4c] group-hover/item:text-white transition-all duration-300">
                   <i class="fa-regular fa-envelope text-base"></i>
                 </div>
                 <div>
@@ -53,8 +54,8 @@
                 </div>
               </div>
 
-              <div class="flex items-start gap-4">
-                <div class="w-10 h-10 rounded-full bg-[#f6f3eb] flex items-center justify-center text-[#3b6e4c] shrink-0">
+              <div class="flex items-start gap-4 group/item">
+                <div class="w-10 h-10 rounded-full bg-[#f6f3eb] flex items-center justify-center text-[#3b6e4c] shrink-0 group-hover/item:bg-[#3b6e4c] group-hover/item:text-white transition-all duration-300">
                   <i class="fa-solid fa-location-dot text-base"></i>
                 </div>
                 <div>
@@ -68,7 +69,7 @@
             </div>
           </div>
 
-          <div class="lg:col-span-7 bg-[#f6f3eb] rounded-[2rem] p-8 sm:p-12 border border-stone-200/40 shadow-[0_15px_40px_-20px_rgba(42,53,44,0.04)] w-full">
+          <div class="lg:col-span-7 bg-[#f6f3eb] rounded-[2rem] p-8 sm:p-12 border border-stone-200/40 shadow-[0_25px_50px_-20px_rgba(42,53,44,0.06)] w-full animate-fade-up">
             <form @submit.prevent="handleSubmit" class="space-y-8 select-text">
               
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
@@ -80,7 +81,7 @@
                     v-model="form.name" 
                     required
                     placeholder="Tu nombre..."
-                    class="w-full bg-[#fcfaf7] border border-stone-200 rounded-xl px-4 py-3.5 text-stone-800 placeholder-stone-400 font-medium focus:outline-none focus:border-[#3b6e4c] focus:ring-1 focus:ring-[#3b6e4c] transition-all"
+                    class="w-full bg-[#fcfaf7] border border-stone-200/60 rounded-xl px-4 py-3.5 text-stone-800 placeholder-stone-400 font-medium focus:outline-none focus:border-[#3b6e4c] focus:ring-1 focus:ring-[#3b6e4c] transition-all"
                   />
                 </div>
                 <div class="space-y-2">
@@ -91,23 +92,25 @@
                     v-model="form.email" 
                     required
                     placeholder="ejemplo@correo.com"
-                    class="w-full bg-[#fcfaf7] border border-stone-200 rounded-xl px-4 py-3.5 text-stone-800 placeholder-stone-400 font-medium focus:outline-none focus:border-[#3b6e4c] focus:ring-1 focus:ring-[#3b6e4c] transition-all"
+                    class="w-full bg-[#fcfaf7] border border-stone-200/60 rounded-xl px-4 py-3.5 text-stone-800 placeholder-stone-400 font-medium focus:outline-none focus:border-[#3b6e4c] focus:ring-1 focus:ring-[#3b6e4c] transition-all"
                   />
                 </div>
               </div>
 
               <div class="space-y-2">
                 <label for="subject" class="block text-xs font-sans font-black text-stone-400 uppercase tracking-wider">¿En qué estás interesado?</label>
-                <select 
-                  id="subject" 
-                  v-model="form.subject"
-                  class="w-full bg-[#fcfaf7] border border-stone-200 rounded-xl px-4 py-3.5 text-stone-800 font-medium focus:outline-none focus:border-[#3b6e4c] focus:ring-1 focus:ring-[#3b6e4c] transition-all appearance-none cursor-pointer"
-                >
-                  <option value="alojamiento">Reservar un Alojamiento Rural</option>
-                  <option value="talleres">Inscripción en Cursos o Talleres</option>
-                  <option value="grupo">Planes a medida para Grupos</option>
-                  <option value="otras">Otras consultas generales</option>
-                </select>
+                <div class="relative">
+                  <select 
+                    id="subject" 
+                    v-model="form.subject"
+                    class="w-full bg-[#fcfaf7] border border-stone-200/60 rounded-xl px-4 py-3.5 text-stone-800 font-medium focus:outline-none focus:border-[#3b6e4c] focus:ring-1 focus:ring-[#3b6e4c] transition-all appearance-none cursor-pointer"
+                  >
+                    <option value="alojamiento">Reservar un Alojamiento Rural</option>
+                    <option value="talleres">Inscripción en Cursos o Talleres</option>
+                    <option value="grupo">Planes a medida para Grupos</option>
+                    <option value="otras">Otras consultas generales</option>
+                  </select>
+                </div>
               </div>
 
               <div class="space-y-2">
@@ -118,14 +121,14 @@
                   rows="5"
                   required
                   placeholder="Cuéntanos con calma lo que necesitas..."
-                  class="w-full bg-[#fcfaf7] border border-stone-200 rounded-xl px-4 py-3.5 text-stone-800 placeholder-stone-400 font-medium focus:outline-none focus:border-[#3b6e4c] focus:ring-1 focus:ring-[#3b6e4c] transition-all resize-none"
+                  class="w-full bg-[#fcfaf7] border border-stone-200/60 rounded-xl px-4 py-3.5 text-stone-800 placeholder-stone-400 font-medium focus:outline-none focus:border-[#3b6e4c] focus:ring-1 focus:ring-[#3b6e4c] transition-all resize-none"
                 ></textarea>
               </div>
 
               <div class="pt-2">
                 <button 
                   type="submit"
-                  class="w-full flex items-center justify-center gap-3 bg-stone-900 hover:bg-stone-800 text-white font-sans font-black text-xs uppercase tracking-widest py-4 px-8 rounded-full transition-all duration-300 hover:scale-[1.01] cursor-pointer shadow-sm text-center"
+                  class="btn-premium-dark w-full justify-center py-4"
                 >
                   <i class="fa-regular fa-paper-plane text-amber-400"></i>
                   <span>Enviar Mensaje</span>
@@ -140,9 +143,9 @@
       </div>
     </section>
 
-    <section class="w-full h-[600px] md:h-[850px] relative border-y border-stone-200/60 bg-stone-200 overflow-hidden mb-24 md:mb-40">
+    <section class="w-full h-[600px] md:h-[850px] relative border-y border-stone-200/60 bg-stone-200 overflow-hidden mb-24 md:mb-40 select-none animate-fade-up">
       <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3191.670265637255!2d-3.3155823!3d36.9213164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd71fa4f9fa2d633%3A0x6b8f3521db3320c9!2s18449%20Lobras%2C%20Granada!5e0!3m2!1ses!2ses!4v1719934200000!5m2!1ses!2ses" 
+        src="https://maps.google.com/maps?q=Lobras,%20Granada&t=&z=14&ie=UTF8&iwloc=&output=embed" 
         class="w-full h-full border-0 absolute inset-0 block map-editorial-filter"
         allowfullscreen="" 
         loading="lazy" 
@@ -165,6 +168,7 @@
 <script setup>
 import { ref } from 'vue'
 import heroImage from '~/assets/img/default.jpg'
+import heroVideo from '~/assets/video/lobras.mp4' // Importación de tu recurso de video local
 
 const form = ref({
   name: '',
@@ -192,16 +196,83 @@ select {
   background-size: 1.25rem;
 }
 
+/* 1. TEXTURA DE RUIDO ORGÁNICO SEAMLESS */
+.bg-texture {
+  position: relative;
+}
+.bg-texture::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.023;
+  pointer-events: none;
+  z-index: 99;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3e%3cfilter id='noiseFilter'%3e%3cfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3e%3c/filter%3e%3crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3e%3c/svg%3e");
+}
+
+/* 2. COREOGRAFÍA DE ANIMACIONES */
+.animate-slide-left {
+  animation: slideFromLeft 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+}
+
+@keyframes slideFromLeft {
+  0% { opacity: 0; transform: translateX(-60px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-slide-left, .animate-fade-up {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* 3. BOTÓN PREMIUM OSCURO */
+.btn-premium-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 36px;
+  background: #1c1917;
+  color: #ffffff;
+  border-radius: 9999px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 25px -10px rgba(28, 25, 23, 0.3);
+}
+
+.btn-premium-dark:hover {
+  background: #292524;
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px -10px rgba(28, 25, 23, 0.4);
+}
+
 /* Filtro de autoría para suavizar el mapa y fundirlo con los tonos crema de la web */
 .map-editorial-filter {
-  filter: grayscale(0.2) contrast(1.02) sepia(0.06) hue-rotate(-4deg);
-  transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: grayscale(0.4) contrast(0.95) sepia(0.12) hue-rotate(-5deg);
+  transition: filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .map-editorial-filter:hover {
   filter: grayscale(0) contrast(1) sepia(0) hue-rotate(0deg);
-}
-
-.separation-footer-fix {
-  margin-bottom: -2px;
 }
 </style>

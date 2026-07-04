@@ -1,23 +1,24 @@
 <template>
-  <main class="w-full bg-[#fcfaf7] min-h-screen antialiased">
+  <main class="w-full bg-[#fcfaf7] bg-texture min-h-screen antialiased relative">
     
     <MiniHero 
       title="Cursos & Experiencias" 
       subtitle="Siente la Alpujarra Alta"
       :backgroundImage="heroImage" 
+      :backgroundVideo="heroVideo"
     />
 
     <section class="w-full bg-[#fcfaf7] pt-28 px-4 md:px-8 lg:px-12 select-none">
       <div class="max-w-7xl mx-auto">
         
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end border-b border-stone-200/60 pb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end border-b border-stone-200/60 pb-16 overflow-hidden">
           
-          <div class="lg:col-span-7 space-y-6">
+          <div class="lg:col-span-7 space-y-6 animate-slide-left">
             <span class="font-sans font-black text-xs text-[#3b6e4c] uppercase tracking-[0.2em] block">
               Desconexión & Sabiduría
             </span>
             
-            <h2 class="text-5xl sm:text-7xl lg:text-[6.5rem] font-manual text-stone-900 tracking-wide leading-[0.85] m-0 font-normal">
+            <h2 class="text-5xl sm:text-7xl lg:text-[6.5rem] font-manual text-stone-900 tracking-wide leading-[0.9] m-0 font-normal pb-3">
               Tradición & <br />
               <span class="text-[#3b6e4c] font-black block mt-2">bienestar.</span>
             </h2>
@@ -27,9 +28,9 @@
             </p>
           </div>
 
-          <div class="lg:col-span-5 bg-[#f6f3eb] rounded-[2rem] p-8 border border-stone-200/40 shadow-[0_15px_40px_-20px_rgba(42,53,44,0.04)] space-y-6 w-full lg:max-w-md lg:justify-self-end">
+          <div class="lg:col-span-5 bg-[#f6f3eb] rounded-[2rem] p-8 border border-stone-200/40 shadow-[0_25px_50px_-20px_rgba(42,53,44,0.06)] space-y-6 w-full lg:max-w-md lg:justify-self-end animate-fade-up">
             <div class="flex items-center gap-4">
-              <div class="w-12 h-12 rounded-full bg-stone-300 overflow-hidden shrink-0 shadow-inner flex items-center justify-center text-[#3b6e4c] bg-stone-200">
+              <div class="w-12 h-12 rounded-full overflow-hidden shrink-0 shadow-inner flex items-center justify-center text-[#3b6e4c] bg-stone-200/60">
                 <i class="fa-solid fa-calendar-check text-xl"></i>
               </div>
               <div>
@@ -42,13 +43,13 @@
               </div>
             </div>
             
-            <p class="text-stone-600 text-sm md:text-base font-medium leading-relaxed m-0">
+            <p class="text-stone-600 text-sm md:text-base font-medium leading-relaxed m-0 opacity-90">
               Si quieres reservar una sesión privada de yoga o un taller exclusivo para tu familia, puedes consultarnos fechas libres.
             </p>
 
             <a 
               href="tel:+34679038079"
-              class="flex items-center justify-center gap-3 bg-stone-900 hover:bg-stone-800 text-white font-sans font-black text-xs uppercase tracking-widest py-3.5 px-6 rounded-full transition-all duration-300 hover:scale-[1.02] no-underline shadow-sm text-center w-full"
+              class="btn-premium-dark text-center justify-center w-full py-4"
             >
               <i class="fa-solid fa-phone text-amber-400"></i>
               <span>Consultar Disponibilidad</span>
@@ -59,7 +60,7 @@
       </div>
     </section>
 
-    <section class="w-full bg-[#fcfaf7] py-12 select-none overflow-hidden flex flex-col gap-12 md:gap-20">
+    <section class="w-full bg-[#fcfaf7] py-12 select-none overflow-hidden flex flex-col gap-12 md:gap-20 animate-fade-up">
       
       <NuxtLink 
         v-for="(taller, idx) in talleres" 
@@ -80,7 +81,7 @@
           ></div>
           <div class="absolute inset-0 bg-stone-950/10 group-hover:bg-stone-950/0 transition-colors duration-500"></div>
           
-          <span :class="['absolute top-6 z-20 text-[10px] font-sans font-black uppercase tracking-widest text-white px-4 py-2 rounded-full shadow-md backdrop-blur-sm bg-opacity-95', 
+          <span :class="['absolute top-6 z-20 text-[10px] font-sans font-black uppercase tracking-widest text-white px-4 py-2 rounded-full shadow-md backdrop-blur-sm bg-opacity-95 border border-white/10', 
             idx % 2 === 1 ? 'right-6' : 'left-6',
             getCategoriaClass(taller.categoria)
           ]">
@@ -135,13 +136,13 @@
 
     </section>
 
-    <section class="py-32 px-4 md:px-6 max-w-4xl mx-auto text-center select-none space-y-6">
-      <h3 class="font-manual text-4xl sm:text-5xl lg:text-6xl text-stone-900 font-normal m-0">¿Buscas algo diferente?</h3>
-      <p class="text-stone-600 text-base sm:text-lg lg:text-xl max-w-xl mx-auto font-medium leading-relaxed m-0">
+    <section class="py-32 px-4 md:px-6 max-w-4xl mx-auto text-center select-none space-y-6 overflow-hidden">
+      <h3 class="font-manual text-4xl sm:text-5xl lg:text-6xl text-stone-900 font-normal m-0 pb-2 animate-fade-up">¿Buscas algo diferente?</h3>
+      <p class="text-stone-600 text-base sm:text-lg lg:text-xl max-w-xl mx-auto font-medium leading-relaxed m-0 animate-fade-up">
         Durante el año cambiamos las actividades según los frutos del huerto y la temporada de recolecta. Escríbenos para conocer la agenda mensual.
       </p>
-      <div class="pt-4">
-        <a href="mailto:info@elhuertodelobras.com" class="inline-flex items-center gap-3 bg-stone-900 hover:bg-stone-800 text-white font-sans font-black text-xs uppercase tracking-widest py-4 px-8 rounded-full transition-all duration-300 hover:-translate-y-0.5 no-underline shadow-md">
+      <div class="pt-4 animate-fade-up">
+        <a href="mailto:info@elhuertodelobras.com" class="btn-premium-dark">
           <i class="fa-regular fa-envelope text-amber-400"></i>
           <span>Escribir por Correo</span>
         </a>
@@ -154,6 +155,7 @@
 <script setup>
 import heroImage from '~/assets/img/default.jpg'
 import defaultImage from '~/assets/img/default.jpg'
+import heroVideo from '~/assets/video/lobras.mp4' // Recurso de video local para el MiniHero
 
 const talleres = [
   {
@@ -194,13 +196,85 @@ const talleres = [
   }
 ]
 
-// Colores personalizados por tag de categoría para dar dinamismo editorial
 const getCategoriaClass = (categoria) => {
   switch (categoria) {
-    case 'Astronomía': return 'bg-indigo-900'
-    case 'Artesanía': return 'bg-amber-700'
-    case 'Bienestar': return 'bg-emerald-700'
-    default: return 'bg-stone-600'
+    case 'Astronomía': return 'bg-indigo-950/90'
+    case 'Artesanía': return 'bg-amber-800/90'
+    case 'Bienestar': return 'bg-emerald-800/90'
+    default: return 'bg-stone-700/90'
   }
 }
 </script>
+
+<style scoped>
+/* 1. TEXTURA DE RUIDO ORGÁNICO SEAMLESS */
+.bg-texture {
+  position: relative;
+}
+.bg-texture::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.023;
+  pointer-events: none;
+  z-index: 99;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3e%3cfilter id='noiseFilter'%3e%3cfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3e%3c/filter%3e%3crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3e%3c/svg%3e");
+}
+
+/* 2. COREOGRAFÍA DE ANIMACIONES */
+.animate-slide-left {
+  animation: slideFromLeft 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+}
+
+@keyframes slideFromLeft {
+  0% { opacity: 0; transform: translateX(-60px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-slide-left, .animate-fade-up {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* 3. BOTÓN PREMIUM OSCURO */
+.btn-premium-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 36px;
+  background: #1c1917;
+  color: #ffffff;
+  border-radius: 9999px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 25px -10px rgba(28, 25, 23, 0.3);
+}
+
+.btn-premium-dark:hover {
+  background: #292524;
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px -10px rgba(28, 25, 23, 0.4);
+}
+</style>
