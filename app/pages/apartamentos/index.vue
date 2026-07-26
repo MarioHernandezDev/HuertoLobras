@@ -8,97 +8,7 @@
       :backgroundVideo="heroVideo" 
     />
 
-    <section class="w-full pt-28 px-4 md:px-8 lg:px-12 select-none section-fade-in">
-      <div class="max-w-[96%] mx-auto">
-        
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end border-b border-stone-200/60 pb-16 mb-16 overflow-hidden">
-          <div class="lg:col-span-7 lg:col-start-6 space-y-6 lg:text-right animate-slide-right">
-            <span class="font-sans font-black text-xs text-[#3b6e4c] uppercase tracking-[0.2em] block">
-              Planes & Escapadas
-            </span>
-            <h2 class="text-5xl sm:text-7xl lg:text-[6.5rem] font-manual text-stone-900 tracking-wide leading-[0.9] m-0 font-normal pb-4">
-               Nuestras Ofertas <br />
-              <span class="text-[#3b6e4c] font-black block mt-2">disponibles.</span>
-            </h2>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 animate-fade-up">
-          
-          <div class="lg:col-span-7 bg-[#3b6e4c] rounded-[2.5rem] p-8 sm:p-12 text-white flex flex-col justify-between shadow-[0_20px_50px_-25px_rgba(59,110,76,0.3)] min-h-[380px] transition-all duration-500">
-            <div class="space-y-5">
-              <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full text-sm font-sans font-black tracking-widest uppercase">
-                <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-                {{ ofertaVisualizada.tag }}
-              </div>
-              <h3 class="font-manual text-4xl sm:text-6xl text-white m-0 font-normal leading-tight transition-all">
-                {{ ofertaVisualizada.title }}
-              </h3>
-              <p class="text-stone-100/90 text-base sm:text-lg max-w-xl font-medium m-0 leading-relaxed">
-                {{ ofertaVisualizada.description }}
-              </p>
-            </div>
-            
-            <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-5 mt-6">
-              <div class="text-sm font-mono tracking-wider text-stone-200/90 font-bold uppercase">
-                Código promocional: <span class="text-amber-400 font-sans font-black text-base ml-1">{{ ofertaVisualizada.code }}</span>
-              </div>
-              <a 
-                :href="`https://wa.me/34679038079?text=Hola!%20Quiero%20información%20y%20aprovechar%20la%20oferta%20de:%20${ofertaVisualizada.title}`"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20ba56] text-white text-sm font-sans font-black uppercase tracking-wider py-4 px-7 rounded-full transition-transform hover:scale-[1.02] no-underline shadow-sm"
-              >
-                <i class="fa-brands fa-whatsapp text-lg"></i>
-                <span>Consultar por WhatsApp</span>
-              </a>
-            </div>
-          </div>
-
-          <div class="lg:col-span-5 bg-[#f6f3eb]/80 backdrop-blur-sm rounded-[2.5rem] p-8 border border-stone-200/40 flex flex-col justify-between gap-6">
-            <div class="space-y-4 w-full">
-              <span class="text-sm font-mono text-stone-400 uppercase tracking-[0.2em] block font-bold">
-                Planifica tu escapada
-              </span>
-              <h4 class="font-sans font-black text-xl text-stone-900 m-0 uppercase tracking-wide">
-                Promociones Disponibles
-              </h4>
-              
-              <div class="space-y-3 pt-2">
-                <button 
-                  v-for="oferta in listaOfertas" 
-                  :key="oferta.id"
-                  @click="seleccionarOferta(oferta)"
-                  class="w-full flex items-center justify-between p-5 bg-[#fcfaf7]/60 rounded-2xl border text-left transition-all duration-300 cursor-pointer"
-                  :class="ofertaSeleccionadaId === oferta.id 
-                    ? 'border-[#3b6e4c] bg-white shadow-[0_10px_25px_-10px_rgba(59,110,76,0.15)] font-medium' 
-                    : 'border-stone-200/60 hover:border-stone-400 hover:bg-white'"
-                >
-                  <div class="space-y-1">
-                    <span class="text-sm font-mono font-bold uppercase tracking-wider block" :class="ofertaSeleccionadaId === oferta.id ? 'text-[#3b6e4c]' : 'text-stone-400'">
-                      {{ oferta.meses }}
-                    </span>
-                    <span class="text-base font-sans font-black text-stone-800 block">
-                      {{ oferta.title }}
-                    </span>
-                  </div>
-                  <div class="text-right shrink-0 ml-4">
-                    <span class="inline-block bg-stone-100 font-sans font-black text-xs px-3 py-2 rounded-xl uppercase tracking-wider text-stone-700">
-                      {{ oferta.badge }}
-                    </span>
-                  </div>
-                </button>
-              </div>
-            </div>
-
-            <p class="text-stone-600 text-sm font-medium m-0 pt-6 border-t border-stone-200/60 leading-relaxed">
-              * Haz clic en cualquier temporada para ver sus detalles. Bloquea tu tarifa web llamando directamente y evita el incremento de precio de agencias externas.
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </section>
+    <ApartmentOfertas />
 
     <section class="pt-32 pb-20 md:pt-40 lg:pt-48 px-4 md:px-8 lg:px-12 w-full mx-auto select-none section-fade-in">
       <div class="max-w-[96%] mx-auto">
@@ -118,7 +28,6 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start animate-fade-up">
           
           <aside class="lg:col-span-3 bg-[#f6f3eb]/80 backdrop-blur-sm rounded-[2rem] p-6 md:p-8 border border-stone-200/40 shadow-[0_15px_40px_-20px_rgba(42,53,44,0.04)] lg:sticky lg:top-28 z-20 space-y-6">
-            
             <div class="space-y-1 pb-4 border-b border-stone-200/60">
               <span class="text-sm font-mono text-stone-500 uppercase tracking-[0.2em] block font-bold">
                 Buscador
@@ -197,11 +106,9 @@
                 </a>
               </div>
             </div>
-
           </aside>
 
           <div class="lg:col-span-9 space-y-8">
-            
             <div class="text-sm font-mono text-stone-500 uppercase tracking-widest pl-2 font-bold">
               Mostrando {{ filteredApartments.length }} de {{ apartments.length }} estancias
             </div>
@@ -225,7 +132,6 @@
                 Prueba a cambiar tus criterios o utiliza las opciones de asistencia directa a la izquierda para diseñar una alternativa a tu medida.
               </p>
             </div>
-
           </div>
 
         </div>
@@ -237,57 +143,11 @@
 <script setup>
 import { ref, computed } from 'vue'
 import heroImage from '~/assets/img/default.jpg'
-import heroVideo from '~/assets/video/lobras.mp4' // Importación limpia de tu vídeo local
+import heroVideo from '~/assets/video/lobras.mp4'
 
-// Estructura Reactiva de Ofertas
-const listaOfertas = ref([
-  {
-    id: 'san-valentin',
-    meses: 'Febrero',
-    tag: 'Promoción del mes',
-    title: 'San Valentín Alpujarreño',
-    description: 'Rompe con la rutina en mitad del silencio. 15% de descuento directo en estancias de fin de semana completo + botella de vino local de cortesía y salida tardía garantizada.',
-    code: 'LOBRASROMANTICO',
-    badge: '-15% Web'
-  },
-  {
-    id: 'primavera',
-    meses: 'Marzo - Mayo',
-    tag: 'Próxima temporada',
-    title: 'Desconexión de Primavera',
-    description: 'Descubre el florecer del valle alto de Lobras. Rutas de senderismo guiadas gratis con tu reserva directa de mínimo 3 noches, además de un kit de desayuno artesanal en tu porche.',
-    code: 'PRIMAVERAVIVA',
-    badge: 'Pack Regalo'
-  },
-  {
-    id: 'verano',
-    meses: 'Junio - Agosto',
-    tag: 'Reserva anticipada',
-    title: 'Verano en los Frutales',
-    description: 'Asegura tu refugio fresco frente al calor estival. Reservando antes del 30 de abril obtienes un 10% fijo de descuento en estancias largas + acceso ilimitado a nuestra zona de descanso exterior.',
-    code: 'VERANOANTICIPADO',
-    badge: '-10% Directo'
-  },
-  {
-    id: 'otono',
-    meses: 'Septiembre - Nov',
-    tag: 'Otoño rural',
-    title: 'Escapada de la Vendimia',
-    description: 'Vive la recogida mágica de la uva alpujarreña. Disfruta de un pase exclusivo para dos personas a catas de bodegas locales y una cesta de castañas y frutas del huerto de bienvenida.',
-    code: 'OTOÑOVINO',
-    badge: 'Cata Gratis'
-  }
-])
-
-const ofertaSeleccionadaId = ref('san-valentin')
-
-const ofertaVisualizada = computed(() => {
-  return listaOfertas.value.find(o => o.id === ofertaSeleccionadaId.value) || listaOfertas.value[0]
-})
-
-const seleccionarOferta = (oferta) => {
-  ofertaSeleccionadaId.value = oferta.id
-}
+// Si Nuxt auto-importa componentes de ~/components, no hace falta importarlo manualmente.
+// Si prefieres importarlo de forma explícita:
+// import OffersSection from '~/components/OffersSection.vue'
 
 // Estado del Buscador Integrado
 const selectedCapacity = ref('all')
@@ -298,130 +158,93 @@ const resetFilters = () => {
   filterFireplace.value = false
 }
 
-// Dataset de los 10 Apartamentos
+// Dataset Real de los Alojamientos de El Huerto de Lobras
 const apartments = [
   {
-    id: 'casa-el-olivo',
-    code: 'Casa El Olivo',
-    name: 'La Casa Principal',
-    capacity: '4 a 6 plazas',
-    maxGuests: 6,
-    hasFireplace: true,
-    tag: 'Recomendado para grupos',
-    description: 'Perfecta para grupos que quieren compartirlo todo. Cuenta con un salón enorme con chimenea tradicional andaluza, cocina rústica equipada al completo y acceso directo al porche principal de las barbacoas.',
-    features: ['Cancelación flexible', 'Leña de cortesía incluida', 'Acceso directo a barbacoas'],
-    image: null
-  },
-  {
-    id: 'casa-el-almendro',
-    code: 'Casa El Almendro',
-    name: 'El Refugio del Valle',
-    capacity: '2 a 4 plazas',
+    id: 'apartamento-las-golondrinas',
+    code: 'Las Golondrinas',
+    name: 'Apartamento Las Golondrinas',
+    capacity: 'Hasta 4 plazas',
     maxGuests: 4,
-    hasFireplace: false,
-    tag: 'Vistas panorámicas',
-    description: 'Un rincón independiente y acogedor, pensado para parejas o familias pequeñas que buscan intimidad. Disfruta de las mañanas con vistas infinitas a los bancales frutales y valles de la Alpujarra Alta.',
-    features: ['Balcón privado al valle', 'Espacio independiente', 'Soporte directo 24/7'],
+    hasFireplace: true,
+    tag: 'Tragaluces • Vista a la iglesia',
+    description: 'Conservando pilares y fachada originales de la casa antigua. Dispone de dos tragaluces en el salón desde los que contemplar la iglesia iluminada de noche.',
+    features: ['1 Dormitorio + Sofá cama', 'Dos tragaluces en el techo', 'Se admite 1 perro'],
     image: null
   },
   {
-    id: 'casa-la-acequia',
-    code: 'Casa La Acequia',
-    name: 'El Rincón del Agua',
+    id: 'apartamento-la-seda',
+    code: 'La Seda',
+    name: 'Apartamento La Seda',
+    capacity: 'Hasta 4 plazas',
+    maxGuests: 4,
+    hasFireplace: true,
+    tag: '2 dormitorios • Terrazas privadas',
+    description: 'Inspirado en la historia textil de Lobras de 1757. El único apartamento con dos dormitorios independientes, cada uno con su propia terraza privada.',
+    features: ['2 Dormitorios (2 terrazas)', 'Rincón histórico y acogedor', 'Se admite 1 perro'],
+    image: null
+  },
+  {
+    id: 'apartamento-los-cerezos',
+    code: 'Los Cerezos',
+    name: 'Apartamento Los Cerezos',
+    capacity: 'Hasta 4 plazas',
+    maxGuests: 4,
+    hasFireplace: true,
+    tag: 'Planta baja • Adaptado minusválidos',
+    description: 'Ubicado en planta baja con acceso totalmente adaptado a personas con movilidad reducida. Cuenta con un dormitorio muy amplio y terraza al jardín.',
+    features: ['Adaptado a minusválidos', 'Terraza directa al jardín', 'Chimenea tradicional'],
+    image: null
+  },
+  {
+    id: 'apartamento-los-trovos',
+    code: 'Los Trovos',
+    name: 'Apartamento Los Trovos',
+    capacity: 'Hasta 4 plazas',
+    maxGuests: 4,
+    hasFireplace: true,
+    tag: '1 dormitorio • Terraza alpujarreña',
+    description: 'Homenaje a la tradición del trovo y los cantautores alpujarreños. Alojamiento rústico muy tranquilo con chimenea, salón y terraza propia.',
+    features: ['1 Dormitorio principal', 'Terraza privada', 'Chimenea tradicional'],
+    image: null
+  },
+  {
+    id: 'apartamento-la-contraviesa',
+    code: 'La Contraviesa',
+    name: 'Apartamento La Contraviesa',
+    capacity: 'Hasta 4 plazas',
+    maxGuests: 4,
+    hasFireplace: true,
+    tag: 'Ático • La mayor terraza',
+    description: 'Situado en la tercera planta (ático). Posee la terraza más grande del complejo, bordeando casi todo el apartamento con vistas panorámicas espectaculares.',
+    features: ['Ático con gran terraza', 'Vistas panorámicas 360°', 'Chimenea + Sofá cama'],
+    image: null
+  },
+  {
+    id: 'estudio',
+    code: 'El Estudio',
+    name: 'El Estudio',
     capacity: '2 plazas',
     maxGuests: 2,
     hasFireplace: false,
-    tag: 'Ideal parejas',
-    description: 'Un apartamento íntimo donde el murmullo del agua es el único sonido de fondo. Cuenta con un dormitorio abovedado de piedra, baño artesanal y una pequeña cocina de leña completamente funcional.',
-    features: ['Entrada independiente', 'Vistas al riachuelo', 'Cama King Size'],
+    tag: 'Ideal parejas • Vistas a la plaza',
+    description: 'Estancia íntima y diáfana pensada para dos personas. Cuenta con terraza hacia la plaza del ayuntamiento, perfecta para disfrutar de las puestas de sol.',
+    features: ['Cama de matrimonio', 'Terraza hacia la plaza', 'Espectaculares atardeceres'],
     image: null
   },
   {
-    id: 'casa-la-parra',
-    code: 'Casa La Parra',
-    name: 'El Porche Secreto',
-    capacity: '4 plazas',
-    maxGuests: 4,
-    hasFireplace: false,
-    tag: 'Sombra natural',
-    description: 'Destaca por su espectacular terraza privada techada por una parra centenaria. Ideal para almuerzos frescos al aire libre y largas conversaciones al atardecer contemplando la sierra alta.',
-    features: ['Terraza exclusiva', 'Barbacoa individual', 'Wifi de alta velocidad'],
-    image: null
-  },
-  {
-    id: 'casa-el-castano',
-    code: 'Casa El Castaño',
-    name: 'La Estancia de la Sierra',
-    capacity: '6 plazas',
-    maxGuests: 6,
-    hasFireplace: true,
-    tag: 'Gran formato familiar',
-    description: 'Espacio masivo distribuido en dos plantas de arquitectura tradicional alpujarreña. Grandes muros de piedra que mantienen la temperatura perfecta y ventanales orientados al sol de la mañana.',
-    features: ['Dos niveles completos', 'Chimenea de forja', 'Parking próximo'],
-    image: null
-  },
-  {
-    id: 'casa-el-mirador',
-    code: 'Casa El Mirador',
-    name: 'La Atalaya de Lobras',
+    id: 'la-biblioteca',
+    code: 'La Biblioteca',
+    name: 'La Biblioteca',
     capacity: '2 a 3 plazas',
     maxGuests: 3,
     hasFireplace: false,
-    tag: 'Máxima altura',
-    description: 'Ubicado en el punto más alto del complejo, ofrece una perspectiva de 360 grados del entorno rural. Perfecto para desconectar del mundo y disfrutar del cielo estrellado más limpio de Andalucía.',
-    features: ['Solárium privado', 'Techos de vigas vistas', 'Cafetera de especialidad'],
-    image: null
-  },
-  {
-    id: 'casa-la-higuera',
-    code: 'Casa La Higuera',
-    name: 'El Patio Escondido',
-    capacity: '4 plazas',
-    maxGuests: 4,
-    hasFireplace: false,
-    tag: 'Arquitectura viva',
-    description: 'Organizado alrededor de un patio interior tradicional andaluz dominado por una higuera frondosa. Ofrece frescor absoluto en verano y una privacidad total ideal para familias con niños.',
-    features: ['Patio privado andaluz', 'Cocina equipada premium', 'Pet friendly bajo petición'],
-    image: null
-  },
-  {
-    id: 'casa-el-granado',
-    code: 'Casa El Granado',
-    name: 'La Suite del Huerto',
-    capacity: '2 plazas',
-    maxGuests: 2,
-    hasFireplace: false,
-    tag: 'Detalles de autor',
-    description: 'Un estudio de design rústico minimalista con acceso directo a los frutales del complejo. Ideal para estancias largas de teletrabajo rural o escapadas románticas de desconexión absoluta.',
-    features: ['Salida directo al huerto', 'Escritorio de castaño', 'Baño con ducha de piedra'],
-    image: null
-  },
-  {
-    id: 'casa-la-solana',
-    code: 'Casa La Solana',
-    name: 'El Refugio del Sol',
-    capacity: '4 a 5 plazas',
-    maxGuests: 5,
-    hasFireplace: false,
-    tag: 'Luz natural continua',
-    description: 'Orientado completamente al sur, este apartamento goza de una iluminación espectacular durante todo el año. Su salón integrado conecta fluidamente con un comedor exterior empedrado.',
-    features: ['Orientación sur total', 'Comedor exterior', 'Calefacción ecológica'],
-    image: null
-  },
-  {
-    id: 'casa-la-bodega',
-    code: 'Casa La Bodega',
-    name: 'El Santuario de Piedra',
-    capacity: '2 plazas',
-    maxGuests: 2,
-    hasFireplace: false,
-    tag: 'Experiencia inmersiva',
-    description: 'Construido sobre las bases de una antigua bodega subterránea, este alojamiento ofrece una experiencia arquitectónica única, con muros de roca pura expuesta y un aislamiento acústico insuperable.',
-    features: ['Muros de piedra nativa', 'Temperatura autorregulada', 'Iluminación cálida de autor'],
+    tag: 'Rincón de lectura • Atmósfera de paz',
+    description: 'Un rincón singular pensado para el descanso pausado y la lectura, combinando acabados de madera y piedra natural en un ambiente sereno.',
+    features: ['Atmósfera pacífica', 'Detalles de piedra y madera', 'Ideal para el descanso'],
     image: null
   }
 ]
-
 // Computado de Filtrado Lógico
 const filteredApartments = computed(() => {
   return apartments.filter(apt => {
@@ -444,7 +267,7 @@ const filteredApartments = computed(() => {
 </script>
 
 <style scoped>
-/* 1. TEXTURA DE RUIDO ORGÁNICO */
+/* Textura de ruido de fondo */
 .bg-texture {
   position: relative;
 }
@@ -461,11 +284,7 @@ const filteredApartments = computed(() => {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3e%3cfilter id='noiseFilter'%3e%3cfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3e%3c/filter%3e%3crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3e%3c/svg%3e");
 }
 
-/* 2. ANIMACIONES NATIVAS DE ENTRADA */
-.animate-slide-right {
-  animation: slideFromRight 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
+/* Animaciones */
 .animate-slide-left {
   animation: slideFromLeft 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -473,11 +292,6 @@ const filteredApartments = computed(() => {
 .animate-fade-up {
   opacity: 0;
   animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
-}
-
-@keyframes slideFromRight {
-  0% { opacity: 0; transform: translateX(60px); }
-  100% { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes slideFromLeft {
@@ -491,7 +305,7 @@ const filteredApartments = computed(() => {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-slide-right, .animate-slide-left, .animate-fade-up {
+  .animate-slide-left, .animate-fade-up {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;

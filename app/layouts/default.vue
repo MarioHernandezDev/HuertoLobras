@@ -137,13 +137,11 @@ import logoUrl from '~/assets/img/logo.jpg'
 const isMenuOpen = ref(false)
 const isScrolled = ref(false)
 
-// Modificado enlace "Entorno" por "Talleres"
 const menuItems = [
   { name: 'Inicio', path: '/' },
   { name: 'Alojamientos', path: '/apartamentos' },
   { name: 'Rutas', path: '/rutas' },
   { name: 'Cultura', path: '/cultura' },
-  { name: 'Talleres', path: '/talleres' },
   { name: 'Contacto', path: '/contacto' }
 ]
 

@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Seda · Formulario de Contenidos</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sage:      #7A9E8E;
+    --sage-light:#C8DDD6;
+    --sage-pale: #EDF4F1;
+    --ink:       #1C2B26;
+    --ink-soft:  #4A5E57;
+    --cream:     #FAF8F5;
+    --white:     #FFFFFF;
+    --border:    #D4E3DC;
+    --gold:      #B8955A;
+    --red:       #C0392B;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+    font-size: 16px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--ink);
+    color: var(--white);
+    padding: 56px 40px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 60% 0%, rgba(122,158,142,0.25) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .header-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage-light);
+    margin-bottom: 16px;
+  }
+  header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 8vw, 84px);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  header h1 em {
+    font-style: italic;
+    color: var(--sage-light);
+  }
+  .header-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.05em;
+    margin-bottom: 28px;
+  }
+  .header-desc {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── NAV DOTS ── */
+  .nav-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px 0 0;
+  }
+  .nav-dot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    cursor: pointer;
+    transition: background .2s, transform .2s;
+    border: none;
+  }
+  .nav-dot.active { background: var(--sage-light); transform: scale(1.25); }
+
+  /* ── LAYOUT ── */
+  main { max-width: 820px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  /* ── PROGRESS BAR ── */
+  .progress-wrap {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--cream);
+    padding: 12px 0 16px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .progress-label {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+  .progress-bar {
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--sage), var(--gold));
+    border-radius: 2px;
+    transition: width .4s ease;
+    width: 0%;
+  }
+
+  /* ── STEP PAGES ── */
+  .step { display: none; animation: fadeUp .35s ease; }
+  .step.active { display: block; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .step-header { margin-bottom: 36px; }
+  .step-tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sage);
+    background: var(--sage-pale);
+    border: 1px solid var(--sage-light);
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+  .step-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+  .step-header p {
+    font-size: 16px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 28px 24px;
+    margin-bottom: 20px;
+  }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--sage-pale);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-title .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px; height: 30px;
+    background: var(--sage-pale);
+    border: 1px solid var(--sage-light);
+    border-radius: 50%;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--sage);
+    flex-shrink: 0;
+  }
+
+  /* ── FORM FIELDS ── */
+  .field { margin-bottom: 20px; }
+  .field:last-child { margin-bottom: 0; }
+
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+  label .req { color: var(--gold); margin-left: 2px; }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: var(--ink);
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 13px 16px;
+    outline: none;
+    transition: border-color .2s, background .2s, box-shadow .2s;
+    resize: vertical;
+  }
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  input[type="email"]:focus,
+  textarea:focus {
+    border-color: var(--sage);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(122,158,142,0.15);
+  }
+  input[type="number"] { max-width: 140px; }
+  textarea { min-height: 100px; }
+
+  input::placeholder, textarea::placeholder { color: #B0BDB8; }
+
+  .hint {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 7px;
+    line-height: 1.5;
+  }
+
+  /* ── STEP 0 COUNTS ── */
+  .counts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+  }
+  .count-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 20px;
+    text-align: center;
+  }
+  .count-card .icon { font-size: 32px; margin-bottom: 10px; }
+  .count-card label {
+    display: block;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .count-card input[type="number"] {
+    max-width: 80px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 300;
+    font-family: 'Cormorant Garamond', serif;
+    padding: 8px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* ── INSTRUCTIONS BOX ── */
+  .info-box {
+    background: var(--sage-pale);
+    border: 1px solid var(--sage-light);
+    border-left: 3px solid var(--sage);
+    border-radius: 8px;
+    padding: 18px 20px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+  }
+  .info-box strong { color: var(--ink); font-weight: 600; }
+
+  /* ── BOTONES ── */
+  .btn-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 36px;
+    gap: 12px;
+  }
+  .btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 13px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .2s;
+    border: none;
+    letter-spacing: 0.02em;
+  }
+  .btn-back {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--ink-soft);
+  }
+  .btn-back:hover { border-color: var(--sage); color: var(--sage); }
+  .btn-next {
+    background: var(--ink);
+    color: var(--white);
+  }
+  .btn-next:hover { background: var(--sage); }
+  .btn-send {
+    background: var(--gold);
+    color: var(--white);
+    padding: 15px 40px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-send:hover { background: #A07840; }
+  .btn-send:disabled { background: #C8BCA8; cursor: not-allowed; }
+
+  /* ── CONTACT CARD ── */
+  .contact-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+  .contact-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--sage-pale);
+  }
+
+  /* ── ESTADO DE ENVÍO ── */
+  .send-status {
+    text-align: center;
+    padding: 48px 20px;
+  }
+  .send-status .icon-big { font-size: 64px; margin-bottom: 20px; }
+  .send-status h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 300;
+    margin-bottom: 12px;
+  }
+  .send-status p {
+    font-size: 16px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    max-width: 460px;
+    margin: 0 auto;
+  }
+  .send-spinner {
+    width: 48px; height: 48px;
+    border: 3px solid var(--border);
+    border-top-color: var(--sage);
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+    margin: 0 auto 20px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 32px;
+    font-size: 13px;
+    color: #A0ADA8;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── VALIDATION ── */
+  .field-error input,
+  .field-error textarea { border-color: var(--red) !important; }
+  .error-msg { font-size: 13px; color: var(--red); margin-top: 6px; display: none; }
+  .field-error .error-msg { display: block; }
+
+  /* ── AVISO CORREO ARCHIVOS ── */
+  .mail-box {
+    background: #FFF8EE;
+    border: 1px solid #E8C97A;
+    border-left: 3px solid var(--gold);
+    border-radius: 8px;
+    padding: 18px 20px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #5C4A1E;
+    margin-bottom: 20px;
+  }
+  .mail-box strong { color: #3D2E0A; font-weight: 600; }
+  .mail-box em { font-style: italic; }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="header-eyebrow">Centro de Psicología</p>
+  <h1>La <em>Seda</em></h1>
+  <p class="header-sub">Formulario de Contenidos Web</p>
+  <p class="header-desc">Rellenad este formulario con la información de vuestros servicios. Al final podréis enviárnoslo todo de un solo clic y mandarnos las fotos por correo.</p>
+  <div class="nav-dots">
+    <button class="nav-dot active" onclick="goTo(0)"></button>
+    <button class="nav-dot" onclick="goTo(1)"></button>
+    <button class="nav-dot" onclick="goTo(2)"></button>
+    <button class="nav-dot" onclick="goTo(3)"></button>
+    <button class="nav-dot" onclick="goTo(4)"></button>
+  </div>
+</header>
+
+<main>
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap">
+    <div class="progress-label" id="progress-label">Paso 1 de 5</div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+  </div>
+
+  <!-- ══ PASO 0: INSTRUCCIONES ══ -->
+  <div class="step active" id="step-0">
+    <div class="step-header">
+      <span class="step-tag">Bienvenida</span>
+      <h2>Antes de empezar</h2>
+      <p>Solo tardáis unos minutos. Al terminar enviad el formulario y, por separado, mandadnos las fotos por correo.</p>
+    </div>
+
+    <div class="info-box">
+      <strong>📌 Cómo funciona:</strong><br><br>
+      1. Indicad cuántas terapias, talleres y formaciones tenéis.<br>
+      2. Rellenad un bloque por cada servicio: nombre, descripción y profesionales.<br>
+      3. Pulsáis <strong>Enviar</strong> y os llegará la confirmación a vuestro correo.<br>
+      4. Después mandadnos las fotos y vídeos a <strong>correomsys@gmail.com</strong>.
+    </div>
+
+    <div class="card">
+      <div class="card-title">¿Cuántos servicios ofrecéis?</div>
+      <div class="counts-grid">
+        <div class="count-card">
+          <div class="icon">🧠</div>
+          <label for="num-terapias">TERAPIAS</label>
+          <input type="number" id="num-terapias" min="0" max="20" value="3" placeholder="0">
+        </div>
+        <div class="count-card">
+          <div class="icon">🎨</div>
+          <label for="num-talleres">TALLERES</label>
+          <input type="number" id="num-talleres" min="0" max="20" value="3" placeholder="0">
+        </div>
+        <div class="count-card">
+          <div class="icon">📚</div>
+          <label for="num-formaciones">FORMACIONES</label>
+          <input type="number" id="num-formaciones" min="0" max="20" value="2" placeholder="0">
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <span></span>
+      <button class="btn btn-next" onclick="iniciar()">Comenzar →</button>
+    </div>
+  </div>
+
+  <!-- ══ PASO 1: TERAPIAS ══ -->
+  <div class="step" id="step-1">
+    <div class="step-header">
+      <span class="step-tag">🧠 Terapias</span>
+      <h2>Vuestras terapias</h2>
+      <p>Completad la información de cada terapia que ofrecéis.</p>
+    </div>
+    <div id="terapias-container"></div>
+    <div class="btn-row">
+      <button class="btn btn-back" onclick="goTo(0)">← Atrás</button>
+      <button class="btn btn-next" onclick="goTo(2)">Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- ══ PASO 2: TALLERES ══ -->
+  <div class="step" id="step-2">
+    <div class="step-header">
+      <span class="step-tag">🎨 Talleres</span>
+      <h2>Vuestros talleres</h2>
+      <p>Completad la información de cada taller.</p>
+    </div>
+    <div id="talleres-container"></div>
+    <div class="btn-row">
+      <button class="btn btn-back" onclick="goTo(1)">← Atrás</button>
+      <button class="btn btn-next" onclick="goTo(3)">Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- ══ PASO 3: FORMACIONES ══ -->
+  <div class="step" id="step-3">
+    <div class="step-header">
+      <span class="step-tag">📚 Formaciones</span>
+      <h2>Vuestras formaciones</h2>
+      <p>Completad la información de cada formación.</p>
+    </div>
+    <div id="formaciones-container"></div>
+    <div class="btn-row">
+      <button class="btn btn-back" onclick="goTo(2)">← Atrás</button>
+      <button class="btn btn-next" onclick="goTo(4)">Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- ══ PASO 4: REVISAR Y ENVIAR ══ -->
+  <div class="step" id="step-4">
+    <div class="step-header">
+      <span class="step-tag">✅ Revisar y enviar</span>
+      <h2>Casi listo</h2>
+      <p>Añadid vuestro contacto y enviadnos el formulario. Las fotos y vídeos nos las mandáis por correo después.</p>
+    </div>
+
+    <div id="send-state-idle">
+
+      <!-- Datos de contacto -->
+      <div class="contact-card">
+        <h3>👤 Vuestros datos de contacto</h3>
+        <div class="field">
+          <label for="contact-nombre">Nombre <span class="req">*</span></label>
+          <input type="text" id="contact-nombre" placeholder="Nombre y apellidos" />
+          <div class="error-msg">Por favor, introduce tu nombre.</div>
+        </div>
+        <div class="field">
+          <label for="contact-email">Correo electrónico <span class="req">*</span></label>
+          <input type="email" id="contact-email" placeholder="vuestro@correo.com" />
+          <div class="error-msg">Por favor, introduce un correo válido.</div>
+        </div>
+        <div class="field">
+          <label for="contact-notas">Notas adicionales</label>
+          <textarea id="contact-notas" placeholder="Cualquier cosa que queráis añadir o aclarar…"></textarea>
+        </div>
+      </div>
+
+      <!-- Instrucciones para envío de archivos por correo -->
+      <div class="mail-box">
+        <strong>📎 Fotos y vídeos — enviadlos por correo</strong><br><br>
+        Una vez enviado este formulario, mandadnos las fotos, vídeos o PDFs directamente a
+        <strong>correomsys@gmail.com</strong>.<br><br>
+        Si podéis, usad este asunto para que lo identifiquemos enseguida:<br>
+        <em>"La Seda · Fotos [nombre del servicio]"</em>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-back" onclick="goTo(3)">← Volver a editar</button>
+        <button class="btn btn-send" id="btn-enviar" onclick="enviarFormulario()">
+          <span>✉️</span> Enviar a La Seda
+        </button>
+      </div>
+
+    </div><!-- /send-state-idle -->
+
+    <!-- Estado: enviando -->
+    <div id="send-state-loading" style="display:none;">
+      <div class="send-status">
+        <div class="send-spinner"></div>
+        <h3>Enviando…</h3>
+        <p>Estamos enviando vuestra información. No cerréis esta página.</p>
+      </div>
+    </div>
+
+    <!-- Estado: éxito -->
+    <div id="send-state-success" style="display:none;">
+      <div class="send-status">
+        <div class="icon-big">✅</div>
+        <h3>¡Enviado con éxito!</h3>
+        <p>
+          Hemos recibido toda la información. Os responderemos en breve a
+          <strong id="confirm-email-display"></strong>.<br><br>
+          Recordad enviarnos las fotos y vídeos a
+          <strong>correomsys@gmail.com</strong>
+          con el asunto <em>"La Seda · Fotos"</em>. ¡Gracias!
+        </p>
+      </div>
+    </div>
+
+    <!-- Estado: error -->
+    <div id="send-state-error" style="display:none;">
+      <div class="send-status">
+        <div class="icon-big">⚠️</div>
+        <h3>Algo salió mal</h3>
+        <p>No se pudo enviar el formulario. Por favor, intentadlo de nuevo o escribidnos directamente a <strong>correomsys@gmail.com</strong>.</p>
+        <button class="btn btn-next" style="margin-top:24px;" onclick="resetSendState()">Intentar de nuevo</button>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>La Seda · Centro de Psicología &nbsp;·&nbsp; correomsys@gmail.com</footer>
+
+<script>
+  const WEB3FORMS_ACCESS_KEY = '340850fb-0e06-463e-b69b-5cf9a99e5e45';
+
+  let currentStep = 0;
+  const TOTAL_STEPS = 5;
+
+  // ── Construir bloques de servicios ──
+  function buildServiceBlocks(containerId, tipo, emoji, count) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = '';
+
+    if (count === 0) {
+      container.innerHTML = '<div class="info-box">No habéis indicado ningún ' + tipo.toLowerCase() + '. Podéis volver atrás para ajustar el número.</div>';
+      return;
+    }
+
+    for (let i = 1; i <= count; i++) {
+      const id = tipo.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'') + '-' + i;
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <div class="card-title">
+          <span class="num">${i}</span>
+          ${emoji} ${tipo} #${i}
+        </div>
+        <div class="field">
+          <label for="${id}-titulo">Nombre del servicio <span class="req">*</span></label>
+          <input type="text" id="${id}-titulo" placeholder="Ej: Terapia Familiar Sistémica" />
+          <div class="error-msg">Por favor, introduce un nombre.</div>
+        </div>
+        <div class="field">
+          <label for="${id}-desc">Descripción</label>
+          <textarea id="${id}-desc" placeholder="Describe brevemente en qué consiste, a quién va dirigido, qué beneficios aporta…"></textarea>
+        </div>
+        <div class="field">
+          <label for="${id}-quien">¿Quiénes lo imparten?</label>
+          <input type="text" id="${id}-quien" placeholder="Nombres de los profesionales responsables…" />
+        </div>
+      `;
+      container.appendChild(card);
+    }
+  }
+
+  function iniciar() {
+    const nT = parseInt(document.getElementById('num-terapias').value) || 0;
+    const nW = parseInt(document.getElementById('num-talleres').value) || 0;
+    const nF = parseInt(document.getElementById('num-formaciones').value) || 0;
+
+    buildServiceBlocks('terapias-container',    'Terapia',   '🧠', nT);
+    buildServiceBlocks('talleres-container',    'Taller',    '🎨', nW);
+    buildServiceBlocks('formaciones-container', 'Formación', '📚', nF);
+
+    goTo(1);
+  }
+
+  function goTo(step) {
+    document.querySelectorAll('.step').forEach((s, i) => s.classList.toggle('active', i === step));
+    document.querySelectorAll('.nav-dot').forEach((d, i) => d.classList.toggle('active', i === step));
+    currentStep = step;
+    const pct = Math.round((step / (TOTAL_STEPS - 1)) * 100);
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-label').textContent = 'Paso ' + (step + 1) + ' de ' + TOTAL_STEPS;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function getBlocks(tipo, count) {
+    const key = tipo.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    let out = '';
+    for (let i = 1; i <= count; i++) {
+      const id = key + '-' + i;
+      const titulo = (document.getElementById(id+'-titulo')?.value || '').trim() || '(sin nombre)';
+      const desc   = (document.getElementById(id+'-desc')?.value  || '').trim() || '(sin descripción)';
+      const quien  = (document.getElementById(id+'-quien')?.value || '').trim() || '(sin especificar)';
+      out += `\n--- ${tipo} #${i} ---\n`;
+      out += `Nombre:       ${titulo}\n`;
+      out += `Descripción:  ${desc}\n`;
+      out += `Imparte:      ${quien}\n`;
+    }
+    return out || '\n(ninguno indicado)\n';
+  }
+
+  function buildResumenTexto() {
+    const nT = parseInt(document.getElementById('num-terapias').value)   || 0;
+    const nW = parseInt(document.getElementById('num-talleres').value)    || 0;
+    const nF = parseInt(document.getElementById('num-formaciones').value) || 0;
+    const nombre = document.getElementById('contact-nombre').value.trim();
+    const notas  = document.getElementById('contact-notas').value.trim();
+    const fecha  = new Date().toLocaleDateString('es-ES', { day:'2-digit', month:'long', year:'numeric' });
+
+    let texto = '';
+    texto += '══════════════════════════════════════\n';
+    texto += '  LA SEDA · Centro de Psicología\n';
+    texto += '  Formulario de contenidos web\n';
+    texto += '  Fecha: ' + fecha + '\n';
+    texto += '  Enviado por: ' + (nombre || '—') + '\n';
+    texto += '══════════════════════════════════════\n\n';
+
+    texto += '📊 CANTIDADES\n';
+    texto += '  · Terapias:    ' + nT + '\n';
+    texto += '  · Talleres:    ' + nW + '\n';
+    texto += '  · Formaciones: ' + nF + '\n\n';
+
+    if (nT > 0) {
+      texto += '─────────────────────────────────────\n';
+      texto += '🧠 TERAPIAS\n';
+      texto += '─────────────────────────────────────\n';
+      texto += getBlocks('Terapia', nT);
+    }
+    if (nW > 0) {
+      texto += '\n─────────────────────────────────────\n';
+      texto += '🎨 TALLERES\n';
+      texto += '─────────────────────────────────────\n';
+      texto += getBlocks('Taller', nW);
+    }
+    if (nF > 0) {
+      texto += '\n─────────────────────────────────────\n';
+      texto += '📚 FORMACIONES\n';
+      texto += '─────────────────────────────────────\n';
+      texto += getBlocks('Formación', nF);
+    }
+
+    if (notas) {
+      texto += '\n─────────────────────────────────────\n';
+      texto += '📝 NOTAS ADICIONALES\n';
+      texto += '─────────────────────────────────────\n';
+      texto += notas + '\n';
+    }
+
+    texto += '\n══════════════════════════════════════\n';
+    return texto;
+  }
+
+  // ── ENVÍO ──
+  async function enviarFormulario() {
+    const nombre = document.getElementById('contact-nombre').value.trim();
+    const email  = document.getElementById('contact-email').value.trim();
+    let ok = true;
+
+    const nField = document.getElementById('contact-nombre').closest('.field');
+    const eField = document.getElementById('contact-email').closest('.field');
+    nField.classList.toggle('field-error', !nombre);
+    eField.classList.toggle('field-error', !email || !email.includes('@'));
+    if (!nombre || !email || !email.includes('@')) ok = false;
+    if (!ok) return;
+
+    document.getElementById('send-state-idle').style.display = 'none';
+    document.getElementById('send-state-loading').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    const resumen = buildResumenTexto();
+
+    const formData = new FormData();
+    formData.append('access_key', WEB3FORMS_ACCESS_KEY);
+    formData.append('subject', 'La Seda · Nuevos contenidos web de ' + nombre);
+    formData.append('from_name', 'Formulario La Seda');
+    formData.append('replyto', email);
+    formData.append('name', nombre);
+    formData.append('email', email);
+    formData.append('message', resumen);
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await res.json();
+
+      document.getElementById('send-state-loading').style.display = 'none';
+
+      if (data.success) {
+        document.getElementById('confirm-email-display').textContent = email;
+        document.getElementById('send-state-success').style.display = 'block';
+      } else {
+        console.error('Web3Forms error:', data);
+        document.getElementById('send-state-error').style.display = 'block';
+      }
+    } catch (err) {
+      console.error('Fetch error:', err);
+      document.getElementById('send-state-loading').style.display = 'none';
+      document.getElementById('send-state-error').style.display = 'block';
+    }
+  }
+
+  function resetSendState() {
+    document.getElementById('send-state-idle').style.display = 'block';
+    document.getElementById('send-state-loading').style.display = 'none';
+    document.getElementById('send-state-success').style.display = 'none';
+    document.getElementById('send-state-error').style.display = 'none';
+  }
+</script>
+</body>
+</html>

@@ -1,12 +1,12 @@
 <template>
   <div class="w-full min-h-screen bg-[#fcfaf7] bg-texture overflow-x-hidden relative antialiased">
     
-    <TheHero @navigate="scrollToSection" />
+    <IndexTheHero @navigate="scrollToSection" />
 
     <div class="relative z-10 space-y-0 animate-fade-in">
-      <FeaturesExperience id="experiencias" />
-      <HousesGrid id="alojamientos" />
-      <CtaFinal id="contacto" />
+      <IndexFeaturesExperience id="experiencias" />
+      <IndexHousesGrid id="alojamientos" />
+      <IndexCtaFinal id="contacto" />
     </div>
 
   </div>

@@ -132,13 +132,12 @@
                   <h5 class="text-lg font-sans font-black text-stone-900 m-0 mt-0.5">Tarifa Web Garantizada</h5>
                 </div>
                 <div class="text-right">
-                  <span class="text-sm text-stone-400 font-bold line-through block">120€ / noche</span>
-                  <span class="text-2xl font-sans font-black text-[#3b6e4c]">102€ <span class="text-sm font-medium text-stone-500">/ noche</span></span>
+                  <span class="text-2xl font-sans font-black text-[#3b6e4c]">Mejor precio</span>
                 </div>
               </div>
               
               <p class="text-stone-600 text-sm font-medium m-0 leading-relaxed">
-                Ahorra comisiones externas. Incluye obsequio de bienvenida y flexibilidad total en entrada/salida bajo disponibilidad de fechas.
+                Ahorra comisiones externas. Incluye obsequio de bienvenida y flexibilidad total en entrada/salida bajo disponibilidad.
               </p>
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
@@ -170,14 +169,11 @@
                 </div>
                 <h5 class="text-base font-sans font-black text-stone-800 m-0">Plataforma Booking.com</h5>
                 <p class="text-stone-600 text-sm font-medium m-0 pt-0.5 leading-relaxed">
-                  Sujeto a incrementos convencionales por tasas de gestión ajenas a nuestra política rural.
+                  Sujeto a incrementos convencionales por tasas de gestión externas.
                 </p>
               </div>
               
               <div class="text-left sm:text-right shrink-0 flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-3 sm:gap-1 pt-3 sm:pt-0 border-t sm:border-t-0 border-stone-100">
-                <span class="text-xl font-sans font-black text-stone-700 block">
-                  120€ <span class="text-xs font-medium text-stone-400">/ noche</span>
-                </span>
                 <a 
                   href="https://www.booking.com" 
                   target="_blank" 
@@ -233,106 +229,134 @@ const galleryImages = ref([
   defaultImg
 ])
 
+// Colección Real de Alojamientos (Extraída de AvaiBook)
 const apartmentsCollection = [
   {
-    id: 'casa-el-olivo',
-    code: 'Casa El Olivo',
-    name: 'La Casa Principal',
-    capacity: '4 a 6 plazas',
+    id: 'apartamento-las-golondrinas',
+    code: 'Las Golondrinas',
+    name: 'Apartamento Las Golondrinas',
+    capacity: 'Hasta 4 personas',
+    maxGuests: 4,
     hasFireplace: true,
-    tag: 'Recomendado para grupos',
-    description: 'Perfecta para grupos que quieren compartirlo todo. Cuenta con un salón enorme con chimenea tradicional andaluza, cocina rústica equipada al completo y acceso directo al porche principal de las barbacoas.',
-    features: ['Cancelación flexible directa', 'Leña de cortesía incluida', 'Acceso directo a barbacoas', 'Salón en formato imperial', 'Ventanales térmicos de madera'],
+    tag: '1 dormitorio • Tragaluces y vistas',
+    description: 'Este apartamento se llama Las Golondrinas porque mientras se rehabilitaba la casa antigua, dos parejas de golondrinas vivieron un verano entero dentro. Cuenta con pilares y fachada originales de la antigua casa. Por la noche en verano, desde el salón se contempla la iglesia iluminada reflejada en sus dos tragaluces.',
+    features: [
+      '1 Dormitorio principal',
+      'Salón con dos sofás cama',
+      'Chimenea tradicional',
+      'Dos tragaluces en el techo',
+      'Calefacción central en todas las habitaciones',
+      '1 Baño completo y cocina',
+      'Máximo 1 perro por apartamento'
+    ]
   },
   {
-    id: 'casa-el-almendro',
-    code: 'Casa El Almendro',
-    name: 'El Refugio del Valle',
-    capacity: '2 a 4 plazas',
-    hasFireplace: false,
-    tag: 'Vistas panorámicas',
-    description: 'Un rincón independiente y acogedor, pensado para parejas o familias pequeñas que buscan intimidad. Disfruta de las mañanas con vistas infinitas a los bancales frutales y valles de la Alpujarra Alta.',
-    features: ['Balcón privado al valle', 'Espacio independiente de lectura', 'Soporte directo 24/7', 'Cocina equipada integrada'],
-  },
-  {
-    id: 'casa-la-acequia',
-    code: 'Casa La Acequia',
-    name: 'El Rincón del Agua',
-    capacity: '2 plazas',
-    hasFireplace: false,
-    tag: 'Ideal parejas',
-    description: 'Un apartamento íntimo donde el murmullo del agua es el único sonido de fondo. Cuenta con un dormitorio abovedado de piedra, baño artesanal y una pequeña cocina de leña completamente funcional.',
-    features: ['Entrada independiente', 'Vistas al riachuelo del huerto', 'Cama King Size de algodón orgánico', 'Aislamiento de roca nativa'],
-  },
-  {
-    id: 'casa-la-parra',
-    code: 'Casa La Parra',
-    name: 'El Porche Secreto',
-    capacity: '4 plazas',
-    hasFireplace: false,
-    tag: 'Sombra natural',
-    description: 'Destaca por su espectacular terraza privada techada por una parra centenaria. Ideal para almuerzos frescos al aire libre y largas conversations al atardecer contemplando la sierra alta.',
-    features: ['Terraza exclusiva exterior', 'Barbacoa individual', 'Wifi de alta velocidad', 'Mobiliario exterior de forja'],
-  },
-  {
-    id: 'casa-el-castano',
-    code: 'Casa El Castaño',
-    name: 'La Estancia de la Sierra',
-    capacity: '6 plazas',
+    id: 'apartamento-la-seda',
+    code: 'La Seda',
+    name: 'Apartamento La Seda',
+    capacity: 'Hasta 4 personas',
+    maxGuests: 4,
     hasFireplace: true,
-    tag: 'Gran formato familiar',
-    description: 'Espacio masivo distribuido en dos plantas de arquitectura tradicional alpujarreña. Grandes muros de piedra que mantienen la temperatura perfecta y ventanales orientados al sol de la mañana.',
-    features: ['Dos niveles completos comunicados', 'Chimenea de forja de alto rendimiento', 'Parking próximo', 'Doble baño rústico completo'],
+    tag: '2 dormitorios • Terrazas privadas',
+    description: 'Su nombre rinde homenaje a 1757, cuando Lobras destacó por el cultivo de moreras para la seda y sus mujeres bordaban tejidos en telares. Es el único apartamento con dos dormitorios y terrazas privadas independientes en cada uno de ellos.',
+    features: [
+      '2 Dormitorios (matrimonio + 2 camas)',
+      '2 Terrazas privadas (una por dormitorio)',
+      'Chimenea tradicional',
+      'Calefacción central en todas las habitaciones',
+      'Salón confort y cocina equipada',
+      '1 Baño completo',
+      'Máximo 1 perro por apartamento'
+    ]
   },
   {
-    id: 'casa-el-mirador',
-    code: 'Casa El Mirador',
-    name: 'La Atalaya de Lobras',
-    capacity: '2 a 3 plazas',
-    hasFireplace: false,
-    tag: 'Máxima altura',
-    description: 'Ubicado en el punto más alto del complejo, ofrece una perspectiva de 360 grados del entorno rural. Perfecto para desconectar del mundo y disfrutar del cielo estrellado más limpio de Andalucía.',
-    features: ['Solárium privado superior', 'Techos de vigas de castaño vistas', 'Cafetera de especialidad incluida', 'Mirador interior acristalado'],
+    id: 'apartamento-los-cerezos',
+    code: 'Los Cerezos',
+    name: 'Apartamento Los Cerezos',
+    capacity: 'Hasta 4 personas',
+    maxGuests: 4,
+    hasFireplace: true,
+    tag: 'Planta baja • Adaptado minusválidos',
+    description: 'Ubicado en la planta baja y completamente adaptado para personas con movilidad reducida o minusvalía. Cuenta con un amplio dormitorio, terraza directa al jardín y ambiente muy accesible.',
+    features: [
+      '1 Dormitorio muy amplio',
+      'Totalmente adaptado a minusválidos',
+      'Terraza privada con salida al jardín',
+      'Salón con sofá cama',
+      'Chimenea tradicional',
+      'Calefacción central en todas las habitaciones',
+      'Cocina equipada y 1 baño adaptado'
+    ]
   },
   {
-    id: 'casa-la-higuera',
-    code: 'Casa La Higuera',
-    name: 'El Patio Escondido',
-    capacity: '4 plazas',
-    hasFireplace: false,
-    tag: 'Arquitectura viva',
-    description: 'Organizado alrededor de un patio interior tradicional andaluz dominado por una higuera frondosa. Ofrece frescor absoluto en verano y una privacidad total ideal para familias con niños.',
-    features: ['Patio privado andaluz', 'Cocina equipada premium', 'Pet friendly bajo petición previa', 'Suelo de barro artesanal'],
+    id: 'apartamento-los-trovos',
+    code: 'Los Trovos',
+    name: 'Apartamento Los Trovos',
+    capacity: 'Hasta 4 personas',
+    maxGuests: 4,
+    hasFireplace: true,
+    tag: '1 dormitorio • Terraza alpujarreña',
+    description: 'Inspirado en la tradición del trovo o trovador alpujarreño, arte de cantar improvisando versos al son de la bandurria. Disfruta de un ambiente tradicional con terraza propia y un entorno tranquilo.',
+    features: [
+      '1 Dormitorio principal',
+      'Terraza privada',
+      'Chimenea tradicional',
+      'Salón confortable',
+      'Calefacción central en todas las habitaciones',
+      'Cocina y 1 baño completo'
+    ]
   },
   {
-    id: 'casa-el-granado',
-    code: 'Casa El Granado',
-    name: 'La Suite del Huerto',
-    capacity: '2 plazas',
-    hasFireplace: false,
-    tag: 'Detalles de autor',
-    description: 'Un estudio de diseño rústico minimalista con acceso directo a los frutales del complejo. Ideal para estancias largas de teletrabajo rural o escapadas románticas de desconexión absoluta.',
-    features: ['Salida directo al huerto', 'Escritorio integrado de madera de castaño', 'Baño con ducha de piedra natural', 'Ventilación cruzada ecológica'],
+    id: 'apartamento-la-contraviesa',
+    code: 'La Contraviesa',
+    name: 'Apartamento La Contraviesa',
+    capacity: 'Hasta 4 personas',
+    maxGuests: 4,
+    hasFireplace: true,
+    tag: 'Ático • Gran terraza panorámica',
+    description: 'Bautizado por la sierra de La Contraviesa que separa Sierra Nevada de la costa. Situado en la tercera planta, es el ático con la terraza más grande de toda la casa, bordeando casi todo el alojamiento con vistas inmejorables.',
+    features: [
+      '1 Dormitorio principal',
+      'Gran terraza panorámica envolvente',
+      'Salón amplio con sofá cama',
+      'Chimenea tradicional',
+      'Calefacción central en todas las habitaciones',
+      'Cocina equipada y 1 baño completo'
+    ]
   },
   {
-    id: 'casa-la-solana',
-    code: 'Casa La Solana',
-    name: 'El Refugio del Sol',
-    capacity: '4 a 5 plazas',
+    id: 'estudio',
+    code: 'El Estudio',
+    name: 'El Estudio',
+    capacity: '2 personas',
+    maxGuests: 2,
     hasFireplace: false,
-    tag: 'Luz natural continua',
-    description: 'Orientado completamente al sur, este apartamento goza de una iluminación espectacular durante todo el año. Su salón integrado conecta fluidamente con un comedor exterior empedrado.',
-    features: ['Orientación sur total', 'Comedor exterior empedrado', 'Calefacción ecológica', 'Vistas al prado central'],
+    tag: 'Ideal parejas • Vistas a la Plaza',
+    description: 'Alojamiento diáfano y acogedor para dos personas, con terraza orientada a la plaza del pueblo y la del ayuntamiento. Desde su terraza se aprecian espectaculares puestas de sol sobre Lobras (esta estancia no dispone de chimenea).',
+    features: [
+      '1 Dormitorio con cama de matrimonio',
+      'Terraza con vistas a la plaza del pueblo',
+      'Vistas a la puesta de sol y ayuntamiento',
+      'Salón amplio y diáfano',
+      'Calefacción central en todas las habitaciones',
+      'Cocina equipada y 1 baño completo'
+    ]
   },
   {
-    id: 'casa-la-bodega',
-    code: 'Casa La Bodega',
-    name: 'El Santuario de Piedra',
-    capacity: '2 plazas',
+    id: 'la-biblioteca',
+    code: 'La Biblioteca',
+    name: 'La Biblioteca',
+    capacity: '2 a 3 personas',
+    maxGuests: 3,
     hasFireplace: false,
-    tag: 'Experiencia inmersiva',
-    description: 'Construido sobre las bases de una antigua bodega subterránea, este alojamiento ofrece una experiencia arquitectónica única, con muros de roca pura expuesta y un aislamiento acústico insuperable.',
-    features: ['Muros de piedra nativa expuesta', 'Temperatura autorregulada de forma natural', 'Iluminación cálida de autor', 'Silencio absoluto garantizado'],
+    tag: 'Rincón de lectura • 2/3 pax',
+    description: 'Un rincón lleno de encanto y calma, diseñado especialmente para la lectura, el descanso o una estancia pausada con carácter tradicional.',
+    features: [
+      'Atmósfera de descanso y lectura',
+      'Capacidad para 2 a 3 personas',
+      'Calefacción central',
+      'Cocina equipada y baño completo'
+    ]
   }
 ]
 

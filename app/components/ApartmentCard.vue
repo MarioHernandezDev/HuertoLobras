@@ -4,12 +4,11 @@
   >
     <NuxtLink 
       :to="`/apartamentos/${apartment.id}`" 
-      class="absolute inset-0 z-30 opacity-0"
-      aria-label="Ver detalles de {{ apartment.name }}"
+      class="absolute inset-0 z-10 opacity-0"
+      :aria-label="`Ver detalles de ${apartment.name}`"
     />
 
-    <div class="lg:col-span-5 relative min-h-[380px] lg:min-h-full overflow-hidden bg-stone-900">
-      
+    <div class="lg:col-span-5 relative min-h-[380px] lg:min-h-full overflow-hidden bg-stone-900 pointer-events-none">
       <div 
         class="absolute inset-0 bg-cover bg-center opacity-90"
         :style="{ backgroundImage: `url(${imageSource})` }"
@@ -67,14 +66,17 @@
           <span class="text-base font-sans font-black text-stone-800">Reserva directa sin intermediarios</span>
         </div>
         
-        <div class="btn-tourist-explore group/btn z-40">
+        <NuxtLink 
+          :to="`/apartamentos/${apartment.id}`" 
+          class="btn-tourist-explore group/btn relative z-20 no-underline"
+        >
           <span>Explorar Estancia</span>
           <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center transition-transform duration-500 group-hover/btn:scale-110 group-hover/btn:bg-white/30">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 text-white">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
           </div>
-        </div>
+        </NuxtLink>
       </div>
       
     </div>
@@ -117,7 +119,6 @@ const imageSource = computed(() => {
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* El botón cambia de color coordinado cuando se pasa por encima de la tarjeta completa */
 .group:hover .btn-tourist-explore {
   background: #3b6e4c;
   box-shadow: 0 20px 40px -10px rgba(59, 110, 76, 0.4);

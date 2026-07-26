@@ -24,41 +24,37 @@
             </h2>
             
             <p class="text-stone-500 text-xl md:text-2xl font-medium leading-relaxed max-w-2xl m-0 normal-case pt-2">
-              Cambia el ruido de las notificaciones por el murmullo de las acequias medievales. Explora senderos históricos directamente desde el huerto.
+              Cambia el ruido de las notificaciones por el murmullo de las acequias medievales. Senderos históricos de la Alpujarra directa desde la puerta de la estancia.
             </p>
           </div>
 
           <div class="lg:col-span-5 bg-[#f6f3eb] rounded-[2rem] p-8 border border-stone-200/40 shadow-[0_25px_50px_-20px_rgba(42,53,44,0.06)] space-y-6 w-full lg:max-w-md lg:justify-self-end animate-fade-up">
             <div class="flex items-center gap-4">
-              <div class="w-12 h-12 rounded-full bg-stone-300 overflow-hidden shrink-0 shadow-inner">
-                <img 
-                  :src="whatsappGroupImage" 
-                  alt="Icono Grupo Senderismo" 
-                  class="w-full h-full object-cover"
-                />
+              <div class="w-12 h-12 rounded-2xl bg-[#598c14] flex items-center justify-center shrink-0 shadow-md text-white font-black text-xl">
+                W
               </div>
               <div>
                 <h4 class="text-sm font-sans font-black text-stone-800 uppercase tracking-wider m-0">
-                  ¿Dudas con el camino?
+                  Rutas en Wikiloc
                 </h4>
                 <p class="text-stone-500 text-xs font-medium m-0 mt-0.5">
-                  Comunidad de senderistas del Huerto
+                  Tracks GPS listos para descargar
                 </p>
               </div>
             </div>
             
             <p class="text-stone-600 text-sm md:text-base font-medium leading-relaxed m-0 opacity-90">
-              Habla directamente con nosotros para recibir recomendaciones del estado de los senderos en tiempo real.
+              Sigue los mapas directamente desde tu móvil con la aplicación de Wikiloc o consúltanos cualquier recomendación según la época del año.
             </p>
 
             <a 
-              href="https://wa.me/34600000000?text=Hola!%20Quería%20unirme%20al%20chat%20de%20senderismo"
+              href="https://es.wikiloc.com/wikiloc/user.do?id=1254823" 
               target="_blank"
               rel="noopener noreferrer"
-              class="flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20ba56] text-white font-sans font-black text-xs uppercase tracking-widest py-4 px-6 rounded-full transition-all duration-300 hover:scale-[1.02] no-underline shadow-md text-center w-full"
+              class="flex items-center justify-center gap-3 bg-[#598c14] hover:bg-[#4a7510] text-white font-sans font-black text-xs uppercase tracking-widest py-4 px-6 rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-95 no-underline shadow-md text-center w-full"
             >
-              <i class="fa-brands fa-whatsapp text-base"></i>
-              <span>Chat de Senderismo</span>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Ver Perfil de Wikiloc</span>
             </a>
           </div>
 
@@ -68,13 +64,11 @@
 
     <section class="w-full bg-[#fcfaf7] py-12 select-none overflow-hidden flex flex-col gap-12 md:gap-20 animate-fade-up">
       
-      <NuxtLink 
+      <div 
         v-for="(route, idx) in routes" 
         :key="route.id"
-        :to="`/rutas/${route.id}`"
-        class="w-full grid grid-cols-1 md:grid-cols-2 min-h-[500px] lg:min-h-[650px] border-y border-stone-200/40 group no-underline block bg-[#fcfaf7]"
+        class="w-full grid grid-cols-1 md:grid-cols-2 min-h-[500px] lg:min-h-[650px] border-y border-stone-200/40 group bg-[#fcfaf7]"
       >
-        
         <div 
           :class="[
             'relative w-full h-80 md:h-full bg-stone-900 overflow-hidden',
@@ -85,9 +79,9 @@
             class="absolute inset-0 bg-cover bg-center opacity-90 transition-transform duration-1000 group-hover:scale-105"
             :style="{ backgroundImage: `url(${route.image || defaultImage})` }"
           ></div>
-          <div class="absolute inset-0 bg-stone-950/10 group-hover:bg-stone-950/0 transition-colors duration-500"></div>
+          <div class="absolute inset-0 bg-stone-950/20 group-hover:bg-stone-950/0 transition-colors duration-500"></div>
           
-          <span :class="['absolute top-6 z-20 text-[10px] font-sans font-black uppercase tracking-widest text-white px-4 py-2 rounded-full shadow-md backdrop-blur-sm bg-opacity-95 border border-white/10', 
+          <span :class="['absolute top-6 z-20 text-[10px] font-sans font-black uppercase tracking-widest text-white px-4 py-2 rounded-full shadow-md backdrop-blur-sm border border-white/10', 
             idx % 2 === 1 ? 'right-6' : 'left-6',
             getDifficultyClass(route.difficulty)
           ]">
@@ -97,13 +91,13 @@
 
         <div 
           :class="[
-            'flex flex-col justify-center p-8 sm:p-12 md:p-16 lg:p-24 xl:p-32 space-y-8 bg-[#fcfaf7] transition-colors duration-500 group-hover:bg-[#f6f3eb]/40',
+            'flex flex-col justify-center p-8 sm:p-12 md:p-16 lg:p-20 xl:p-24 space-y-8 bg-[#fcfaf7] transition-colors duration-500 group-hover:bg-[#f6f3eb]/40',
             idx % 2 === 1 ? 'md:order-1 md:text-right md:items-end' : 'md:order-2 md:text-left md:items-start'
           ]"
         >
           <div class="space-y-4 w-full">
             <span class="font-mono text-xs font-bold text-stone-400 tracking-widest block">
-              RUTA 0{{ idx + 1 }}
+              SENDERO 0{{ idx + 1 }}
             </span>
             <h3 class="font-sans font-black text-3xl sm:text-4xl lg:text-5xl text-stone-900 leading-tight m-0 group-hover:text-[#3b6e4c] transition-colors duration-300">
               {{ route.name }}
@@ -115,30 +109,50 @@
 
           <div 
             :class="[
-              'pt-6 border-t border-stone-200/60 flex items-center gap-8 text-stone-700 w-full max-w-xl',
+              'pt-6 border-t border-stone-200/60 flex flex-wrap items-center gap-6 text-stone-700 w-full max-w-xl',
               idx % 2 === 1 ? 'md:justify-end' : 'md:justify-start'
             ]"
           >
-            <div class="flex items-center gap-2.5 text-base font-sans font-black">
-              <i class="fa-solid fa-route text-[#3b6e4c] text-lg"></i>
+            <div class="flex items-center gap-2 text-sm font-sans font-black">
+              <i class="fa-solid fa-route text-[#3b6e4c]"></i>
               <span>{{ route.distance }}</span>
             </div>
-            <div class="flex items-center gap-2.5 text-base font-sans font-black">
-              <i class="fa-regular fa-clock text-[#3b6e4c] text-lg"></i>
+            <div class="flex items-center gap-2 text-sm font-sans font-black">
+              <i class="fa-regular fa-clock text-[#3b6e4c]"></i>
               <span>{{ route.duration }}</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm font-sans font-black">
+              <i class="fa-solid fa-mountain text-[#3b6e4c]"></i>
+              <span>{{ route.elevation }}</span>
             </div>
           </div>
 
-          <div class="pt-4">
-            <div class="inline-flex items-center gap-3 text-xs font-sans font-black uppercase tracking-[0.2em] text-stone-800 group-hover:text-[#3b6e4c] transition-colors duration-300">
-              <span>Explorar sendero</span>
-              <i :class="['fa-solid text-sm transition-transform duration-300 group-hover:translate-x-1.5', idx % 2 === 1 ? 'fa-arrow-left rotate-180 md:rotate-0 md:group-hover:-translate-x-1.5' : 'fa-arrow-right']"></i>
-            </div>
+          <div class="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full max-w-xl">
+            
+            <a 
+              v-if="route.wikilocUrl"
+              :href="route.wikilocUrl" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-3 bg-[#598c14] hover:bg-[#4a7510] text-white font-sans font-black text-xs uppercase tracking-widest py-4 px-8 rounded-2xl transition-all duration-300 hover:scale-[1.02] active:scale-95 no-underline shadow-md hover:shadow-lg text-center flex-1"
+            >
+              <span>Abrir en Wikiloc</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            </a>
+
+            <NuxtLink 
+              :to="`/rutas/${route.id}`"
+              class="inline-flex items-center justify-center gap-3 bg-stone-900 hover:bg-[#3b6e4c] text-white font-sans font-black text-xs uppercase tracking-widest py-4 px-8 rounded-2xl transition-all duration-300 hover:scale-[1.02] active:scale-95 no-underline shadow-md hover:shadow-lg text-center flex-1"
+            >
+              <span>Ver Ruta</span>
+              <i class="fa-solid fa-chevron-right text-xs"></i>
+            </NuxtLink>
+
           </div>
 
         </div>
 
-      </NuxtLink>
+      </div>
 
     </section>
 
@@ -147,10 +161,10 @@
         ¿Quieres un plan a medida?
       </h3>
       <p class="text-stone-600 text-base sm:text-lg lg:text-xl max-w-xl mx-auto font-medium leading-relaxed m-0 animate-fade-up">
-        Si buscas guías oficiales de montaña o actividades infantiles, dínoslo antes de llegar y lo gestionamos por ti.
+        Si buscas guías oficiales de montaña para Sierra Nevada o rutas familiares adaptadas, dinos antes de llegar y lo organizamos.
       </p>
       <div class="pt-4 animate-fade-up">
-        <a href="tel:+34600000000" class="btn-premium-dark group">
+        <a href="tel:+34679038079" class="btn-premium-dark group">
           <i class="fa-solid fa-phone text-amber-400"></i>
           <span>Llamar y Consultar</span>
         </a>
@@ -163,44 +177,52 @@
 <script setup>
 import heroImage from '~/assets/img/default.jpg'
 import defaultImage from '~/assets/img/default.jpg'
-import whatsappGroupImage from '~/assets/img/default.jpg'
-import heroVideo from '~/assets/video/lobras.mp4' // Importación de tu recurso de video local
+import heroVideo from '~/assets/video/lobras.mp4'
 
+// DATASET REAL DE RUTAS DESDE LOBRAS / TÍMAR / NÍCHAR (ALPUJARRA)
 const routes = [
   {
-    id: 'ruta-acequias',
-    name: 'Ruta de las Acequias Escondidas',
+    id: 'lobras-nichar-timar',
+    name: 'Ruta de los Tres Pueblos: Lobras - Tímar - Níchar',
     difficulty: 'Fácil',
-    distance: '4.5 km',
-    duration: '1h 30m',
-    description: 'Paseo sombreado siguiendo los canales medievales de agua que abastecen los huertos tradicionales. Ideal para mañanas frescas de verano.',
+    distance: '6.2 km',
+    duration: '2h 15m',
+    elevation: '+260m',
+    description: 'Ruta circular clásica que interconecta los tres núcleos del municipio entre castañares centenarios, acequias medievales y caminos de herradura moriscos.',
+    wikilocUrl: 'https://es.wikiloc.com/rutas-senderismo/lobras-timar-nichar-lobras-14732128',
     image: null
   },
   {
-    id: 'sendero-penon',
-    name: 'Sendero del Peñón de Lobras',
+    id: 'caminos-reales-cadiar',
+    name: 'Sendero de la Alpujarra: Lobras a Cádiar (GR-142)',
     difficulty: 'Media',
-    distance: '8.2 km',
+    distance: '8.8 km',
     duration: '3h 00m',
-    description: 'Ascenso continuo a la formación rocosa más imponente de la zona. Recompensa al caminante con vistas panorámicas de Sierra Nevada.',
+    elevation: '+320m',
+    description: 'Tramo histórico del Gran Recorrido GR-142. Discurre por antiguos caminos reales entre viñedos, alcornoques y terrazas de cultivo con vistas al río Guadalfeo.',
+    wikilocUrl: 'https://es.wikiloc.com/rutas-senderismo/cadiar-lobras-cadiar-gr-142-88182963',
     image: null
   },
   {
-    id: 'caminos-reales',
-    name: 'Caminos Reales hacia Cádiar',
+    id: 'acequias-minas-nichar',
+    name: 'Acequias Reales y Minas de Mercury en Níchar',
     difficulty: 'Media-Alta',
-    distance: '12.0 km',
-    duration: '4h 30m',
-    description: 'Ruta histórica que conecta los pueblos utilizando antiguos senderos de piedra, rodeados de almendros y vides de alta montaña.',
+    distance: '10.5 km',
+    duration: '3h 45m',
+    elevation: '+480m',
+    description: 'Trazado etnográfico por la red de agua morisca y las antiguas explotaciones mineras de Níchar, ofreciendo algunas de las mejores vistas panorámicas de la Contraviesa.',
+    wikilocUrl: 'https://es.wikiloc.com/rutas-senderismo/minas-de-nichar-y-acequias-de-lobras-41239821',
     image: null
   },
   {
-    id: 'paseo-fluvial',
-    name: 'Paseo Fluvial Río Guadalfeo',
+    id: 'paseo-penon-lavaderos',
+    name: 'Paseo del Peñón y Arquitectura del Agua en Lobras',
     difficulty: 'Muy Fácil',
-    distance: '3.0 km',
+    distance: '2.8 km',
     duration: '1h 00m',
-    description: 'Itinerario plano y familiar por la ribera del río. Perfecto para caminar con niños y observar la fauna activa del valle.',
+    elevation: '+90m',
+    description: 'Recorrido urbano y periurbano perfecto para un paseo relajado. Visita los lavaderos tradicionales, fuentes históricas y el imponente mirador del Peñón.',
+    wikilocUrl: 'https://es.wikiloc.com/rutas-senderismo/paseo-urbano-lobras-y-lavaderos-52849102',
     image: null
   }
 ]
@@ -217,7 +239,6 @@ const getDifficultyClass = (difficulty) => {
 </script>
 
 <style scoped>
-/* 1. TEXTURA DE RUIDO ORGÁNICO SEAMLESS */
 .bg-texture {
   position: relative;
 }
@@ -234,7 +255,6 @@ const getDifficultyClass = (difficulty) => {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3e%3cfilter id='noiseFilter'%3e%3cfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3e%3c/filter%3e%3crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3e%3c/svg%3e");
 }
 
-/* 2. COREOGRAFÍA DE ANIMACIONES */
 .animate-slide-left {
   animation: slideFromLeft 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -262,7 +282,6 @@ const getDifficultyClass = (difficulty) => {
   }
 }
 
-/* 3. BOTÓN PREMIUM OSCURO */
 .btn-premium-dark {
   display: inline-flex;
   align-items: center;
