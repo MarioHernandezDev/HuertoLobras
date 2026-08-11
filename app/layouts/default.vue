@@ -1,103 +1,76 @@
 <template>
   <div class="min-h-screen bg-[#fcfaf7] antialiased font-sans relative">
-    
-    <div 
-      :class="[
-        'fixed top-0 left-0 right-0 h-32 z-40 pointer-events-none transition-opacity duration-700 bg-gradient-to-b from-stone-900/5 via-transparent to-transparent',
-        isScrolled ? 'opacity-0' : 'opacity-100'
-      ]"
-    ></div>
 
-    <header 
-      :class="[
-        'fixed top-0 left-0 right-0 z-50 w-full h-24 px-4 md:px-8 lg:px-12 flex items-center justify-between transition-all duration-500',
-        isScrolled && !isMenuOpen ? 'bg-[#fcfaf7]/95 backdrop-blur-md border-b border-stone-200/60 shadow-sm' : 'bg-transparent'
-      ]"
-    >
-      <div class="flex items-center gap-6">
-        <NuxtLink to="/" class="block z-50">
-          <div class="overflow-hidden rounded-none w-20 md:w-24 border border-white/10 shadow-xl transition-transform hover:scale-105 duration-300">
-            <img :src="logoUrl" alt="Logo El Huerto de Lobras" class="w-full h-auto block object-contain" />
-          </div>
-        </NuxtLink>
-        
-        <div 
-          v-if="!isMenuOpen"
-          class="hidden sm:block border-l border-stone-300 pl-5 py-1 transition-all duration-500"
-        >
-          <span class="text-[11px] uppercase tracking-[0.4em] block leading-none font-black text-[#1c3323]">
-            Alojamiento Rural
+    <header class="fixed top-0 left-0 right-0 z-50 w-full px-4 md:px-8 lg:px-12 pt-4 md:pt-5 pb-2 transition-all duration-500 pointer-events-none">
+      <div 
+        class="max-w-7xl mx-auto flex items-center justify-between h-16 md:h-18 px-6 rounded-full bg-[#fbf9f5] border border-stone-200/80 shadow-sm pointer-events-auto transition-all duration-300"
+      >
+        <NuxtLink to="/" class="flex items-center no-underline group h-full">
+          <span class="font-manual text-2xl md:text-3xl font-normal text-stone-900 tracking-wide transition-colors group-hover:text-[#3b6e4c]">
+            El Huerto <span class="font-bold text-[#3b6e4c]">de Lobras</span>
           </span>
+        </NuxtLink>
+
+        <nav class="hidden md:flex items-center h-full gap-1">
+          <NuxtLink 
+            v-for="item in menuItems" 
+            :key="item.path" 
+            :to="item.path"
+            class="nav-link-full h-full flex items-center px-5 text-xs font-extrabold uppercase tracking-[0.15em] text-stone-700 hover:text-[#3b6e4c] hover:bg-stone-200/40 transition-all duration-200 no-underline relative group"
+          >
+            <span>{{ item.name }}</span>
+            <span class="absolute bottom-0 left-0 right-0 h-[3px] bg-[#3b6e4c] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center rounded-t-full"></span>
+          </NuxtLink>
+        </nav>
+
+        <div class="flex items-center gap-3 h-full py-2.5">
+          <NuxtLink 
+            to="/apartamentos" 
+            class="hidden sm:inline-flex items-center justify-center px-6 h-full rounded-full text-xs font-extrabold uppercase tracking-widest no-underline transition-all duration-300 bg-[#3b6e4c] text-white hover:bg-[#315c3f] shadow-sm shadow-[#3b6e4c]/20"
+          >
+            Reservar
+          </NuxtLink>
+
+          <button 
+            @click="isMobileMenuOpen = !isMobileMenuOpen" 
+            class="md:hidden p-2 rounded-full transition-colors cursor-pointer border-0 bg-transparent text-stone-900"
+            aria-label="Abrir menú"
+          >
+            <div class="w-5 h-4 flex flex-col justify-between items-center">
+              <span :class="['block h-[2px] w-5 bg-current transition-transform duration-300 rounded-full', isMobileMenuOpen ? 'rotate-45 translate-y-[7px]' : '']"></span>
+              <span :class="['block h-[2px] w-3.5 bg-current ml-auto transition-opacity duration-200 rounded-full', isMobileMenuOpen ? 'opacity-0' : '']"></span>
+              <span :class="['block h-[2px] w-5 bg-current transition-transform duration-300 rounded-full', isMobileMenuOpen ? '-rotate-45 -translate-y-[7px]' : '']"></span>
+            </div>
+          </button>
         </div>
       </div>
-
-      <button 
-        @click="isMenuOpen = !isMenuOpen" 
-        class="relative z-50 flex items-center gap-4 bg-transparent border-0 cursor-pointer group p-2"
-        aria-label="Abrir navegación"
-      >
-        <span 
-          :class="[
-            'text-[10px] uppercase tracking-[0.4em] font-black transition-colors duration-300 hidden md:inline-block',
-            isMenuOpen ? 'text-stone-900' : 'text-stone-800 group-hover:text-[#3b6e4c]'
-          ]"
-        >
-          {{ isMenuOpen ? 'Cerrar' : 'Menú' }}
-        </span>
-
-        <div :class="['space-y-1.5 w-7 transition-colors', isMenuOpen ? 'text-stone-900' : 'text-stone-800 group-hover:text-[#3b6e4c]']">
-          <span :class="['block h-[2px] w-7 bg-current transform transition duration-500 rounded-full', isMenuOpen ? 'rotate-45 translate-y-2' : '']"></span>
-          <span :class="['block h-[2px] w-5 bg-current ml-auto transition duration-500 rounded-full', isMenuOpen ? 'opacity-0' : '']"></span>
-          <span :class="['block h-[2px] w-7 bg-current transform transition duration-500 rounded-full', isMenuOpen ? '-rotate-45 -translate-y-2' : '']"></span>
-        </div>
-      </button>
     </header>
 
-    <Transition name="menu-fullscreen">
-      <div v-if="isMenuOpen" class="fixed inset-0 w-full h-screen bg-[#fcfaf7] z-[45] flex flex-col md:flex-row items-stretch overflow-hidden">
+    <Transition name="mobile-menu">
+      <div v-if="isMobileMenuOpen" class="md:hidden fixed inset-0 z-40 bg-[#fbf9f5] flex flex-col justify-between px-8 pt-28 pb-12 text-stone-900">
         
-        <div class="hidden md:flex md:w-5/12 bg-[#f6f3eb] p-12 lg:p-16 pt-32 flex-col justify-between relative overflow-hidden border-r border-stone-200">
-          <div class="absolute -left-10 -bottom-16 font-manual text-[35rem] text-stone-200/40 pointer-events-none font-normal select-none leading-none">
-            H
-          </div>
-          
-          <div class="z-10 mt-12 md:mt-16">
-            <span class="text-[10px] uppercase tracking-[0.4em] text-[#3b6e4c] font-black block mb-2">Vente al campo</span>
-            <p class="font-serif italic text-2xl text-stone-700 leading-relaxed max-w-xs">
-              Un rincón vivo protegido por las cumbres de la Alpujarra Alta.
-            </p>
-          </div>
+        <nav class="flex flex-col space-y-2 my-auto">
+          <NuxtLink 
+            v-for="(item, index) in menuItems" 
+            :key="item.path" 
+            :to="item.path"
+            @click="isMobileMenuOpen = false"
+            class="flex items-center gap-5 py-4 border-b border-stone-200/80 no-underline group"
+          >
+            <span class="text-xs font-mono font-bold text-[#3b6e4c]">0{{ index + 1 }}</span>
+            <span class="text-3xl font-manual text-stone-800 group-hover:text-[#3b6e4c] transition-colors">{{ item.name }}</span>
+          </NuxtLink>
+        </nav>
 
-          <div class="z-10 grid grid-cols-1 gap-6 text-[10px] font-black uppercase tracking-[0.2em] text-stone-400">
-            <div>
-              <span class="text-amber-500 block mb-1 tracking-widest">¿Hablamos?</span>
-              <span class="normal-case font-semibold text-stone-600 text-sm">info@elhuertodelobras.com</span>
-            </div>
-          </div>
+        <div class="pt-6">
+          <NuxtLink 
+            to="/apartamentos" 
+            @click="isMobileMenuOpen = false"
+            class="btn-organic-primary w-full text-center block no-underline shadow-md shadow-[#3b6e4c]/20"
+          >
+            Reservar Ahora
+          </NuxtLink>
         </div>
-
-        <div class="w-full md:w-7/12 flex flex-col justify-center px-6 sm:px-16 lg:px-24 py-32 overflow-y-auto">
-          <div class="w-full flex flex-col space-y-1 md:space-y-2 max-w-xl">
-            
-            <NuxtLink 
-              v-for="(item, index) in menuItems" 
-              :key="item.path" 
-              :to="item.path"
-              @click="isMenuOpen = false"
-              class="desktop-nav-item flex items-baseline gap-6 py-2 group border-b border-stone-200/60 relative overflow-hidden"
-            >
-              <span class="text-xs font-mono font-bold text-stone-400 tracking-wider group-hover:text-amber-500 transition-colors duration-300">
-                0{{ index + 1 }}
-              </span>
-              
-              <span class="text-4xl sm:text-6xl lg:text-[5rem] font-manual text-stone-800 tracking-tight leading-none group-hover:text-[#3b6e4c] group-hover:translate-x-4 transition-all duration-500 block select-none">
-                {{ item.name }}
-              </span>
-            </NuxtLink>
-
-          </div>
-        </div>
-
       </div>
     </Transition>
 
@@ -115,9 +88,9 @@
             </p>
           </div>
           <div class="flex justify-center">
-            <div class="w-16 opacity-40 hover:opacity-100 transition-all duration-500 cursor-pointer rounded-none overflow-hidden">
-               <img :src="logoUrl" alt="Logo El Huerto de Lobras" class="w-full h-auto block" />
-            </div>
+            <span class="font-manual text-2xl text-stone-700 tracking-wide">
+              El Huerto <span class="text-[#3b6e4c] font-bold">de Lobras</span>
+            </span>
           </div>
           <div class="md:text-right">
             <span class="font-black text-stone-400 block mb-2 tracking-[0.3em]">El Huerto de Lobras</span>
@@ -131,11 +104,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import logoUrl from '~/assets/img/logo.jpg'
+import { ref } from 'vue'
 
-const isMenuOpen = ref(false)
-const isScrolled = ref(false)
+const isMobileMenuOpen = ref(false)
 
 const menuItems = [
   { name: 'Inicio', path: '/' },
@@ -144,36 +115,25 @@ const menuItems = [
   { name: 'Cultura', path: '/cultura' },
   { name: 'Contacto', path: '/contacto' }
 ]
-
-const handleScroll = () => {
-  isScrolled.value = window.scrollY > 40
-}
-
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
-  handleScroll()
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
 </script>
 
 <style scoped>
-.desktop-nav-item.router-link-active span:last-child {
+/* Estilo para el enlace activo */
+.router-link-active.nav-link-full {
   color: #3b6e4c !important;
-  transform: translateX(8px);
+  background-color: rgba(59, 110, 76, 0.08);
 }
-.desktop-nav-item.router-link-active span:first-child {
-  color: #d9923b !important;
+.router-link-active.nav-link-full span:last-child {
+  transform: scaleX(1);
 }
 
-.menu-fullscreen-enter-active, 
-.menu-fullscreen-leave-active {
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+/* Transición del menú móvil */
+.mobile-menu-enter-active,
+.mobile-menu-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
-.menu-fullscreen-enter-from, 
-.menu-fullscreen-leave-to {
+.mobile-menu-enter-from,
+.mobile-menu-leave-to {
   opacity: 0;
   transform: translateY(-8px);
 }
@@ -184,5 +144,18 @@ onUnmounted(() => {
 @keyframes reveal {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+.btn-organic-primary {
+  display: inline-block;
+  padding: 16px 32px;
+  background: #3b6e4c;
+  color: #ffffff;
+  border-radius: 9999px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 </style>

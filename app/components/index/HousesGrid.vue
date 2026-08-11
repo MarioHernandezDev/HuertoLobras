@@ -1,12 +1,18 @@
 <template>
-  <section id="alojamientos-galeria" class="w-full bg-[#fcfaf7] pt-24 pb-32 antialiased select-none">
+  <section id="alojamientos-galeria" class="relative w-full bg-[#fcfaf7] pt-36 md:pt-48 pb-0 antialiased select-none overflow-hidden">
     
-    <div class="mb-16 px-4 md:px-6 w-full mx-auto flex flex-col md:flex-row md:items-end justify-between gap-6">
-      <div class="max-w-2xl">
-        <span class="text-sm uppercase tracking-[0.3em] text-[#3b6e4c] font-black block mb-3">
+    <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+      <div class="absolute -top-10 -right-20 w-[28rem] h-[28rem] md:w-[45rem] md:h-[45rem] rounded-full bg-[#e8decb]/60 blur-[100px] md:blur-[140px]"></div>
+      <div class="absolute top-1/2 -left-24 w-[30rem] h-[30rem] md:w-[48rem] md:h-[48rem] rounded-full bg-[#d6c4ad]/50 blur-[90px] md:blur-[130px]"></div>
+      <div class="absolute bottom-10 right-10 w-[26rem] h-[26rem] md:w-[42rem] md:h-[42rem] rounded-full bg-[#e2d5c3]/70 blur-[80px] md:blur-[120px]"></div>
+    </div>
+
+    <div class="relative z-10 mb-16 md:mb-20 px-6 md:px-12 max-w-7xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-8">
+      <div class="max-w-3xl">
+        <span class="text-xs sm:text-sm uppercase tracking-[0.3em] text-[#3b6e4c] font-black block mb-4">
           El refugio por dentro
         </span>
-        <h2 class="text-5xl sm:text-7xl font-manual text-stone-900 tracking-wide leading-[0.9] m-0">
+        <h2 class="text-5xl sm:text-7xl lg:text-[6.2rem] font-manual text-stone-900 tracking-wide leading-[0.88] m-0">
           Un vistazo sincero <br />
           <span class="text-[#3b6e4c] font-black">a nuestras casas.</span>
         </h2>
@@ -14,7 +20,7 @@
       
       <NuxtLink 
         to="/apartamentos" 
-        class="btn-minimal-premium group no-underline text-center"
+        class="btn-minimal-premium group no-underline text-center w-full md:w-auto shrink-0 mb-2 md:mb-0"
       >
         <span>Visitar apartamentos</span>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 transition-all duration-500 cubic-bezier group-hover:translate-x-1.5">
@@ -23,20 +29,20 @@
       </NuxtLink>
     </div>
 
-    <div class="w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-0 p-0 m-0 bg-transparent">
+    <div class="relative z-10 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 p-0 m-0 bg-transparent">
       <div 
         v-for="index in 12" 
         :key="index"
         @click="openLightbox(index)"
-        class="relative aspect-square overflow-hidden bg-stone-900 cursor-pointer group p-0 m-0"
+        class="relative aspect-[4/3] sm:aspect-square overflow-hidden bg-stone-900 cursor-pointer group p-0 m-0"
       >
         <img 
-          :src="defaultImage" 
+          :src="getImageSrc(index)" 
           :alt="'Imagen galería ' + index" 
-          class="w-full h-full object-cover block transition-opacity duration-300 group-hover:opacity-85" 
+          class="w-full h-full object-cover block transition-all duration-500 group-hover:scale-105 group-hover:opacity-85" 
         />
-        <div class="absolute inset-0 bg-stone-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+        <div class="absolute inset-0 bg-stone-950/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white drop-shadow-md">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.604 10.604z" />
           </svg>
         </div>
@@ -50,7 +56,7 @@
           class="fixed inset-0 z-[9999] bg-stone-950/95 backdrop-blur-md flex flex-col items-center justify-center p-4"
           @click="closeLightbox"
         >
-          <button class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors p-2" @click="closeLightbox">
+          <button class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors p-2 cursor-pointer" @click="closeLightbox">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
@@ -58,9 +64,9 @@
           
           <div class="max-w-5xl max-h-[80vh] flex flex-col items-center justify-center" @click.stop>
             <img 
-              :src="defaultImage" 
+              :src="getImageSrc(activeIndex)" 
               alt="Vista ampliada" 
-              class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl block" 
+              class="max-w-full max-h-[80vh] object-contain rounded-xl shadow-2xl block" 
             />
             <p class="text-stone-400 font-mono text-sm uppercase tracking-widest text-center mt-6 font-bold">
               Fotografía {{ activeIndex }} de 12
@@ -77,11 +83,20 @@
 import { ref } from 'vue'
 import defaultImage from '~/assets/img/default.jpg'
 
-// Si ya no necesitas propagar el evento hacia arriba, puedes borrar o dejar este defineEmits
+const gridImages = import.meta.glob('~/assets/img/grid/*.JPG', { eager: true, import: 'default' })
+
 defineEmits(['navigate'])
 
 const isOpen = ref(false)
 const activeIndex = ref(null)
+
+const getImageSrc = (index) => {
+  if (index >= 1 && index <= 7) {
+    const path = `/assets/img/grid/grid${index}.JPG`
+    return gridImages[path] || defaultImage
+  }
+  return defaultImage
+}
 
 const openLightbox = (index) => {
   activeIndex.value = index
