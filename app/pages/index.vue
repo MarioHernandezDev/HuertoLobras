@@ -1,60 +1,86 @@
 <template>
-  <div class="w-full min-h-screen bg-[#fcfaf7] bg-texture overflow-x-hidden relative antialiased">
-    
+  <main class="w-full min-h-screen bg-[#fcfaf7] overflow-x-hidden relative antialiased">
+    <!-- Componente Hero Principal -->
     <IndexTheHero @navigate="scrollToSection" />
 
-    <div class="relative z-10 space-y-0 animate-fade-in">
-      <IndexFeaturesExperience id="experiencias" />
-      <IndexHousesGrid id="alojamientos" />
-      <IndexCtaFinal id="contacto" />
-    </div>
+    <div class="relative z-10 space-y-0">
+      <!-- Sección Experiencias -->
+      <section id="experiencias">
+        <IndexFeaturesExperience />
+      </section>
 
-  </div>
+      <!-- Sección Alojamientos -->
+      <section id="alojamientos">
+        <IndexHousesGrid />
+      </section>
+
+      <!-- Sección Contacto y CTA Final -->
+      <section id="contacto">
+        <IndexCtaFinal />
+      </section>
+    </div>
+  </main>
 </template>
 
 <script setup>
-// El comportamiento de scroll suave nativo se mantiene perfecto para la navegación interna
+// Metadatos SEO Profesionales de Nuxt 3 / Nuxt 4
+useHead({
+  title: 'El Huerto de Lobras | Casas Rurales y Turismo en la Alpujarra Granadina',
+  meta: [
+    { 
+      name: 'description', 
+      content: 'Descubre El Huerto de Lobras en la Alpujarra Granadina. Casas rurales con encanto, patrimonio cultural, senderismo y la tranquilidad única de Lobras y Tímar. ¡Reserva tu escapada!' 
+    },
+    { 
+      name: 'keywords', 
+      content: 'El Huerto de Lobras, casas rurales Lobras, alojamiento Alpujarra Granadina, turismo rural Granada, qué ver en Tímar, senderismo Alpujarra, casas rurales con encanto' 
+    },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:title', content: 'El Huerto de Lobras | Casas Rurales en la Alpujarra' },
+    { property: 'og:description', content: 'Desconecta en un entorno natural único en la Alpujarra Granadina. Alojamientos rurales con alma, historia y tradición.' },
+    { property: 'og:image', content: 'https://elhuertodelobras.com/images/og-home-huerto-lobras.webp' },
+    { property: 'og:site_name', content: 'El Huerto de Lobras' },
+    { property: 'og:locale', content: 'es_ES' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: 'El Huerto de Lobras | Turismo Rural en la Alpujarra' },
+    { name: 'twitter:description', content: 'Descubre la magia de Lobras y Tímar. Casas rurales, naturaleza y patrimonio en la Alpujarra Granadina.' },
+    { name: 'twitter:image', content: 'https://elhuertodelobras.com/images/og-home-huerto-lobras.webp' }
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://elhuertodelobras.com/' }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'LodgingBusiness',
+        'name': 'El Huerto de Lobras',
+        'description': 'Casas rurales y experiencia de turismo tradicional en la Alpujarra Granadina.',
+        'address': {
+          '@type': 'PostalAddress',
+          'addressLocality': 'Lobras',
+          'addressRegion': 'Granada',
+          'postalCode': '18449',
+          'addressCountry': 'ES'
+        },
+        'geo': {
+          '@type': 'GeoCoordinates',
+          'latitude': '36.9272',
+          'longitude': '-3.2125'
+        },
+        'url': 'https://elhuertodelobras.com',
+        'priceRange': '€€'
+      })
+    }
+  ]
+})
+
+// Navegación con desplazamiento directo
 const scrollToSection = (id) => {
   const el = document.getElementById(id);
   if (el) {
-    el.scrollIntoView({ behavior: 'smooth' });
+    el.scrollIntoView();
   }
 };
 </script>
-
-<style scoped>
-/* 1. TEXTURA DE RUIDO ORGÁNICO GLOBAL DE BIENVENIDA */
-.bg-texture {
-  position: relative;
-}
-.bg-texture::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  opacity: 0.025; /* Un toque sutilmente más definido para la Home */
-  pointer-events: none;
-  z-index: 99;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3e%3cfilter id='noiseFilter'%3e%3cfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3e%3c/filter%3e%3crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3e%3c/svg%3e");
-}
-
-/* 2. ANIMACIÓN DE ENTRADA SUAVE DE LA HOME */
-.animate-fade-in {
-  animation: fadeInHome 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes fadeInHome {
-  0% { opacity: 0; transform: translateY(10px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-fade-in {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
-</style>
