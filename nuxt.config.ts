@@ -1,39 +1,37 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+// nuxt.config.ts
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   
-  // 1. Desactivado en desarrollo/producción para evitar renderizados extra de la GPU
   devtools: { enabled: false },
 
   future: {
     compatibilityVersion: 4,
   },
 
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: [
+    '@nuxtjs/tailwindcss'
+    // Comentado para evitar el fallo de carga:
+    // '@nuxt/image'
+  ],
 
-  // Hoja de estilos global
   css: ['~/assets/css/main.css'],
 
   app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
+    layoutTransition: { name: 'layout', mode: 'out-in' },
     head: {
-      htmlAttrs: {
-        lang: 'es'
-      },
+      htmlAttrs: { lang: 'es' },
+      titleTemplate: '%s · El Huerto de Lobras | Turismo Alpujarra',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'robots', content: 'index, follow' },
-        { name: 'author', content: 'Ayuntamiento de Lobras / Turismo Alpujarra' }
+        { name: 'author', content: 'Ayuntamiento de Lobras / Turismo Alpujarra' },
+        { property: 'og:site_name', content: 'El Huerto de Lobras' },
+        { property: 'og:type', content: 'website' },
+        { name: 'twitter:card', content: 'summary_large_image' }
       ],
       link: [
-        // 2. Preconnect para FontAwesome (evita bloqueos de renderizado de iconos al hacer scroll)
-        { rel: 'preconnect', href: 'https://cdnjs.cloudflare.com', crossorigin: 'anonymous' },
-        { 
-          rel: 'stylesheet', 
-          href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' 
-        },
-        
-        // 3. Fuentes con display=swap para evitar tirones de recarga tipográfica (FOUT)
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' },
         { 
@@ -46,9 +44,7 @@ export default defineNuxtConfig({
 
   vite: {
     optimizeDeps: {
-      include: [
-        'aos'
-      ]
+      include: ['aos']
     }
   }
 })
