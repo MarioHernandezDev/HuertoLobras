@@ -3,8 +3,8 @@
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center border-b border-stone-200/60 pb-16 overflow-hidden">
         
-        <!-- Columna Izquierda: Título y Mensaje de Recepción -->
-        <div class="lg:col-span-7 space-y-6">
+        <!-- Columna Izquierda: Título y Mensaje -->
+        <div v-scroll class="lg:col-span-7 space-y-6">
           <span class="font-sans font-black text-sm text-[#3b6e4c] uppercase tracking-[0.2em] block">
             La experiencia campo viva
           </span>
@@ -19,24 +19,26 @@
           </p>
         </div>
 
-        <!-- Columna Derecha: Botón de Acción con estilo Hero -->
-        <div class="lg:col-span-5 w-full lg:max-w-md lg:justify-self-end">
+        <!-- Columna Derecha: Botón de Acción -->
+        <div v-scroll class="delay-100 lg:col-span-5 w-full lg:max-w-md lg:justify-self-end">
           <button 
             @click="scrollToNextSection"
             class="btn-lets-go group border-0 cursor-pointer w-full"
             aria-label="Explorar rutas"
           >
             <span>EXPLORAR RUTAS</span>
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke-width="2.5" 
-              stroke="currentColor" 
-              class="w-5 h-5 transition-transform duration-300 group-hover:translate-y-1"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" />
-            </svg>
+            <div class="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:translate-y-0.5">
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke-width="2.5" 
+                stroke="currentColor" 
+                class="w-4 h-4 text-white"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
+              </svg>
+            </div>
           </button>
         </div>
 
@@ -61,7 +63,7 @@ const scrollToNextSection = () => {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 14px;
   padding: 18px 36px;
   background: #3b6e4c;
   color: #ffffff;

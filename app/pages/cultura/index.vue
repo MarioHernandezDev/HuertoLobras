@@ -1,5 +1,5 @@
 <template>
-  <main class="w-full bg-[#f6f3eb] min-h-screen antialiased relative overflow-x-hidden">
+  <div class="w-full bg-[#f6f3eb] min-h-screen antialiased relative overflow-x-hidden">
     
     <!-- Hero Principal -->
     <MiniHero 
@@ -11,7 +11,6 @@
     <!-- Componentes de Secciones Culturales -->
     <CultureHeader />
 
-    <!-- Sección Vendimia con 2 imágenes reales -->
     <CultureVendimia 
       :images="vendimiaImages" 
       @open-lightbox="openLightbox" 
@@ -22,7 +21,6 @@
       @open-lightbox="openLightbox" 
     />
 
-    <!-- Sección Cementerio (CultureWine) con 3 imágenes reales -->
     <CultureWine 
       :images="cementerioImages" 
       @open-lightbox="openLightbox" 
@@ -43,7 +41,7 @@
       @close="closeLightbox"
     />
 
-  </main>
+  </div>
 </template>
 
 <script setup>
@@ -79,13 +77,37 @@ useHead({
   meta: [
     { 
       name: 'description', 
-      content: 'Conoce la historia, museos, fiestas tradicionales y la cultura vitivinícola de Lobras y la Alpujarra Granadina.' 
+      content: 'Conoce la historia, museos, fiestas tradicionales, el trovo y la cultura vitivinícola de Lobras y Tímar en la Alpujarra Granadina.' 
+    },
+    { 
+      name: 'keywords', 
+      content: 'cultura Lobras, patrimonio Alpujarra Granadina, fiestas tradicionales Tímar, vendimia Alpujarra, museos Lobras, trovo alpujarreño' 
     },
     { property: 'og:title', content: 'Cultura y Tradición en Lobras | El Huerto de Lobras' },
-    { property: 'og:description', content: 'Descubre las tradiciones vivas, la vendimia y el patrimonio histórico de Lobras.' }
+    { property: 'og:description', content: 'Descubre las tradiciones vivas, la historia textil de la seda y el patrimonio histórico de Lobras.' },
+    { property: 'og:type', content: 'website' },
+    { name: 'twitter:card', content: 'summary_large_image' }
   ],
   link: [
     { rel: 'canonical', href: 'https://elhuertodelobras.com/cultura' }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'TouristAttraction',
+        'name': 'Patrimonio Cultural de Lobras',
+        'description': 'Tradiciones, arquitectura vernácula y patrimonio histórico de Lobras en la Alpujarra Granadina.',
+        'address': {
+          '@type': 'PostalAddress',
+          'addressLocality': 'Lobras',
+          'addressRegion': 'Granada',
+          'postalCode': '18449',
+          'addressCountry': 'ES'
+        }
+      })
+    }
   ]
 })
 
@@ -135,10 +157,12 @@ const closeLightbox = () => {
   letter-spacing: 0.15em;
   cursor: pointer;
   text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 :deep(.btn-minimal-premium-white:hover) {
   background: #f4f4f5;
+  transform: translateY(-2px);
 }
 
 :deep(.btn-contact-action) {
@@ -157,6 +181,7 @@ const closeLightbox = () => {
   letter-spacing: 0.12em;
   cursor: pointer;
   text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 :deep(.btn-contact-action:hover) {
@@ -180,9 +205,11 @@ const closeLightbox = () => {
   letter-spacing: 0.12em;
   cursor: pointer;
   text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 :deep(.btn-contact-action-accent:hover) {
   background: #3b6e4c;
+  transform: translateY(-2px);
 }
 </style>

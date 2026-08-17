@@ -1,5 +1,5 @@
 <template>
-  <main class="w-full bg-[#fcfaf7] min-h-screen antialiased relative">
+  <div class="w-full bg-[#fcfaf7] min-h-screen antialiased relative">
     
     <!-- Hero Principal -->
     <MiniHero 
@@ -19,8 +19,8 @@
 
       <div class="relative z-10 max-w-[96%] mx-auto">
         
-        <!-- Encabezado de Sección Optimizado para SEO -->
-        <header class="border-b border-stone-300/40 pb-12 mb-16 overflow-hidden">
+        <!-- Encabezado de Sección Optimizado con v-scroll -->
+        <header v-scroll class="border-b border-stone-300/40 pb-12 mb-16 overflow-hidden">
           <div class="max-w-4xl space-y-4">
             <span class="font-sans font-black text-xs text-[#3b6e4c] uppercase tracking-[0.3em] block">
               Turismo Rural en la Alpujarra Granadina
@@ -33,9 +33,9 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
           
-          <!-- Filtro / Buscador Lateral -->
+          <!-- Filtro / Buscador Lateral con v-scroll -->
           <div class="lg:col-span-3">
-            <aside class="bg-white/90 rounded-3xl p-6 md:p-8 border border-stone-200/80 shadow-md shadow-stone-900/5 lg:sticky lg:top-28 z-20 space-y-6">
+            <aside v-scroll class="bg-white/90 rounded-3xl p-6 md:p-8 border border-stone-200/80 shadow-md shadow-stone-900/5 lg:sticky lg:top-28 z-20 space-y-6">
               <div class="space-y-1 pb-4 border-b border-stone-200/60">
                 <span class="text-xs font-mono text-stone-400 uppercase tracking-[0.2em] block font-bold">
                   Buscador de Estancias
@@ -98,7 +98,7 @@
                 <div class="flex flex-col gap-2.5">
                   <a 
                     href="tel:+34679038079" 
-                    class="flex items-center justify-center gap-3 bg-stone-900 hover:bg-[#3b6e4c] text-white font-sans font-black text-xs uppercase tracking-widest py-4 px-4 rounded-full shadow-sm text-center no-underline"
+                    class="flex items-center justify-center gap-3 bg-stone-900 hover:bg-[#3b6e4c] text-white font-sans font-black text-xs uppercase tracking-widest py-4 px-4 rounded-full shadow-sm text-center no-underline transition-colors"
                     aria-label="Llamar directamente para reservar casa rural en Lobras"
                   >
                     <i class="fa-solid fa-phone text-amber-400 text-sm"></i>
@@ -109,7 +109,7 @@
                     href="https://www.booking.com" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    class="flex items-center justify-center gap-3 bg-[#003580] hover:bg-[#00224f] text-white font-sans font-black text-xs uppercase tracking-widest py-3.5 px-4 rounded-full text-center no-underline shadow-sm"
+                    class="flex items-center justify-center gap-3 bg-[#003580] hover:bg-[#00224f] text-white font-sans font-black text-xs uppercase tracking-widest py-3.5 px-4 rounded-full text-center no-underline shadow-sm transition-colors"
                     aria-label="Reservar apartamentos rurales en Booking"
                   >
                     <span>Tarifa Booking</span>
@@ -129,6 +129,7 @@
               <div 
                 v-for="apt in filteredApartments" 
                 :key="apt.id"
+                v-scroll
               >
                 <ApartmentCard 
                   :apartment="apt"
@@ -136,7 +137,7 @@
               </div>
             </div>
 
-            <div v-else class="bg-white/90 rounded-3xl p-12 md:p-16 text-center border border-stone-200/80 shadow-md shadow-stone-900/5 space-y-4">
+            <div v-else v-scroll class="bg-white/90 rounded-3xl p-12 md:p-16 text-center border border-stone-200/80 shadow-md shadow-stone-900/5 space-y-4">
               <div class="text-stone-300">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-16 h-16 mx-auto">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
@@ -152,7 +153,7 @@
         </div>
       </div>
     </section>
-  </main>
+  </div>
 </template>
 
 <script setup>

@@ -10,14 +10,35 @@
   font-display: swap;
 }
 
+/* Transición ligera de la directiva v-scroll */
+.reveal-init {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+
 @layer base {
   :root {
-    /* NUEVA PALETA PRIMAVERAL: Luminosa, alegre, natural y familiar */
+    /* PALETA PRIMAVERAL: Luminosa, alegre, natural y familiar */
     --color-principal: #3b6e4c;    /* Verde Brote: fresco, alegre y lleno de vida */
     --color-acento: #d9923b;       /* Ocre Albaricoque: calidez solar, acogedor y vibrante */
-    --color-secundario: #e6c594;   /* Arena Claro: una versión más lavada y luminosa de la arcilla */
-    --color-fondo: #fdfdfb;        /* Blanco Lino: aún más limpio y luminoso, pero sin ser frío */
-    --color-texto: #1e251c;        /* Antracita botánico para mantener la lectura perfecta */
+    --color-secundario: #e6c594;   /* Arena Claro: versión lavada y luminosa de la arcilla */
+    --color-fondo: #fdfdfb;        /* Blanco Lino: limpio y luminoso */
+    --color-texto: #1e251c;        /* Antracita botánico */
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
@@ -66,7 +87,7 @@
     letter-spacing: 0.02em;
   }
 
-  /* Tarjetas Boutique (Cantos rectos, sombras suaves basadas en el verde oliva) */
+  /* Tarjetas Boutique */
   .card-boutique {
     @apply bg-white rounded-none border border-stone-200/80 
            shadow-[0_4px_30_rgba(0,0,0,0.01)] transition-all duration-700 
@@ -79,28 +100,28 @@
            px-4 py-2 rounded-none border border-stone-200/40;
   }
 
-  /* BOTÓN EDITORIAL PRINCIPAL (Bloque sólido con el nuevo verde oliva de bienvenida) */
+  /* BOTÓN EDITORIAL PRINCIPAL */
   .btn-editorial {
     @apply inline-flex items-center justify-center px-8 py-4 text-[10px] font-black uppercase tracking-[0.25em] 
            bg-[var(--color-principal)] text-white rounded-none transition-all duration-500 relative overflow-hidden border border-[var(--color-principal)]
            hover:bg-[var(--color-acento)] hover:border-[var(--color-acento)] hover:shadow-xl hover:shadow-[#4a4e41]/10;
   }
 
-  /* BOTÓN EDITORIAL SECUNDARIO / OUTLINE (Línea fina calada para airear el diseño) */
+  /* BOTÓN EDITORIAL SECUNDARIO / OUTLINE */
   .btn-editorial-outline {
     @apply inline-flex items-center justify-center px-8 py-4 text-[10px] font-black uppercase tracking-[0.25em] 
            bg-transparent text-stone-800 rounded-none border border-stone-300 transition-all duration-500
            hover:bg-[var(--color-principal)] hover:text-white hover:border-[var(--color-principal)];
   }
 
-  /* BOTÓN RESERVA DIRECTA / DESTACADO (Sólido de alto contraste) */
+  /* BOTÓN RESERVA DIRECTA / DESTACADO */
   .btn-editorial-accent {
     @apply inline-flex items-center justify-center px-6 py-3.5 text-[10px] font-black uppercase tracking-[0.25em] 
            bg-white text-stone-900 rounded-none transition-all duration-500 border border-white shadow-md
            hover:bg-stone-50 hover:scale-[1.02] hover:shadow-lg;
   }
 
-  /* Contenedor de imágenes de autor (Efecto zoom elegante) */
+  /* Contenedor de imágenes de autor */
   .img-zoom-container {
     @apply overflow-hidden rounded-none relative block bg-stone-100;
   }
@@ -108,21 +129,3 @@
     @apply transition-transform duration-1000 ease-out hover:scale-105 object-cover w-full h-full;
   }
 }
-
-/* Animación de revelado suave para secciones al hacer scroll */
-.reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: revealFade 1s cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
-}
-
-@keyframes revealFade {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-
-

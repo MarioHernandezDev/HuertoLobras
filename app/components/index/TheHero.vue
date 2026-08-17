@@ -7,7 +7,7 @@
 
     <div></div>
 
-    <div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row items-stretch md:items-end justify-between gap-6 md:gap-8 pb-2">
+    <div v-scroll class="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row items-stretch md:items-end justify-between gap-6 md:gap-8 pb-2">
       
       <div class="space-y-1 w-full">
         <span class="text-amber-400 font-sans font-extrabold text-xs uppercase tracking-[0.3em] block drop-shadow-sm">
@@ -51,7 +51,6 @@ defineEmits(['navigate'])
   background-image: url('~/assets/img/hero.webp');
 }
 
-/* BOTÓN ¡VAMOS! */
 .btn-lets-go {
   display: inline-flex;
   align-items: center;

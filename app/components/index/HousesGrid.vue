@@ -7,7 +7,8 @@
       <div class="absolute bottom-10 right-10 w-[26rem] h-[26rem] md:w-[42rem] md:h-[42rem] rounded-full bg-[#e2d5c3]/70 blur-[80px] md:blur-[120px]"></div>
     </div>
 
-    <div class="relative z-10 mb-16 md:mb-20 px-6 md:px-12 max-w-7xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-8">
+    <!-- Encabezado con animación de entrada -->
+    <div v-scroll class="relative z-10 mb-16 md:mb-20 px-6 md:px-12 max-w-7xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-8">
       <div class="max-w-3xl">
         <span class="text-xs sm:text-sm uppercase tracking-[0.3em] text-[#3b6e4c] font-black block mb-4">
           El refugio por dentro
@@ -29,7 +30,8 @@
       </NuxtLink>
     </div>
 
-    <div class="relative z-10 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 p-0 m-0 bg-transparent">
+    <!-- Grid de imágenes con revelado al scroll -->
+    <div v-scroll class="relative z-10 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 p-0 m-0 bg-transparent">
       <div 
         v-for="index in 12" 
         :key="index"
@@ -40,6 +42,7 @@
           :src="getImageSrc(index)" 
           :alt="'Imagen galería ' + index" 
           class="w-full h-full object-cover block transition-all duration-500 group-hover:scale-105 group-hover:opacity-85" 
+          loading="lazy"
         />
         <div class="absolute inset-0 bg-stone-950/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white drop-shadow-md">

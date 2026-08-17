@@ -1,5 +1,6 @@
 <template>
   <a 
+    v-scroll
     :href="route.wikilocUrl" 
     target="_blank" 
     rel="noopener noreferrer"
@@ -26,19 +27,25 @@
 
           <!-- Distancia -->
           <span class="flex items-center gap-2 text-stone-700">
-            <i class="fa-solid fa-route text-[#3b6e4c] text-base"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-[#3b6e4c] shrink-0">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503-12.485-5.558 3.087a1.125 1.125 0 0 1-1.09 0L3.312 6.273A1.125 1.125 0 0 0 2.25 7.27v10.18a1.125 1.125 0 0 0 .597.989l5.558 3.087a1.125 1.125 0 0 0 1.09 0l5.558-3.087a1.125 1.125 0 0 1 1.09 0l5.223 2.902a1.125 1.125 0 0 0 1.635-.989V8.136a1.125 1.125 0 0 0-.597-.989l-5.223-2.902a1.125 1.125 0 0 0-1.09 0Z" />
+            </svg>
             <span>{{ route.distance }}</span>
           </span>
 
           <!-- Tiempo -->
           <span class="flex items-center gap-2 text-stone-700">
-            <i class="fa-regular fa-clock text-[#3b6e4c] text-base"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-[#3b6e4c] shrink-0">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
             <span>{{ route.duration }}</span>
           </span>
 
           <!-- Desnivel -->
           <span class="flex items-center gap-2 text-stone-700">
-            <i class="fa-solid fa-mountain text-[#3b6e4c] text-base"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-[#3b6e4c] shrink-0">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 0 5.814-5.518l2.74-1.22m0 0-5.94-2.28m5.94 2.28-2.28 5.941" />
+            </svg>
             <span>{{ route.elevation }}</span>
           </span>
 
@@ -56,13 +63,15 @@
 
       </div>
 
-      <!-- Botón de Redirección Externa (Estilo Botón Hero) -->
+      <!-- Botón de Redirección Externa -->
       <div class="shrink-0 flex items-center gap-4">
         <span class="font-sans font-extrabold text-sm sm:text-base uppercase tracking-widest text-stone-900 group-hover:text-[#3b6e4c] transition-colors">
           Ver en Wikiloc
         </span>
-        <div class="w-12 h-12 rounded-full bg-stone-200/80 group-hover:bg-[#3b6e4c] group-hover:text-white text-stone-800 flex items-center justify-center transition-all duration-300 shadow-sm group-hover:shadow-md group-hover:scale-105">
-          <i class="fa-solid fa-arrow-up-right-from-square text-base transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
+        <div class="w-12 h-12 rounded-full bg-stone-200/80 group-hover:bg-[#3b6e4c] group-hover:text-white text-stone-800 flex items-center justify-center transition-all duration-300 shadow-sm group-hover:shadow-md group-hover:scale-105 shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+          </svg>
         </div>
       </div>
 

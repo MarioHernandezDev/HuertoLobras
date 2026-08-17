@@ -1,5 +1,5 @@
 <template>
-  <main class="w-full bg-[#fcfaf7] min-h-screen antialiased relative overflow-x-hidden">
+  <div class="w-full bg-[#fcfaf7] min-h-screen antialiased relative overflow-x-hidden">
     
     <!-- Hero Principal -->
     <MiniHero 
@@ -17,7 +17,6 @@
       chapterNumber="01"
       title="Senderos del Agua y Acequias"
       categoryTag="Arquitectura del Agua"
-      icon="fa-solid fa-droplet"
       description="Rutas guiadas por la red de Acequias Reales, fuentes ferruginosas y lavaderos tradicionales de la Alpujarra."
       :backgroundImage="waterHeroImg"
     />
@@ -36,12 +35,15 @@
         href="https://es.wikiloc.com/wikiloc/map.do?sw=36.92322175297183%2C-3.2175564765930176&ne=36.93296468651231%2C-3.2064843177795415&page=1" 
         target="_blank" 
         rel="noopener noreferrer"
-        class="w-full py-10 px-6 sm:px-10 md:px-16 bg-amber-100/40 hover:bg-amber-100/70 border-b border-stone-200/60 transition-colors duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6 group"
+        class="w-full py-10 px-6 sm:px-10 md:px-16 bg-amber-100/40 hover:bg-amber-100/70 border-b border-stone-200/60 transition-colors duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6 group no-underline"
         aria-label="Ver más rutas de agua y acequias en Lobras registradas en Wikiloc"
       >
         <div class="flex items-start md:items-center gap-5">
-          <div class="w-12 h-12 rounded-full bg-amber-800 text-white flex items-center justify-center font-bold shrink-0">
-            <i class="fa-solid fa-droplet text-lg" aria-hidden="true"></i>
+          <div class="w-12 h-12 rounded-full bg-amber-800 text-white flex items-center justify-center font-bold shrink-0 shadow-sm">
+            <!-- SVG Gota de Agua Nativa -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582" />
+            </svg>
           </div>
           <div>
             <h3 class="text-xl sm:text-2xl font-manual text-stone-900 font-bold group-hover:text-amber-900 transition-colors m-0">
@@ -54,7 +56,10 @@
         </div>
         <div class="flex items-center gap-3 font-sans text-sm sm:text-base font-bold uppercase tracking-wider text-amber-900 shrink-0">
           <span>Buscar rutas en Wikiloc</span>
-          <i class="fa-solid fa-arrow-right group-hover:translate-x-1.5 transition-transform text-lg" aria-hidden="true"></i>
+          <!-- SVG Flecha Derecha -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 group-hover:translate-x-1.5 transition-transform">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
         </div>
       </a>
     </div>
@@ -64,7 +69,6 @@
       chapterNumber="02"
       title="Paseos y Senderos Históricos"
       categoryTag="Caminos Moriscos"
-      icon="fa-solid fa-shoe-prints"
       description="Caminos medievales de herradura, senderos de gran recorrido (GR-7 / GR-142) y conexión entre pueblos."
       :backgroundImage="walkHeroImg"
     />
@@ -83,12 +87,15 @@
         href="https://es.wikiloc.com/wikiloc/map.do?sw=36.92322175297183%2C-3.2175564765930176&ne=36.93296468651231%2C-3.2064843177795415&page=1" 
         target="_blank" 
         rel="noopener noreferrer"
-        class="w-full py-10 px-6 sm:px-10 md:px-16 bg-stone-200/50 hover:bg-stone-200/80 border-b border-stone-200/60 transition-colors duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6 group"
+        class="w-full py-10 px-6 sm:px-10 md:px-16 bg-stone-200/50 hover:bg-stone-200/80 border-b border-stone-200/60 transition-colors duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6 group no-underline"
         aria-label="Ver más rutas de senderismo y BTT en Lobras registradas en Wikiloc"
       >
         <div class="flex items-start md:items-center gap-5">
-          <div class="w-12 h-12 rounded-full bg-stone-800 text-white flex items-center justify-center font-bold shrink-0">
-            <i class="fa-solid fa-person-biking text-lg" aria-hidden="true"></i>
+          <div class="w-12 h-12 rounded-full bg-stone-800 text-white flex items-center justify-center font-bold shrink-0 shadow-sm">
+            <!-- SVG Senderismo / Brújula Nativa -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503-12.485-5.558 3.087a1.125 1.125 0 0 0-1.09 0L3.312 6.273A1.125 1.125 0 0 0 2.25 7.27v10.18a1.125 1.125 0 0 0 .597.989l5.558 3.087a1.125 1.125 0 0 0 1.09 0l5.558-3.087a1.125 1.125 0 0 1 1.09 0l5.223 2.902a1.125 1.125 0 0 0 1.635-.989V8.136a1.125 1.125 0 0 0-.597-.989l-5.223-2.902a1.125 1.125 0 0 0-1.09 0Z" />
+            </svg>
           </div>
           <div>
             <h3 class="text-xl sm:text-2xl font-manual text-stone-900 font-bold group-hover:text-amber-900 transition-colors m-0">
@@ -101,7 +108,10 @@
         </div>
         <div class="flex items-center gap-3 font-sans text-sm sm:text-base font-bold uppercase tracking-wider text-stone-900 shrink-0">
           <span>Buscar rutas en Wikiloc</span>
-          <i class="fa-solid fa-arrow-right group-hover:translate-x-1.5 transition-transform text-lg" aria-hidden="true"></i>
+          <!-- SVG Flecha Derecha -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 group-hover:translate-x-1.5 transition-transform">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
         </div>
       </a>
     </div>
@@ -109,7 +119,7 @@
     <!-- Call To Action Final -->
     <RoutesCallToAction />
 
-  </main>
+  </div>
 </template>
 
 <script setup>
