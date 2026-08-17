@@ -81,9 +81,9 @@
 
 <script setup>
 import { ref } from 'vue'
-import defaultImage from '~/assets/img/default.jpg'
+import defaultImage from '~/assets/img/default.webp'
 
-const gridImages = import.meta.glob('~/assets/img/grid/*.JPG', { eager: true, import: 'default' })
+const gridImages = import.meta.glob('~/assets/img/grid/*.webp', { eager: true, import: 'default' })
 
 defineEmits(['navigate'])
 
@@ -92,7 +92,7 @@ const activeIndex = ref(null)
 
 const getImageSrc = (index) => {
   if (index >= 1 && index <= 7) {
-    const path = `/assets/img/grid/grid${index}.JPG`
+    const path = `/assets/img/grid/grid${index}.webp`
     return gridImages[path] || defaultImage
   }
   return defaultImage

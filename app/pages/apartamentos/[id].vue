@@ -199,10 +199,10 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import defaultImg from '~/assets/img/default.jpg'
+import defaultImg from '~/assets/img/default.webp'
 
-// Cargar dinámicamente todas las imágenes
-const allImages = import.meta.glob('~/assets/img/**/*.{jpg,jpeg,png,JPG,JPEG,PNG}', {
+// Cargar dinámicamente todas las imágenes incluyendo formatos webp/WEBP
+const allImages = import.meta.glob('~/assets/img/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', {
   eager: true,
   import: 'default'
 })
@@ -215,9 +215,10 @@ const heroImage = ref(null)
 const activeImage = ref(null)
 const galleryImages = ref([])
 
-const getImage = (path) => {
-  const fullPath = `/assets/img/${path}`
-  return allImages[fullPath] || defaultImg
+const getImage = (folder, filename) => {
+  const targetPath = `/assets/img/${folder}/${filename}`
+  const matchKey = Object.keys(allImages).find(key => key.endsWith(targetPath))
+  return matchKey ? allImages[matchKey] : defaultImg
 }
 
 const apartmentsCollection = [
@@ -232,8 +233,8 @@ const apartmentsCollection = [
     tag: '1 dormitorio • Tragaluces y vistas',
     description: 'Este apartamento se llama Las Golondrinas porque mientras se rehabilitaba la casa antigua, dos parejas de golondrinas vivieron un verano entero dentro. Cuenta con pilares y fachada originales de la antigua casa. Por la noche en verano, desde el salón se contempla la iglesia iluminada reflejada en sus dos tragaluces.',
     photos: {
-      hero: 'portada.jpg', // Foto exclusiva para el Hero
-      gallery: ['general.jpg', 'bano.jpg', 'dormitorio.jpg', 'detalle.jpg'] // Las 4 fotos de la galería
+      hero: 'portada.webp',
+      gallery: ['general.webp', 'bano.webp', 'dormitorio.webp', 'detalle.webp']
     },
     features: [
       '1 Dormitorio principal',
@@ -258,8 +259,8 @@ const apartmentsCollection = [
     tag: '2 dormitorios • Terrazas privadas',
     description: 'Su nombre rinde homenaje a 1757, cuando Lobras destacó por el cultivo de moreras para la seda y sus mujeres bordaban tejidos en telares. Es el único apartamento con dos dormitorios y terrazas privadas independientes en cada uno de ellos.',
     photos: {
-      hero: 'portada.jpg',
-      gallery: ['general.jpg', 'bano.jpg', 'dormitorio.jpg', 'detalle.jpg']
+      hero: 'portada.webp',
+      gallery: ['general.webp', 'bano.webp', 'dormitorio.webp', 'detalle.webp']
     },
     features: [
       '2 Dormitorios (matrimonio + 2 camas)',
@@ -284,8 +285,8 @@ const apartmentsCollection = [
     tag: 'Planta baja • Adaptado minusválidos',
     description: 'Ubicado en la planta baja y completamente adaptado para personas con movilidad reducida o minusvalía. Cuenta con un amplio dormitorio, terraza directa al jardín y ambiente muy accesible.',
     photos: {
-      hero: 'portada.jpg',
-      gallery: ['general.jpg', 'bano.jpg', 'dormitorio.jpg', 'detalle.jpg']
+      hero: 'portada.webp',
+      gallery: ['general.webp', 'bano.webp', 'dormitorio.webp', 'detalle.webp']
     },
     features: [
       '1 Dormitorio muy amplio',
@@ -310,8 +311,8 @@ const apartmentsCollection = [
     tag: '1 dormitorio • Terraza alpujarreña',
     description: 'Inspirado en la tradición del trovo o trovador alpujarreño, arte de cantar improvisando versos al son de la bandurria. Disfruta de un ambiente tradicional con terraza propia y un entorno tranquilo.',
     photos: {
-      hero: 'portada.jpg',
-      gallery: ['general.jpg', 'bano.jpg', 'dormitorio.jpg', 'detalle.jpg']
+      hero: 'portada.webp',
+      gallery: ['general.webp', 'bano.webp', 'dormitorio.webp', 'detalle.webp']
     },
     features: [
       '1 Dormitorio principal',
@@ -335,8 +336,8 @@ const apartmentsCollection = [
     tag: 'Ático • Gran terraza panorámica',
     description: 'Bautizado por la sierra de La Contraviesa que separa Sierra Nevada de la costa. Situado en la tercera planta, es el ático con la terraza más grande de toda la casa, bordeando casi todo el alojamiento con vistas inmejorables.',
     photos: {
-      hero: 'portada.jpg',
-      gallery: ['general.jpg', 'bano.jpg', 'dormitorio.jpg', 'detalle.jpg']
+      hero: 'portada.webp',
+      gallery: ['general.webp', 'bano.webp', 'dormitorio.webp', 'detalle.webp']
     },
     features: [
       '1 Dormitorio principal',
@@ -360,8 +361,8 @@ const apartmentsCollection = [
     tag: 'Ideal parejas • Vistas a la Plaza',
     description: 'Alojamiento diáfano y acogedor para dos personas, con terraza orientada a la plaza del pueblo y la del ayuntamiento. Desde su terraza se aprecian espectaculares puestas de sol sobre Lobras (esta estancia no dispone de chimenea).',
     photos: {
-      hero: 'portada.jpg',
-      gallery: ['general.jpg', 'bano.jpg', 'dormitorio.jpg', 'detalle.jpg']
+      hero: 'portada.webp',
+      gallery: ['general.webp', 'bano.webp', 'dormitorio.webp', 'detalle.webp']
     },
     features: [
       '1 Dormitorio con cama de matrimonio',
@@ -385,8 +386,8 @@ const apartmentsCollection = [
     tag: 'Rincón de lectura • 2/3 pax',
     description: 'Un rincón lleno de encanto y calma, diseñado especialmente para la lectura, el descanso o una estancia pausada con carácter tradicional.',
     photos: {
-      hero: 'portada.jpg',
-      gallery: ['general.jpg', 'bano.jpg', 'dormitorio.jpg', 'detalle.jpg']
+      hero: 'portada.webp',
+      gallery: ['general.webp', 'bano.webp', 'dormitorio.webp', 'detalle.webp']
     },
     features: [
       'Atmósfera de descanso y lectura',
@@ -407,11 +408,11 @@ onMounted(() => {
     apartment.value = found
     
     // 1. Imagen única fijada para el MiniHero arriba
-    heroImage.value = getImage(`${found.folder}/${found.photos.hero}`)
+    heroImage.value = getImage(found.folder, found.photos.hero)
 
     // 2. Galería de 4 fotos
     galleryImages.value = found.photos.gallery.map(filename => {
-      return getImage(`${found.folder}/${filename}`)
+      return getImage(found.folder, filename)
     })
 
     // 3. Foto seleccionada por defecto en el visor de la galería (la primera de las 4)

@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-import defaultImage from '~/assets/img/default.jpg'
+import defaultImage from '~/assets/img/default.webp'
 
 defineProps({
   title: {

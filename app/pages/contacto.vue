@@ -148,7 +148,7 @@
 
 <script setup>
 import { onMounted } from 'vue'
-import heroImage from '~/assets/img/default.jpg'
+import heroImage from '~/assets/img/contacto.webp'
 
 // SEO On-Page
 useHead({

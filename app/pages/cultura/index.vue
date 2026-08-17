@@ -11,8 +11,9 @@
     <!-- Componentes de Secciones Culturales -->
     <CultureHeader />
 
+    <!-- Sección Vendimia con 2 imágenes reales -->
     <CultureVendimia 
-      :image="defaultImage" 
+      :images="vendimiaImages" 
       @open-lightbox="openLightbox" 
     />
 
@@ -21,8 +22,9 @@
       @open-lightbox="openLightbox" 
     />
 
+    <!-- Sección Cementerio (CultureWine) con 3 imágenes reales -->
     <CultureWine 
-      :image="defaultImage" 
+      :images="cementerioImages" 
       @open-lightbox="openLightbox" 
     />
 
@@ -46,8 +48,23 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import defaultImage from '~/assets/img/default.jpg'
-import heroImage from '~/assets/img/default.jpg' 
+
+// Assets base
+import defaultImage from '~/assets/img/default.webp'
+import heroImage from '~/assets/img/cultura.webp' 
+
+// Imágenes reales de Vendimia
+import vendimia1 from '~/assets/img/vendimia1.webp'
+import vendimia2 from '~/assets/img/vendimia2.webp'
+
+// Imágenes reales del Cementerio
+import cementerio1 from '~/assets/img/cementerio1.webp'
+import cementerio2 from '~/assets/img/cementerio2.webp'
+import cementerio3 from '~/assets/img/cementerio3.webp'
+
+// Arrays de imágenes
+const vendimiaImages = [vendimia1, vendimia2]
+const cementerioImages = [cementerio1, cementerio2, cementerio3]
 
 import CultureHeader from '~/components/culture/CultureHeader.vue'
 import CultureVendimia from '~/components/culture/CultureVendimia.vue'

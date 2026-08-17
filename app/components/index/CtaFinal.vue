@@ -49,7 +49,7 @@
 
 <style scoped>
 .bg-lobras { 
-  background-image: url('~/assets/img/lobras.png'); 
+  background-image: url('~/assets/img/lobras.webp'); 
 }
 
 /* --- BOTÓN PREMIUM VERSIÓN CLARA --- */

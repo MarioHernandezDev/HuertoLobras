@@ -1,6 +1,5 @@
 <template>
   <section class="w-full space-y-16 pt-24 md:pt-32">
-    <!-- RESTO DEL CÓDIGO PERMANECE IGUAL -->
     <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 space-y-12">
       <div class="max-w-4xl space-y-6 animate-slide-left">
         <h3 class="font-manual text-5xl sm:text-7xl lg:text-8xl text-stone-900 m-0 leading-none">
@@ -73,10 +72,10 @@
     <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-0 bg-stone-950 animate-fade-up">
       
       <div 
-        @click="$emit('openLightbox', 1, 'Cementerio BIC de Lobras', 3)"
+        @click="$emit('openLightbox', 1, 'Cementerio BIC de Lobras', images.length)"
         class="relative h-80 lg:h-[450px] overflow-hidden bg-stone-900 cursor-pointer group"
       >
-        <img :src="image" alt="Camposanto de Lobras" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-75" />
+        <img :src="images[0]" alt="Camposanto de Lobras" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-75" />
         <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent p-8 flex flex-col justify-end">
           <span class="text-amber-400 font-mono text-xs font-bold uppercase tracking-widest">Arquitectura</span>
           <h4 class="text-white font-sans font-bold text-xl m-0">Estructura en Bancales</h4>
@@ -84,10 +83,10 @@
       </div>
 
       <div 
-        @click="$emit('openLightbox', 2, 'Detalle Constructivo BIC', 3)"
+        @click="$emit('openLightbox', 2, 'Detalle Constructivo BIC', images.length)"
         class="relative h-80 lg:h-[450px] overflow-hidden bg-stone-900 cursor-pointer group border-t md:border-t-0 md:border-l border-stone-800"
       >
-        <img :src="image" alt="Detalles constructivos tradicionales" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-75" />
+        <img :src="images[1]" alt="Detalles constructivos tradicionales" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-75" />
         <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent p-8 flex flex-col justify-end">
           <span class="text-amber-400 font-mono text-xs font-bold uppercase tracking-widest">Detalle</span>
           <h4 class="text-white font-sans font-bold text-xl m-0">Construcción Vernácula</h4>
@@ -95,10 +94,10 @@
       </div>
 
       <div 
-        @click="$emit('openLightbox', 3, 'Panorámica del Camposanto', 3)"
+        @click="$emit('openLightbox', 3, 'Panorámica del Camposanto', images.length)"
         class="relative h-80 lg:h-[450px] overflow-hidden bg-stone-900 cursor-pointer group border-t md:border-t-0 md:border-l border-stone-800"
       >
-        <img :src="image" alt="Entorno del Cementerio de Lobras" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-75" />
+        <img :src="images[2]" alt="Entorno del Cementerio de Lobras" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-75" />
         <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent p-8 flex flex-col justify-end">
           <span class="text-amber-400 font-mono text-xs font-bold uppercase tracking-widest">Entorno</span>
           <h4 class="text-white font-sans font-bold text-xl m-0">Paisaje e Integración</h4>
@@ -111,7 +110,10 @@
 
 <script setup>
 defineProps({
-  image: String
+  images: {
+    type: Array,
+    default: () => []
+  }
 })
 
 defineEmits(['openLightbox'])

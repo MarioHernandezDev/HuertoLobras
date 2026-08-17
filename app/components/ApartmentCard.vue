@@ -85,7 +85,7 @@
 
 <script setup>
 import { computed } from 'vue'
-import defaultImg from '~/assets/img/default.jpg'
+import defaultImg from '~/assets/img/default.webp'
 
 const props = defineProps({
   apartment: {

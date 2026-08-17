@@ -48,7 +48,7 @@ defineEmits(['navigate'])
 
 <style scoped>
 .hero-bg-img {
-  background-image: url('~/assets/img/hero.JPG');
+  background-image: url('~/assets/img/hero.webp');
 }
 
 /* BOTÓN ¡VAMOS! */

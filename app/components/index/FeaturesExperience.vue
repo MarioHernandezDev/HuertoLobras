@@ -92,7 +92,7 @@ defineEmits(['navigate'])
 
 <style scoped>
 .feature-full-img {
-  background-image: url('~/assets/img/fondo01.JPG');
+  background-image: url('~/assets/img/fondo01.webp');
 }
 
 /* --- BOTÓN MINIMALISTA PREMIUM --- */

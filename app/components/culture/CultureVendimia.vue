@@ -17,11 +17,12 @@
 
     <div class="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 h-96 md:h-full gap-0 bg-stone-950">
       <div 
-        v-for="n in 2" :key="n"
-        @click="$emit('openLightbox', n, 'Vendimia en el Huerto', 2)"
+        v-for="(imgSrc, index) in images" 
+        :key="index"
+        @click="$emit('openLightbox', index + 1, 'Vendimia en el Huerto', images.length)"
         class="relative bg-stone-900 group overflow-hidden h-full cursor-pointer"
       >
-        <img :src="image" alt="Vendimia tradicional" class="w-full h-full object-cover block transition-all duration-500 group-hover:scale-105 group-hover:opacity-80" />
+        <img :src="imgSrc" alt="Vendimia tradicional" class="w-full h-full object-cover block transition-all duration-500 group-hover:scale-105 group-hover:opacity-80" />
         <div class="absolute inset-0 bg-stone-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.604 10.604z" /></svg>
         </div>
@@ -32,7 +33,10 @@
 
 <script setup>
 defineProps({
-  image: String
+  images: {
+    type: Array,
+    default: () => []
+  }
 })
 
 defineEmits(['openLightbox'])

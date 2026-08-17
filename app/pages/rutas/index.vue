@@ -180,9 +180,9 @@ useHead({
   ]
 })
 
-import heroImage from '~/assets/img/rutashero.JPG'
-import waterHeroImg from '~/assets/img/rutasagua.png'
-import walkHeroImg from '~/assets/img/rutassendero.jpg'
+import heroImage from '~/assets/img/rutashero.webp'
+import waterHeroImg from '~/assets/img/rutasagua.webp'
+import walkHeroImg from '~/assets/img/rutassendero.webp'
 
 import RoutesHero from '~/components/routes/RoutesHero.vue'
 import RouteCategoryBanner from '~/components/routes/RouteCategoryBanner.vue'

@@ -207,8 +207,8 @@ useHead({
 })
 
 // Importaciones base
-import heroImage from '~/assets/img/heroapartamentos.JPG'
-import defaultImg from '~/assets/img/default.jpg'
+import heroImage from '~/assets/img/heroapartamentos.webp'
+import defaultImg from '~/assets/img/default.webp'
 
 // Carga global dinámica de las imágenes
 const allImages = import.meta.glob('~/assets/img/**/*.{jpg,jpeg,png,JPG,JPEG,PNG,webp,WEBP}', {
@@ -218,8 +218,8 @@ const allImages = import.meta.glob('~/assets/img/**/*.{jpg,jpeg,png,JPG,JPEG,PNG
 
 const getCoverImage = (folder) => {
   const fullPathWebp = `/assets/img/${folder}/portada.webp`
-  const fullPathJpg = `/assets/img/${folder}/portada.jpg`
-  const fullPathJpgUpper = `/assets/img/${folder}/portada.JPG`
+  const fullPathJpg = `/assets/img/${folder}/portada.webp`
+  const fullPathJpgUpper = `/assets/img/${folder}/portada.webp`
   
   return allImages[fullPathWebp] || allImages[fullPathJpg] || allImages[fullPathJpgUpper] || defaultImg
 }
