@@ -11,7 +11,7 @@
         </button>
         
         <div class="max-w-5xl max-h-[80vh] flex flex-col items-center justify-center" @click.stop>
-          <img :src="image" alt="Vista ampliada" class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl block" />
+          <img :src="image" alt="Vista ampliada de patrimonio cultural y paisaje de Lobras" class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl block" loading="eager" decoding="async" />
           <p class="text-stone-400 font-mono text-sm uppercase tracking-widest text-center mt-6 font-bold">
             {{ galleryTitle }} <span v-if="totalCount > 1">{{ activeIndex }} de {{ totalCount }}</span>
           </p>

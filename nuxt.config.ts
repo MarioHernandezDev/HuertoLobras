@@ -9,10 +9,22 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    '@nuxtjs/tailwindcss'
-    // Comentado para evitar el fallo de carga:
-    // '@nuxt/image'
+    '@nuxtjs/tailwindcss',
+    '@nuxt/image'
   ],
+
+  image: {
+    format: ['webp'],
+    quality: 78,
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536
+    }
+  },
 
   css: ['~/assets/css/main.css'],
 

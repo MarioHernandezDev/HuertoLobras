@@ -83,7 +83,7 @@
         @click="$emit('openLightbox', 1, 'Museo El Malacate', 3)"
         class="relative h-80 lg:h-[450px] overflow-hidden bg-stone-900 cursor-pointer group"
       >
-        <img :src="image" alt="Museo El Malacate" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-75" />
+        <img :src="image" alt="Museo etnológico El Malacate en Tímar, patrimonio histórico de la Alpujarra" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-75" loading="lazy" decoding="async" />
         <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent p-8 flex flex-col justify-end">
           <span class="text-amber-400 font-mono text-xs font-bold uppercase tracking-widest">Exposición</span>
           <h4 class="text-white font-sans font-bold text-xl m-0">Instalaciones del Museo</h4>
@@ -94,7 +94,7 @@
         @click="$emit('openLightbox', 2, 'Minería y Telares', 3)"
         class="relative h-80 lg:h-[450px] overflow-hidden bg-stone-900 cursor-pointer group border-t md:border-t-0 md:border-l border-stone-800"
       >
-        <img :src="image" alt="Minería Tradicional y Telares" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-75" />
+        <img :src="image" alt="Minería tradicional y telares artesanales del Museo del Malacate en Tímar" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-75" loading="lazy" decoding="async" />
         <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent p-8 flex flex-col justify-end">
           <span class="text-amber-400 font-mono text-xs font-bold uppercase tracking-widest">Colección</span>
           <h4 class="text-white font-sans font-bold text-xl m-0">Minería & Telares</h4>
@@ -105,7 +105,7 @@
         @click="$emit('openLightbox', 3, 'Documento Reyes Católicos', 3)"
         class="relative h-80 lg:h-[450px] overflow-hidden bg-stone-900 cursor-pointer group border-t md:border-t-0 md:border-l border-stone-800"
       >
-        <img :src="image" alt="Documento Reyes Católicos" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-75" />
+        <img :src="image" alt="Documento histórico del reparto de tierras de los Reyes Católicos en la Alpujarra" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-75" loading="lazy" decoding="async" />
         <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent p-8 flex flex-col justify-end">
           <span class="text-amber-400 font-mono text-xs font-bold uppercase tracking-widest">Archivo</span>
           <h4 class="text-white font-sans font-bold text-xl m-0">Reparto de Tierras</h4>

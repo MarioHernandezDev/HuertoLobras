@@ -49,8 +49,10 @@
               <div class="w-full h-[360px] sm:h-[460px] rounded-3xl overflow-hidden bg-stone-100 border border-stone-200/80 shadow-md shadow-stone-900/5 relative">
                 <img 
                   :src="activeImage || defaultImg" 
-                  :alt="apartment.name"
+                  :alt="`Vista principal de ${apartment.name} en Lobras, Alpujarra Granadina`"
                   class="w-full h-full object-cover transition-all duration-500"
+                  loading="eager"
+                  decoding="async"
                 />
               </div>
               
@@ -63,7 +65,7 @@
                   :class="activeImage === img ? 'border-[#3b6e4c] ring-2 ring-[#3b6e4c]/30 scale-[1.02]' : 'border-stone-200 hover:border-stone-400 opacity-70 hover:opacity-100'"
                   :aria-label="'Ver foto ' + (idx + 1) + ' de ' + apartment.name"
                 >
-                  <img :src="img" class="w-full h-full object-cover" alt="Miniatura" loading="lazy" />
+                  <img :src="img" class="w-full h-full object-cover" :alt="`Miniatura de ${apartment.name} - foto ${idx + 1}`" loading="lazy" decoding="async" />
                 </button>
               </div>
             </div>

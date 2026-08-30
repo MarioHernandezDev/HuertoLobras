@@ -22,7 +22,7 @@
         @click="$emit('openLightbox', index + 1, 'Vendimia en el Huerto', images.length)"
         class="relative bg-stone-900 group overflow-hidden h-full cursor-pointer"
       >
-        <img :src="imgSrc" alt="Vendimia tradicional" class="w-full h-full object-cover block transition-all duration-500 group-hover:scale-105 group-hover:opacity-80" />
+        <img :src="imgSrc" alt="Vendimia tradicional en el Huerto de Lobras, cosecha familiar en la Alpujarra" class="w-full h-full object-cover block transition-all duration-500 group-hover:scale-105 group-hover:opacity-80" loading="lazy" decoding="async" />
         <div class="absolute inset-0 bg-stone-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.604 10.604z" /></svg>
         </div>

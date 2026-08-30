@@ -85,7 +85,7 @@
         @click="$emit('openLightbox', 1, 'Cementerio BIC de Lobras', images.length)"
         class="relative h-80 lg:h-[450px] overflow-hidden bg-stone-900 cursor-pointer group"
       >
-        <img :src="images[0]" alt="Camposanto de Lobras" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-75" />
+        <img :src="images[0]" alt="Camposanto de Lobras, cementerio histórico con arquitectura tradicional de la Alpujarra" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-75" loading="lazy" decoding="async" />
 
       </div>
 
@@ -93,7 +93,7 @@
         @click="$emit('openLightbox', 2, 'Detalle Constructivo BIC', images.length)"
         class="relative h-80 lg:h-[450px] overflow-hidden bg-stone-900 cursor-pointer group border-t md:border-t-0 md:border-l border-stone-800"
       >
-        <img :src="images[1]" alt="Detalles constructivos tradicionales" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-75" />
+        <img :src="images[1]" alt="Detalle constructivo tradicional del cementerio de Lobras en la Alpujarra" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-75" loading="lazy" decoding="async" />
 
       </div>
 
@@ -101,7 +101,7 @@
         @click="$emit('openLightbox', 3, 'Panorámica del Camposanto', images.length)"
         class="relative h-80 lg:h-[450px] overflow-hidden bg-stone-900 cursor-pointer group border-t md:border-t-0 md:border-l border-stone-800"
       >
-        <img :src="images[2]" alt="Entorno del Cementerio de Lobras" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-75" />
+        <img :src="images[2]" alt="Entorno del cementerio de Lobras con vistas al valle de la Alpujarra" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-75" loading="lazy" decoding="async" />
 
       </div>
 

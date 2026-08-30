@@ -37,7 +37,7 @@
           @click="openLightbox(n, 'Vendimia en el Huerto', 2)"
           class="relative bg-stone-900 group overflow-hidden h-full cursor-pointer"
         >
-          <img :src="defaultImage" alt="Vendimia tradicional" class="w-full h-full object-cover block transition-all duration-500 group-hover:scale-105 group-hover:opacity-80" />
+          <img :src="defaultImage" alt="Vendimia tradicional en Lobras, actividad familiar de cosecha del viñedo en la Alpujarra" class="w-full h-full object-cover block transition-all duration-500 group-hover:scale-105 group-hover:opacity-80" loading="lazy" decoding="async" />
           <div class="absolute inset-0 bg-stone-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.604 10.604z" /></svg>
           </div>
@@ -45,7 +45,7 @@
       </div>
     </div>
 
-    <<div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 space-y-32 mb-40">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 space-y-32 mb-40">
       
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div class="space-y-8">
@@ -67,7 +67,7 @@
         </div>
         
         <div @click="openLightbox(1, 'Museo Lombarda')" class="rounded-[3rem] overflow-hidden aspect-video lg:aspect-square bg-stone-900 relative group cursor-pointer shadow-md">
-          <img :src="defaultImage" alt="Instrumentos Museo" class="w-full h-full object-cover group-hover:opacity-85 transition-all duration-500 group-hover:scale-102" />
+          <img :src="defaultImage" alt="Instrumentos del Museo Lombarda en la Alpujarra, patrimonio musical de la zona" class="w-full h-full object-cover group-hover:opacity-85 transition-all duration-500 group-hover:scale-102" loading="lazy" decoding="async" />
           <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-stone-950/20">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-white"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.604 10.604z" /></svg>
           </div>
@@ -97,7 +97,7 @@
         </div>
         
         <div @click="openLightbox(2, 'Museo El Malacate')" class="lg:order-1 rounded-[3rem] overflow-hidden aspect-video lg:aspect-square bg-stone-900 relative group cursor-pointer shadow-md">
-          <img :src="defaultImage" alt="Etnología Tímar" class="w-full h-full object-cover group-hover:opacity-85 transition-all duration-500 group-hover:scale-102" />
+          <img :src="defaultImage" alt="Museo etnológico del Malacate en Tímar, historia y tradición de la Alpujarra" class="w-full h-full object-cover group-hover:opacity-85 transition-all duration-500 group-hover:scale-102" loading="lazy" decoding="async" />
           <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-stone-950/20">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-white"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.604 10.604z" /></svg>
           </div>
@@ -115,7 +115,7 @@
           <div class="bg-white rounded-[2.5rem] overflow-hidden border border-stone-200/30 p-4 shadow-[0_15px_40px_-20px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_50px_-15px_rgba(59,110,76,0.08)] transition-all duration-500 flex flex-col justify-between">
             <div class="space-y-6">
               <div @click="openLightbox(3, 'Alpujárride')" class="rounded-[1.8rem] overflow-hidden aspect-video bg-stone-900 cursor-pointer group relative shadow-inner">
-                <img :src="defaultImage" alt="Alpujárride" class="w-full h-full object-cover group-hover:opacity-85 transition-all duration-500 group-hover:scale-103" />
+                <img :src="defaultImage" alt="Bodega y enoturismo en Alpujárride, paisaje vinícola de la Alpujarra" class="w-full h-full object-cover group-hover:opacity-85 transition-all duration-500 group-hover:scale-103" loading="lazy" decoding="async" />
                 <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-stone-950/20">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.604 10.604z" /></svg>
                 </div>
@@ -136,7 +136,7 @@
           <div class="bg-white rounded-[2.5rem] overflow-hidden border border-stone-200/30 p-4 shadow-[0_15px_40px_-20px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_50px_-15px_rgba(59,110,76,0.08)] transition-all duration-500 flex flex-col justify-between">
             <div class="space-y-6">
               <div @click="openLightbox(4, 'Cuatro Vientos')" class="rounded-[1.8rem] overflow-hidden aspect-video bg-stone-900 cursor-pointer group relative shadow-inner">
-                <img :src="defaultImage" alt="Cuatro Vientos" class="w-full h-full object-cover group-hover:opacity-85 transition-all duration-500 group-hover:scale-103" />
+                <img :src="defaultImage" alt="Museo Cuatro Vientos, patrimonio etnológico de Murtas y la Alpujarra" class="w-full h-full object-cover group-hover:opacity-85 transition-all duration-500 group-hover:scale-103" loading="lazy" decoding="async" />
                 <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-stone-950/20">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.604 10.604z" /></svg>
                 </div>
@@ -176,7 +176,7 @@
           @click="openLightbox(index, 'Fiestas de Lobras', 9)"
           class="relative aspect-square sm:aspect-video lg:aspect-square overflow-hidden bg-stone-900 cursor-pointer group"
         >
-          <img :src="defaultImage" class="w-full h-full object-cover block transition-opacity duration-500 group-hover:opacity-75" />
+          <img :src="defaultImage" alt="Fiestas tradicionales de Lobras, celebración popular en la Alpujarra" class="w-full h-full object-cover block transition-opacity duration-500 group-hover:opacity-75" loading="lazy" decoding="async" />
           <div class="absolute inset-0 bg-stone-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-white"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.604 10.604z" /></svg>
           </div>
@@ -196,7 +196,7 @@
           </button>
           
           <div class="max-w-5xl max-h-[80vh] flex flex-col items-center justify-center" @click.stop>
-            <img :src="defaultImage" alt="Vista ampliada" class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl block" />
+            <img :src="defaultImage" alt="Vista ampliada de actividad cultural y tradicional en Lobras" class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl block" loading="eager" decoding="async" />
             <p class="text-stone-400 font-mono text-sm uppercase tracking-widest text-center mt-6 font-bold">
               {{ galleryTitle }} <span v-if="totalCount > 1">{{ activeIndex }} de {{ totalCount }}</span>
             </p>
@@ -210,7 +210,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import defaultImage from '~/assets/img/default.jpg'
+import defaultImage from '~/assets/img/default.webp'
 
 const isOpen = ref(false)
 const activeIndex = ref(null)

@@ -40,9 +40,10 @@
       >
         <img 
           :src="getImageSrc(index)" 
-          :alt="'Imagen galería ' + index" 
+          :alt="`Casa rural en Lobras, vista ${index} del alojamiento ${index}`"
           class="w-full h-full object-cover block transition-all duration-500 group-hover:scale-105 group-hover:opacity-85" 
           loading="lazy"
+          decoding="async"
         />
         <div class="absolute inset-0 bg-stone-950/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white drop-shadow-md">
@@ -68,8 +69,10 @@
           <div class="max-w-5xl max-h-[80vh] flex flex-col items-center justify-center" @click.stop>
             <img 
               :src="getImageSrc(activeIndex)" 
-              alt="Vista ampliada" 
+              :alt="`Vista ampliada de alojamiento rural en Lobras, imagen ${activeIndex}`"
               class="max-w-full max-h-[80vh] object-contain rounded-xl shadow-2xl block" 
+              loading="eager"
+              decoding="async"
             />
             <p class="text-stone-400 font-mono text-sm uppercase tracking-widest text-center mt-6 font-bold">
               Fotografía {{ activeIndex }} de 12
@@ -86,7 +89,13 @@
 import { ref } from 'vue'
 import defaultImage from '~/assets/img/default.webp'
 
-const gridImages = import.meta.glob('~/assets/img/grid/*.webp', { eager: true, import: 'default' })
+const gridImages = Object.fromEntries(
+  Object.entries(import.meta.glob('~/assets/img/grid/*.webp', { eager: true, import: 'default' })).map(([key, value]) => {
+    const fileName = key.split('/').pop() || key
+    const baseName = fileName.replace(/\.webp$/i, '')
+    return [baseName, value]
+  })
+)
 
 defineEmits(['navigate'])
 
@@ -94,11 +103,9 @@ const isOpen = ref(false)
 const activeIndex = ref(null)
 
 const getImageSrc = (index) => {
-  if (index >= 1 && index <= 7) {
-    const path = `/assets/img/grid/grid${index}.webp`
-    return gridImages[path] || defaultImage
-  }
-  return defaultImage
+  const normalizedIndex = Number(index)
+  const key = `grid${normalizedIndex}`
+  return gridImages[key] || defaultImage
 }
 
 const openLightbox = (index) => {
