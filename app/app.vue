@@ -3,9 +3,6 @@
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-
-    <script type="application/ld+json" v-html="organizationSchema" />
-    <script type="application/ld+json" v-html="breadcrumbSchema" />
   </div>
 </template>
 
@@ -14,7 +11,7 @@ const route = useRoute()
 
 const siteUrl = 'https://elhuertodelobras.com'
 
-const organizationSchema = JSON.stringify({
+const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'LodgingBusiness',
   name: 'El Huerto de Lobras',
@@ -47,7 +44,7 @@ const organizationSchema = JSON.stringify({
     { '@type': 'LocationFeatureSpecification', name: 'Terrazas' },
     { '@type': 'LocationFeatureSpecification', name: 'Alojamiento rural' }
   ]
-})
+}
 
 const breadcrumbSchema = computed(() => {
   const path = route.path || '/'
@@ -65,10 +62,23 @@ const breadcrumbSchema = computed(() => {
     })
   })
 
-  return JSON.stringify({
+  return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: items
-  })
+  }
+})
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      textContent: JSON.stringify(organizationSchema)
+    },
+    {
+      type: 'application/ld+json',
+      textContent: JSON.stringify(breadcrumbSchema.value)
+    }
+  ]
 })
 </script>
