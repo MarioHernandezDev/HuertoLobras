@@ -159,48 +159,40 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-// SEO Head Configuration
+useSiteSeo({
+  title: 'Alojamientos rurales en Lobras | El Huerto de Lobras',
+  description: 'Descubre donde dormir en Lobras, Alpujarra Granada. Casas rurales, apartamentos con chimenea y vistas para reservar alojamiento rural en la Sierra Nevada.',
+  path: '/apartamentos',
+  ogTitle: 'Dónde dormir en Lobras | Casas rurales en la Alpujarra',
+  ogDescription: 'Reserva alojamiento rural en Lobras, Granada. Apartamentos y casas con chimenea, terrazas y encanto alpujarreño para escapadas auténticas.',
+  twitterTitle: 'Dónde dormir en Lobras | Alojamiento rural Alpujarra',
+  twitterDescription: 'Habitaciones rurales en Lobras, Alpujarra. Alojamiento en Granada para parejas, familias y grupos.',
+  image: 'https://elhuertodelobras.com/og/huerto-lobras-alojamientos.webp'
+})
+
 useHead({
-  title: 'Alojamientos y Casas Rurales en Lobras | El Huerto de Lobras',
-  meta: [
-    { 
-      name: 'description', 
-      content: 'Reserva apartamentos y casas rurales con chimenea en Lobras (Alpujarra Granadina). Alojamientos con vistas panorámicas, terrazas privadas e historia.' 
-    },
-    { 
-      name: 'keywords', 
-      content: 'casas rurales Lobras, apartamentos Alpujarra Granadina, alojamiento con chimenea Granada, alquiler casa rural Tímar, El Huerto de Lobras' 
-    },
-    { property: 'og:title', content: 'Nuestros Alojamientos en Lobras | El Huerto de Lobras' },
-    { property: 'og:description', content: 'Casas rurales únicas con chimenea, terrazas al valle y encanto alpujarreño en Lobras, Granada.' },
-    { property: 'og:type', content: 'website' }
-  ],
-  link: [
-    { rel: 'canonical', href: 'https://elhuertodelobras.com/alojamientos' }
-  ],
   script: [
     {
       type: 'application/ld+json',
       children: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'LodgingBusiness',
-        'name': 'El Huerto de Lobras - Alojamientos',
-        'url': 'https://elhuertodelobras.com/alojamientos',
-        'address': {
+        name: 'El Huerto de Lobras - Alojamientos',
+        url: 'https://elhuertodelobras.com/apartamentos',
+        address: {
           '@type': 'PostalAddress',
-          'addressLocality': 'Lobras',
-          'addressRegion': 'Granada',
-          'postalCode': '18449',
-          'addressCountry': 'ES'
+          addressLocality: 'Lobras',
+          addressRegion: 'Granada',
+          postalCode: '18449',
+          addressCountry: 'ES'
         },
-        'containsPlace': [
-          { '@type': 'Accommodation', 'name': 'Apartamento Las Golondrinas' },
-          { '@type': 'Accommodation', 'name': 'Apartamento La Seda' },
-          { '@type': 'Accommodation', 'name': 'Apartamento Los Cerezos' },
-          { '@type': 'Accommodation', 'name': 'Apartamento Los Trovos' },
-          { '@type': 'Accommodation', 'name': 'Apartamento La Contraviesa' },
-          { '@type': 'Accommodation', 'name': 'El Estudio' },
-          { '@type': 'Accommodation', 'name': 'La Biblioteca' }
+        containsPlace: [
+          { '@type': 'Accommodation', name: 'Apartamento Las Golondrinas' },
+          { '@type': 'Accommodation', name: 'Apartamento La Seda' },
+          { '@type': 'Accommodation', name: 'Apartamento Los Cerezos' },
+          { '@type': 'Accommodation', name: 'Apartamento La Contraviesa' },
+          { '@type': 'Accommodation', name: 'El Estudio' },
+          { '@type': 'Accommodation', name: 'La Biblioteca' }
         ]
       })
     }

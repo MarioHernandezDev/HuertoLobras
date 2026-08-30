@@ -173,9 +173,18 @@
 import { onMounted } from 'vue'
 import heroImage from '~/assets/img/contacto.webp'
 
-// SEO On-Page Profesional y Local
+useSiteSeo({
+  title: 'Contacto y ubicación en Lobras | El Huerto de Lobras',
+  description: 'Reserva contacto con El Huerto de Lobras en Granada. Ubicación, teléfono, whatsapp y visitas en alojamiento rural de la Alpujarra.',
+  path: '/contacto',
+  ogTitle: 'Contacto y ubicación de El Huerto de Lobras',
+  ogDescription: 'Reserva en Lobras, Granada. Contacta con El Huerto de Lobras para alojamientos rurales y experiencias en la Alpujarra.',
+  twitterTitle: 'Contacto y ubicación de El Huerto de Lobras',
+  twitterDescription: 'Teléfono, whatsapp y ubicación del alojamiento rural en Lobras, Granada.',
+  image: 'https://elhuertodelobras.com/og/huerto-lobras-contacto.webp'
+})
+
 useHead({
-  title: 'Contacto y Ubicación | El Huerto de Lobras',
   meta: [
     { 
       name: 'description', 

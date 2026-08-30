@@ -71,40 +71,32 @@ import CultureWine from '~/components/culture/CultureWine.vue'
 import CultureParties from '~/components/culture/CultureParties.vue'
 import CultureLightbox from '~/components/culture/CultureLightbox.vue'
 
-// SEO On-Page
+useSiteSeo({
+  title: 'Cultura y tradiciones de Lobras | Alpujarra Granada',
+  description: 'Descubre patrimonio cultural, fiestas de Lobras, vendimia y tradiciones locales en la Alpujarra. Turismo auténtico en Granada.',
+  path: '/cultura',
+  ogTitle: 'Cultura, fiestas y tradiciones de Lobras',
+  ogDescription: 'Patrimonio cultural, fiestas tradicionales, vendimia y turismo activo en Lobras, la Alpujarra Granada.',
+  twitterTitle: 'Cultura y tradiciones de Lobras',
+  twitterDescription: 'Fiestas de Lobras, vendimia y patrimonio cultural de la Alpujarra.',
+  image: 'https://elhuertodelobras.com/og/huerto-lobras-cultura.webp'
+})
+
 useHead({
-  title: 'Cultura y Tradiciones en Lobras | El Huerto de Lobras',
-  meta: [
-    { 
-      name: 'description', 
-      content: 'Conoce la historia, museos, fiestas tradicionales, el trovo y la cultura vitivinícola de Lobras y Tímar en la Alpujarra Granadina.' 
-    },
-    { 
-      name: 'keywords', 
-      content: 'cultura Lobras, patrimonio Alpujarra Granadina, fiestas tradicionales Tímar, vendimia Alpujarra, museos Lobras, trovo alpujarreño' 
-    },
-    { property: 'og:title', content: 'Cultura y Tradición en Lobras | El Huerto de Lobras' },
-    { property: 'og:description', content: 'Descubre las tradiciones vivas, la historia textil de la seda y el patrimonio histórico de Lobras.' },
-    { property: 'og:type', content: 'website' },
-    { name: 'twitter:card', content: 'summary_large_image' }
-  ],
-  link: [
-    { rel: 'canonical', href: 'https://elhuertodelobras.com/cultura' }
-  ],
   script: [
     {
       type: 'application/ld+json',
       children: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'TouristAttraction',
-        'name': 'Patrimonio Cultural de Lobras',
-        'description': 'Tradiciones, arquitectura vernácula y patrimonio histórico de Lobras en la Alpujarra Granadina.',
-        'address': {
+        name: 'Patrimonio Cultural de Lobras',
+        description: 'Tradiciones, fiestas, vendimia y patrimonio histórico de Lobras en la Alpujarra Granadina.',
+        address: {
           '@type': 'PostalAddress',
-          'addressLocality': 'Lobras',
-          'addressRegion': 'Granada',
-          'postalCode': '18449',
-          'addressCountry': 'ES'
+          addressLocality: 'Lobras',
+          addressRegion: 'Granada',
+          postalCode: '18449',
+          addressCountry: 'ES'
         }
       })
     }

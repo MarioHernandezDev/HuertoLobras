@@ -125,64 +125,41 @@
 <script setup>
 import { computed } from 'vue'
 
-// SEO Head Configuration
+useSiteSeo({
+  title: 'Rutas de senderismo en Lobras | Alpujarra Granada',
+  description: 'Qué ver en Lobras y rutas de senderismo en la Alpujarra. Descubre senderos, acequias, patrimonio y turismo activo en Granada.',
+  path: '/rutas',
+  ogTitle: 'Rutas de senderismo en Lobras y la Alpujarra',
+  ogDescription: 'Explora rutas de senderismo, acequias históricas y paisajes de Lobras y Tímar en la Alpujarra Granadina.',
+  twitterTitle: 'Rutas de senderismo en Lobras',
+  twitterDescription: 'Descubre rutas en Lobras, caminos moriscos y viaje experiencial por la Alpujarra.',
+  image: 'https://elhuertodelobras.com/og/huerto-lobras-rutas.webp'
+})
+
 useHead({
-  title: 'Rutas de Senderismo y Acequias en Lobras | El Huerto de Lobras',
-  meta: [
-    { 
-      name: 'description', 
-      content: 'Descubre las mejores rutas de senderismo en Lobras y la Alpujarra Granadina: Acequia de los Castaños, Sendero Medieval PR-A 299, tramos GR-7 y GR-142.' 
-    },
-    { 
-      name: 'keywords', 
-      content: 'rutas senderismo Lobras, Acequia de los Castaños, GR7 Alpujarra, GR142, senderismo Tímar, ruta del agua Cádiar, caminos moriscos Granada' 
-    },
-    { property: 'og:title', content: 'Rutas y Senderismo en Lobras (Alpujarra) | El Huerto de Lobras' },
-    { property: 'og:description', content: 'Explora acequias reales, lavaderos históricos y caminos moriscos alrededor de Lobras y Tímar.' },
-    { property: 'og:type', content: 'website' }
-  ],
-  link: [
-    { rel: 'canonical', href: 'https://elhuertodelobras.com/experiencias' }
-  ],
   script: [
     {
       type: 'application/ld+json',
       children: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'ItemList',
-        'name': 'Rutas de Senderismo en Lobras y la Alpujarra',
-        'itemListElement': [
+        name: 'Rutas de senderismo en Lobras y la Alpujarra',
+        itemListElement: [
           {
             '@type': 'TouristTrip',
-            'position': 1,
-            'name': 'Ruta del Agua Mora (Cádiar - Narila)',
-            'touristType': ['Hiking', 'Nature'],
-            'description': 'Recorrido circular en torno a la Acequia Real de Narila, el Barranco de Pedro Conde y la fuente ferruginosa.',
-            'url': 'https://es.wikiloc.com/rutas-senderismo/ruta-del-agua-mora-cadiar-narila-79715404'
+            position: 1,
+            name: 'Ruta del Agua Mora (Cádiar - Narila)',
+            touristType: ['Hiking', 'Nature'],
+            description: 'Recorrido circular por acequias, paisajes y patrimonio natural de la Alpujarra.',
+            url: 'https://es.wikiloc.com/rutas-senderismo/ruta-del-agua-mora-cadiar-narila-79715404'
           },
           {
             '@type': 'TouristTrip',
-            'position': 2,
-            'name': 'Lobras - Sendero Acequia de los Castaños (SL-A 203) - Tímar',
-            'touristType': ['Hiking', 'Culture'],
-            'description': 'Ruta por la Acequia de los Castaños, lavaderos tradicionales, la Balsa Medieval de Tímar y ruinas mineras.',
-            'url': 'https://es.wikiloc.com/rutas-senderismo/lobras-sendero-acequia-de-los-castanos-sl-203-timar-gr-7-sendero-medieval-pr-a-299-gr-142-96247107'
-          },
-          {
-            '@type': 'TouristTrip',
-            'position': 3,
-            'name': 'Cádiar - GR 7 - GR 142 - Vereda de Escalona - Tímar',
-            'touristType': ['Hiking'],
-            'description': 'Travesía senderista conectando Cádiar, Lobras y Tímar combinando tramos del GR-7 y GR-142.',
-            'url': 'https://es.wikiloc.com/rutas-senderismo/cadiar-gr-7-gr-142-vereda-de-escalona-acequia-de-los-castanos-timar-128456812'
-          },
-          {
-            '@type': 'TouristTrip',
-            'position': 4,
-            'name': 'Juviles - Sendero Medieval - Cástaras - Lobras - Tímar - Juviles',
-            'touristType': ['Hiking', 'Hard Hiking'],
-            'description': 'Gran circular de larga distancia por la Alpujarra media siguiendo el Sendero Medieval PR-A 299.',
-            'url': 'https://es.wikiloc.com/rutas-senderismo/juviles-medieval-pr-a-299-tramo-iv-castaras-lobras-timar-juviles-9975762'
+            position: 2,
+            name: 'Sendero Acequia de los Castaños y Tímar',
+            touristType: ['Hiking', 'Culture'],
+            description: 'Ruta por la Acequia de los Castaños, lavaderos, senderos históricos y paisajes de Lobras.',
+            url: 'https://es.wikiloc.com/rutas-senderismo/lobras-sendero-acequia-de-los-castanos-sl-203-timar-gr-7-sendero-medieval-pr-a-299-gr-142-96247107'
           }
         ]
       })
