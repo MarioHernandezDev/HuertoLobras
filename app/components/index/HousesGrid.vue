@@ -1,10 +1,7 @@
 <template>
   <section id="alojamientos-galeria" class="relative w-full bg-[#fcfaf7] pt-36 md:pt-48 pb-0 antialiased select-none overflow-hidden">
     
-    <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-      <div class="absolute -top-10 -right-20 w-[28rem] h-[28rem] md:w-[45rem] md:h-[45rem] rounded-full bg-[#e8decb]/60 blur-[100px] md:blur-[140px]"></div>
-      <div class="absolute top-1/2 -left-24 w-[30rem] h-[30rem] md:w-[48rem] md:h-[48rem] rounded-full bg-[#d6c4ad]/50 blur-[90px] md:blur-[130px]"></div>
-      <div class="absolute bottom-10 right-10 w-[26rem] h-[26rem] md:w-[42rem] md:h-[42rem] rounded-full bg-[#e2d5c3]/70 blur-[80px] md:blur-[120px]"></div>
+    <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden bg-blobs">
     </div>
 
     <!-- Encabezado con animación de entrada -->
@@ -57,7 +54,7 @@
       <Transition name="fade">
         <div 
           v-if="isOpen" 
-          class="fixed inset-0 z-[9999] bg-stone-950/95 backdrop-blur-md flex flex-col items-center justify-center p-4"
+          class="fixed inset-0 z-[9999] bg-stone-950/95 flex flex-col items-center justify-center p-4"
           @click="closeLightbox"
         >
           <button class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors p-2 cursor-pointer" @click="closeLightbox">

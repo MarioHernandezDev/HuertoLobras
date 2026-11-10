@@ -10,22 +10,71 @@
   font-display: swap;
 }
 
-/* Transición ligera de la directiva v-scroll */
-.reveal-init {
+/* ------------------------------------------------------------------
+   MOVIMIENTO
+   Solo se animan opacity y transform (compuestas en GPU, no repintan).
+   ------------------------------------------------------------------ */
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Revelado al scroll (lo gestiona plugins/scroll.ts) */
+.reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
   will-change: opacity, transform;
 }
-
-.reveal-active {
+.reveal-up    { transform: translate3d(0, 32px, 0); }
+.reveal-left  { transform: translate3d(-36px, 0, 0); }
+.reveal-right { transform: translate3d(36px, 0, 0); }
+.reveal-scale { transform: scale(0.94); }
+.reveal-fade  { transform: none; }
+.reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
-.delay-100 { transition-delay: 0.1s; }
-.delay-200 { transition-delay: 0.2s; }
-.delay-300 { transition-delay: 0.3s; }
+/* Entrada inmediata para lo que está en pantalla al cargar (solo CSS, funciona sin JS) */
+@keyframes enter-up {
+  from { opacity: 0; transform: translate3d(0, 24px, 0); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes enter-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes hero-zoom {
+  from { transform: scale(1.12); }
+  to   { transform: scale(1); }
+}
+.enter-up   { animation: enter-up 1s var(--ease-out-expo) both; animation-delay: var(--enter-delay, 0ms); }
+.enter-fade { animation: enter-fade 1.2s ease-out both; animation-delay: var(--enter-delay, 0ms); }
+.hero-zoom  { animation: hero-zoom 2.4s var(--ease-out-expo) both; transform-origin: center; will-change: transform; }
+
+/* Transición entre páginas: breve y solo opacidad (en móvil cualquier espera se nota) */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.2s ease;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}
+
+/* Fondo decorativo cálido: degradados estáticos en lugar de círculos con blur de 140px
+   (los blur gigantes son lo más caro de pintar en un móvil). */
+.bg-blobs {
+  background:
+    radial-gradient(42rem 42rem at 100% 4%, rgba(232, 222, 203, 0.65), transparent 70%),
+    radial-gradient(44rem 44rem at 0% 50%, rgba(214, 196, 173, 0.45), transparent 70%),
+    radial-gradient(40rem 40rem at 92% 100%, rgba(226, 213, 195, 0.7), transparent 70%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .enter-up, .enter-fade, .hero-zoom { animation: none; }
+  .page-enter-active, .page-leave-active { transition: none; }
+  html { scroll-behavior: auto !important; }
+}
 
 @layer base {
   :root {

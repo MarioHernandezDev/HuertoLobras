@@ -1,12 +1,12 @@
 <template>
   <section class="py-32 px-4 md:px-6 max-w-4xl mx-auto text-center select-none space-y-6 overflow-hidden">
-    <h3 class="font-manual text-4xl sm:text-5xl lg:text-6xl text-stone-900 font-normal m-0 pb-2 animate-fade-up">
+    <h3 v-scroll class="font-manual text-4xl sm:text-5xl lg:text-6xl text-stone-900 font-normal m-0 pb-2">
       ¿Quieres un plan a medida?
     </h3>
-    <p class="text-stone-600 text-base sm:text-lg lg:text-xl max-w-xl mx-auto font-medium leading-relaxed m-0 animate-fade-up">
+    <p v-scroll class="text-stone-600 text-base sm:text-lg lg:text-xl max-w-xl mx-auto font-medium leading-relaxed m-0">
       Si buscas guías oficiales de montaña para la Alpujarra o rutas familiares adaptadas, dinos antes de llegar y lo organizamos.
     </p>
-    <div class="pt-4 animate-fade-up">
+    <div v-scroll class="pt-4">
       <a href="tel:+34679038079" class="btn-premium-dark group">
         <i class="fa-solid fa-phone text-amber-400"></i>
         <span>Llamar y Consultar</span>

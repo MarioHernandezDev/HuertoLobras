@@ -1,19 +1,27 @@
 <template>
   <section class="relative h-[100dvh] w-full flex flex-col justify-between p-4 sm:p-8 md:p-12 lg:p-16 pt-24 sm:pt-28 pb-8 overflow-hidden antialiased select-none">
     
-    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat hero-bg-img z-0"></div>
+    <div class="absolute inset-0 z-0 overflow-hidden bg-stone-900">
+      <img
+        :src="heroImg"
+        alt="Vista de Lobras y El Huerto de Lobras en la Alpujarra Granadina"
+        class="w-full h-full object-cover hero-zoom"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </div>
 
     <div class="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-stone-950/30 to-stone-950/10 z-0 pointer-events-none"></div>
 
     <div></div>
 
-    <div v-scroll class="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row items-stretch md:items-end justify-between gap-6 md:gap-8 pb-2">
+    <div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col md:flex-row items-stretch md:items-end justify-between gap-6 md:gap-8 pb-2">
       
       <div class="space-y-1 w-full">
-        <span class="text-amber-400 font-sans font-extrabold text-xs uppercase tracking-[0.3em] block drop-shadow-sm">
+        <span class="enter-up text-amber-400 font-sans font-extrabold text-xs uppercase tracking-[0.3em] block drop-shadow-sm" style="--enter-delay: 200ms">
           Alojamiento Rural
         </span>
-        <h1 class="text-7xl sm:text-8xl md:text-8xl lg:text-[9rem] font-manual text-white tracking-normal leading-[0.82] font-normal m-0 drop-shadow-lg w-full break-words">
+        <h1 style="--enter-delay: 350ms" class="enter-up text-7xl sm:text-8xl md:text-8xl lg:text-[9rem] font-manual text-white tracking-normal leading-[0.82] font-normal m-0 drop-shadow-lg w-full break-words">
           El Huerto <br />
           <span class="text-white font-black block">de Lobras.</span>
         </h1>
@@ -21,7 +29,7 @@
 
       <button 
         @click="$emit('navigate', 'experiencias')" 
-        class="btn-lets-go group border-0 cursor-pointer w-full md:w-auto shrink-0 mt-2 md:mt-0"
+        style="--enter-delay: 700ms" class="enter-up btn-lets-go group border-0 cursor-pointer w-full md:w-auto shrink-0 mt-2 md:mt-0"
         aria-label="Ir a experiencias"
       >
         <span>¡VAMOS!</span>
@@ -43,14 +51,11 @@
 </template>
 
 <script setup>
+import heroImg from '~/assets/img/hero.webp'
 defineEmits(['navigate'])
 </script>
 
 <style scoped>
-.hero-bg-img {
-  background-image: url('~/assets/img/hero.webp');
-}
-
 .btn-lets-go {
   display: inline-flex;
   align-items: center;

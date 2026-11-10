@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full bg-[#3b6e4c] grid grid-cols-1 md:grid-cols-12 h-auto lg:h-[700px] overflow-hidden relative my-24 md:my-32 shadow-[0_20px_50px_-25px_rgba(59,110,76,0.25)] animate-fade-up">
+  <section v-scroll class="w-full bg-[#3b6e4c] grid grid-cols-1 md:grid-cols-12 h-auto lg:h-[700px] overflow-hidden relative my-24 md:my-32 shadow-[0_20px_50px_-25px_rgba(59,110,76,0.25)]">
     <div class="md:col-span-5 bg-[#3b6e4c] text-white p-8 md:p-12 lg:p-20 flex flex-col justify-center space-y-8 z-20">
       <span class="text-xs font-mono font-black uppercase tracking-[0.3em] text-amber-400">Actividad Estacional</span>
       <h3 class="font-manual text-5xl lg:text-7xl text-white m-0 font-normal leading-tight">

@@ -11,10 +11,7 @@
     <section class="relative pt-28 md:pt-40 pb-32 px-4 md:px-8 lg:px-12 w-full mx-auto select-none">
       
       <!-- Fondos decorativos -->
-      <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <div class="absolute top-12 -right-20 w-[28rem] h-[28rem] md:w-[45rem] md:h-[45rem] rounded-full bg-[#e8decb]/60 blur-[100px] md:blur-[140px]"></div>
-        <div class="absolute top-1/2 -left-24 w-[30rem] h-[30rem] md:w-[48rem] md:h-[48rem] rounded-full bg-[#d6c4ad]/50 blur-[90px] md:blur-[130px]"></div>
-        <div class="absolute -bottom-20 right-10 w-[26rem] h-[26rem] md:w-[42rem] md:h-[42rem] rounded-full bg-[#e2d5c3]/70 blur-[80px] md:blur-[120px]"></div>
+      <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden bg-blobs">
       </div>
 
       <div class="relative z-10 max-w-[96%] mx-auto">
@@ -101,12 +98,12 @@
                     class="flex items-center justify-center gap-3 bg-stone-900 hover:bg-[#3b6e4c] text-white font-sans font-black text-xs uppercase tracking-widest py-4 px-4 rounded-full shadow-sm text-center no-underline transition-colors"
                     aria-label="Llamar directamente para reservar casa rural en Lobras"
                   >
-                    <i class="fa-solid fa-phone text-amber-400 text-sm"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-amber-400"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>
                     <span>Llamar Directo</span>
                   </a>
 
                   <a 
-                    href="https://www.booking.com" 
+                    href="https://www.booking.com/hotel/es/el-huerto-de-lobras.es.html" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     class="flex items-center justify-center gap-3 bg-[#003580] hover:bg-[#00224f] text-white font-sans font-black text-xs uppercase tracking-widest py-3.5 px-4 rounded-full text-center no-underline shadow-sm transition-colors"
@@ -127,12 +124,13 @@
 
             <div v-if="filteredApartments.length > 0" class="space-y-8">
               <div 
-                v-for="apt in filteredApartments" 
+                v-for="(apt, i) in filteredApartments" 
                 :key="apt.id"
                 v-scroll
               >
                 <ApartmentCard 
                   :apartment="apt"
+                  :eager="i < 2"
                 />
               </div>
             </div>
@@ -174,7 +172,7 @@ useHead({
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify({
+      textContent: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'LodgingBusiness',
         name: 'El Huerto de Lobras - Alojamientos',
@@ -201,21 +199,6 @@ useHead({
 
 // Importaciones base
 import heroImage from '~/assets/img/heroapartamentos.webp'
-import defaultImg from '~/assets/img/default.webp'
-
-// Carga global dinámica de las imágenes
-const allImages = import.meta.glob('~/assets/img/**/*.{jpg,jpeg,png,JPG,JPEG,PNG,webp,WEBP}', {
-  eager: true,
-  import: 'default'
-})
-
-const getCoverImage = (folder) => {
-  const fullPathWebp = `/assets/img/${folder}/portada.webp`
-  const fullPathJpg = `/assets/img/${folder}/portada.webp`
-  const fullPathJpgUpper = `/assets/img/${folder}/portada.webp`
-  
-  return allImages[fullPathWebp] || allImages[fullPathJpg] || allImages[fullPathJpgUpper] || defaultImg
-}
 
 // Estado del Buscador Integrado
 const selectedCapacity = ref('all')
@@ -226,103 +209,14 @@ const resetFilters = () => {
   filterFireplace.value = false
 }
 
-// Dataset de Alojamientos
-const rawApartments = [
-  {
-    id: 'apartamento-las-golondrinas',
-    folder: 'golondrinas',
-    code: 'Las Golondrinas',
-    name: 'Apartamento Las Golondrinas',
-    capacity: 'Hasta 4 plazas',
-    maxGuests: 4,
-    hasFireplace: true,
-    tag: 'Tragaluces • Vista a la iglesia',
-    description: 'Conservando pilares y fachada originales de la casa antigua. Dispone de dos tragaluces en el salón desde los que contemplar la iglesia iluminada de noche.',
-    features: ['1 Dormitorio + Sofá cama', 'Dos tragaluces en el techo', 'Se admite 1 perro']
-  },
-  {
-    id: 'apartamento-la-seda',
-    folder: 'seda',
-    code: 'La Seda',
-    name: 'Apartamento La Seda',
-    capacity: 'Hasta 4 plazas',
-    maxGuests: 4,
-    hasFireplace: true,
-    tag: '2 dormitorios • Terrazas privadas',
-    description: 'Inspirado en la historia textil de Lobras de 1757. El único apartamento con dos dormitorios independientes, cada uno con su propia terraza privada.',
-    features: ['2 Dormitorios (2 terrazas)', 'Rincón histórico y acogedor', 'Se admite 1 perro']
-  },
-  {
-    id: 'apartamento-los-cerezos',
-    folder: 'cerezos',
-    code: 'Los Cerezos',
-    name: 'Apartamento Los Cerezos',
-    capacity: 'Hasta 4 plazas',
-    maxGuests: 4,
-    hasFireplace: true,
-    tag: 'Planta baja • Adaptado minusválidos',
-    description: 'Ubicado en planta baja con acceso totalmente adaptado a personas con movilidad reducida. Cuenta con un dormitorio muy amplio y terraza al jardín.',
-    features: ['Adaptado a minusválidos', 'Terraza directa al jardín', 'Chimenea tradicional']
-  },
-  {
-    id: 'apartamento-los-trovos',
-    folder: 'trovos',
-    code: 'Los Trovos',
-    name: 'Apartamento Los Trovos',
-    capacity: 'Hasta 4 plazas',
-    maxGuests: 4,
-    hasFireplace: true,
-    tag: '1 dormitorio • Terraza alpujarreña',
-    description: 'Homenaje a la tradición del trovo y los cantautores alpujarreños. Alojamiento rústico muy tranquilo con chimenea, salón y terraza propia.',
-    features: ['1 Dormitorio principal', 'Terraza privada', 'Chimenea tradicional']
-  },
-  {
-    id: 'apartamento-la-contraviesa',
-    folder: 'contraviesa',
-    code: 'La Contraviesa',
-    name: 'Apartamento La Contraviesa',
-    capacity: 'Hasta 4 plazas',
-    maxGuests: 4,
-    hasFireplace: true,
-    tag: 'Ático • La mayor terraza',
-    description: 'Situado en la tercera planta (ático). Posee la terraza más grande del complejo, bordeando casi todo el apartamento con vistas panorámicas espectaculares.',
-    features: ['Ático con gran terraza', 'Vistas panorámicas 360°', 'Chimenea + Sofá cama']
-  },
-  {
-    id: 'estudio',
-    folder: 'estudio',
-    code: 'El Estudio',
-    name: 'El Estudio',
-    capacity: '2 plazas',
-    maxGuests: 2,
-    hasFireplace: false,
-    tag: 'Ideal parejas • Vistas a la plaza',
-    description: 'Estancia íntima y diáfana pensada para dos personas. Cuenta con terraza hacia la plaza del ayuntamiento, perfecta para disfrutar de las puestas de sol.',
-    features: ['Cama de matrimonio', 'Terraza hacia la plaza', 'Espectaculares atardeceres']
-  },
-  {
-    id: 'la-biblioteca',
-    folder: 'biblioteca',
-    code: 'La Biblioteca',
-    name: 'La Biblioteca',
-    capacity: '2 a 3 plazas',
-    maxGuests: 3,
-    hasFireplace: false,
-    tag: 'Rincón de lectura • Atmósfera de paz',
-    description: 'Un rincón singular pensado para el descanso pausado y la lectura, combinando acabados de madera y piedra natural en un ambiente sereno.',
-    features: ['Atmósfera pacífica', 'Detalles de piedra y madera', 'Ideal para el descanso']
-  }
-]
-
-const apartmentsWithImages = computed(() => {
-  return rawApartments.map(apt => ({
-    ...apt,
-    image: getCoverImage(apt.folder)
-  }))
-})
+// Datos centralizados en utils/apartamentos.ts (la portada sale de assets/img/<carpeta>/portada.webp)
+const apartmentsWithImages = apartments.map(apt => ({
+  ...apt,
+  image: getApartmentPhotos(apt.folder)[0]
+}))
 
 const filteredApartments = computed(() => {
-  return apartmentsWithImages.value.filter(apt => {
+  return apartmentsWithImages.filter(apt => {
     let matchCapacity = true
     if (selectedCapacity.value !== 'all') {
       const target = parseInt(selectedCapacity.value)

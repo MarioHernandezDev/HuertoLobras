@@ -9,19 +9,22 @@
     />
 
     <div class="lg:col-span-5 relative min-h-[380px] lg:min-h-full overflow-hidden bg-stone-900 pointer-events-none">
-      <div 
-        class="absolute inset-0 bg-cover bg-center opacity-90"
-        :style="{ backgroundImage: `url(${imageSource})` }"
-      ></div>
+      <img
+        :src="imageSource"
+        :alt="`${apartment.name} - alojamiento rural en Lobras`"
+        class="absolute inset-0 w-full h-full object-cover opacity-90 transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+        :loading="eager ? 'eager' : 'lazy'"
+        decoding="async"
+      />
       
       <div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-stone-950/80 via-stone-950/20 to-transparent z-10"></div>
       <div class="absolute inset-0 bg-[#3b6e4c]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
       
       <div class="absolute bottom-8 left-8 right-8 flex flex-col items-start gap-3 z-20">
         <div 
-          v-for="(feature, i) in apartment.features" 
+          v-for="(feature, i) in apartment.cardFeatures" 
           :key="i" 
-          class="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full text-white/95 text-xs font-bold tracking-wide uppercase shadow-sm"
+          class="inline-flex items-center gap-2.5 bg-black/25 border border-white/10 px-4 py-2 rounded-full text-white/95 text-xs font-bold tracking-wide uppercase shadow-sm"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-3.5 h-3.5 text-emerald-400 shrink-0">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
@@ -51,7 +54,7 @@
         </div>
         
         <div class="inline-flex items-center gap-2 mb-6 bg-[#e9f2eb] px-4 py-1.5 rounded-full text-[#3b6e4c] text-xs font-mono uppercase tracking-widest font-black">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
           <span>{{ apartment.tag }}</span>
         </div>
 
@@ -91,11 +94,16 @@ const props = defineProps({
   apartment: {
     type: Object,
     required: true
+  },
+  // Primeras tarjetas: se cargan sin esperar al scroll
+  eager: {
+    type: Boolean,
+    default: false
   }
 })
 
 const imageSource = computed(() => {
-  return props.apartment.image || defaultImg
+  return props.apartment.image || getApartmentPhotos(props.apartment.folder)[0] || defaultImg
 })
 </script>
 

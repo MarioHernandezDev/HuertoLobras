@@ -55,7 +55,7 @@
         </div>
 
         <!-- Bloque Subida de Fotos -->
-        <div v-scroll class="delay-100 bg-[#f6f3eb] rounded-[2.5rem] p-10 sm:p-14 border border-stone-200/60 shadow-sm flex flex-col justify-between space-y-8">
+        <div v-scroll="{ delay: 100 }" class=" bg-[#f6f3eb] rounded-[2.5rem] p-10 sm:p-14 border border-stone-200/60 shadow-sm flex flex-col justify-between space-y-8">
           <div class="space-y-6">
             <div class="w-16 h-16 rounded-2xl bg-[#3b6e4c]/15 text-[#3b6e4c] flex items-center justify-center shadow-sm">
               <!-- SVG Cámara -->
@@ -130,7 +130,7 @@
         </div>
 
         <!-- Correo -->
-        <div v-scroll class="delay-100 bg-[#f6f3eb] rounded-3xl p-8 space-y-4 border border-stone-200/50 flex flex-col justify-between">
+        <div v-scroll="{ delay: 100 }" class=" bg-[#f6f3eb] rounded-3xl p-8 space-y-4 border border-stone-200/50 flex flex-col justify-between">
           <div class="w-14 h-14 rounded-2xl bg-[#3b6e4c] text-white flex items-center justify-center shadow-md">
             <!-- SVG Carta / Correo -->
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
@@ -146,7 +146,7 @@
         </div>
 
         <!-- Ubicación -->
-        <div v-scroll class="delay-200 bg-[#f6f3eb] rounded-3xl p-8 space-y-4 border border-stone-200/50 flex flex-col justify-between">
+        <div v-scroll="{ delay: 200 }" class=" bg-[#f6f3eb] rounded-3xl p-8 space-y-4 border border-stone-200/50 flex flex-col justify-between">
           <div class="w-14 h-14 rounded-2xl bg-[#3b6e4c] text-white flex items-center justify-center shadow-md">
             <!-- SVG Ubicación / Pin -->
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">

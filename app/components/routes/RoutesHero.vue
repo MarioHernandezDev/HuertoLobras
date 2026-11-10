@@ -20,7 +20,7 @@
         </div>
 
         <!-- Columna Derecha: Botón de Acción -->
-        <div v-scroll class="delay-100 lg:col-span-5 w-full lg:max-w-md lg:justify-self-end">
+        <div v-scroll="{ delay: 100 }" class=" lg:col-span-5 w-full lg:max-w-md lg:justify-self-end">
           <button 
             @click="scrollToNextSection"
             class="btn-lets-go group border-0 cursor-pointer w-full"

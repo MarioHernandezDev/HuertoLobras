@@ -35,7 +35,7 @@
         </div>
 
         <!-- Bloque 2: Protección Histórica -->
-        <div v-scroll class="delay-100 bg-white p-8 rounded-3xl border border-stone-200/60 shadow-sm flex flex-col justify-between space-y-4">
+        <div v-scroll="{ delay: 100 }" class=" bg-white p-8 rounded-3xl border border-stone-200/60 shadow-sm flex flex-col justify-between space-y-4">
           <div class="space-y-2">
             <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-700 flex items-center justify-center font-bold">
               <!-- SVG Edificio de Patrimonio / Landmark -->
@@ -54,7 +54,7 @@
         </div>
 
         <!-- Bloque 3: Visita y Entorno / Acción Directa -->
-        <div v-scroll class="delay-200 bg-[#3b6e4c] text-white p-8 rounded-3xl shadow-md flex flex-col justify-between space-y-6">
+        <div v-scroll="{ delay: 200 }" class=" bg-[#3b6e4c] text-white p-8 rounded-3xl shadow-md flex flex-col justify-between space-y-6">
           <div class="space-y-2">
             <div class="w-10 h-10 rounded-xl bg-white/20 text-white flex items-center justify-center font-bold">
               <!-- SVG Ojo / Mirador -->

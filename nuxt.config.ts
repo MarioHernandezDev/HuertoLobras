@@ -42,8 +42,9 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
 
   app: {
+    // Fundido corto (ver .page-* en main.css). Sin layoutTransition: solo hay un layout.
     pageTransition: { name: 'page', mode: 'out-in' },
-    layoutTransition: { name: 'layout', mode: 'out-in' },
+    layoutTransition: false,
     head: {
       htmlAttrs: { lang: 'es' },
       titleTemplate: '%s · El Huerto de Lobras | Turismo Alpujarra',
@@ -58,22 +59,28 @@ export default defineNuxtConfig({
         { property: 'og:locale', content: 'es_ES' },
         { name: 'twitter:card', content: 'summary_large_image' }
       ],
+      noscript: [
+        { innerHTML: '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">' }
+      ],
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' },
         { rel: 'alternate', hreflang: 'es', href: 'https://elhuertodelobras.com/' },
         { rel: 'dns-prefetch', href: 'https://www.google.com' },
-        { 
-          rel: 'stylesheet', 
-          href: 'https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap' 
+        // Carga de fuentes sin bloquear el primer pintado (media=print -> all al cargar)
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap',
+          media: 'print',
+          onload: "this.media='all'",
+          tagPriority: 'low'
         }
       ]
     }
   },
 
-  vite: {
-    optimizeDeps: {
-      include: ['aos']
-    }
+  experimental: {
+    // Enlaces/rutas precargan al verse en pantalla (navegación casi instantánea en móvil)
+    defaults: { nuxtLink: { prefetchOn: { visibility: true } } }
   }
 })

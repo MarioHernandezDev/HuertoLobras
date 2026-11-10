@@ -18,7 +18,7 @@
         
         <div class="space-y-4 max-w-3xl">
           <!-- Tag / Badge de Categoría -->
-          <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/80 border border-stone-200/80 shadow-sm backdrop-blur-sm">
+          <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/90 border border-stone-200/80 shadow-sm">
             <i :class="[icon, theme === 'water' ? 'text-teal-700' : 'text-[#3b6e4c]']"></i>
             <span class="font-sans font-black text-xs text-stone-800 uppercase tracking-[0.25em]">
               {{ categoryTag }}

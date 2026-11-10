@@ -1,8 +1,8 @@
 <template>
   <div class="min-h-screen bg-[#fcfaf7] antialiased font-sans relative">
 
-    <header class="fixed top-0 left-0 right-0 z-50 w-full px-4 md:px-8 lg:px-12 pt-4 md:pt-5 pb-2 transition-all duration-500 pointer-events-none">
-      <div class="max-w-7xl mx-auto flex items-center justify-between h-16 md:h-18 px-6 rounded-full bg-[#fbf9f5]/90 backdrop-blur-md border border-stone-200/80 shadow-sm pointer-events-auto transition-all duration-300">
+    <header class="enter-fade fixed top-0 left-0 right-0 z-50 w-full px-4 md:px-8 lg:px-12 pt-4 md:pt-5 pb-2 transition-all duration-500 pointer-events-none">
+      <div class="max-w-7xl mx-auto flex items-center justify-between h-16 md:h-18 px-6 rounded-full bg-[#fbf9f5]/95 md:bg-[#fbf9f5]/90 md:backdrop-blur-md border border-stone-200/80 shadow-sm pointer-events-auto transition-all duration-300">
         <NuxtLink to="/" class="flex items-center no-underline group h-full" aria-label="Ir a Inicio">
           <span class="font-manual text-2xl md:text-3xl font-normal text-stone-900 tracking-wide transition-colors group-hover:text-[#3b6e4c]">
             El Huerto <span class="font-bold text-[#3b6e4c]">de Lobras</span>
@@ -53,7 +53,8 @@
             :key="item.path" 
             :to="item.path"
             @click="isMobileMenuOpen = false"
-            class="flex items-center gap-5 py-4 border-b border-stone-200/80 no-underline group"
+            class="menu-item flex items-center gap-5 py-4 border-b border-stone-200/80 no-underline group"
+            :style="{ '--i': index }"
           >
             <span class="text-xs font-mono font-bold text-[#3b6e4c]">0{{ index + 1 }}</span>
             <span class="text-3xl font-manual text-stone-800 group-hover:text-[#3b6e4c] transition-colors">{{ item.name }}</span>
@@ -102,9 +103,19 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch, onBeforeUnmount } from 'vue'
 
 const isMobileMenuOpen = ref(false)
+const route = useRoute()
+
+// Cierra el menú al navegar y bloquea el scroll de la página mientras está abierto
+watch(() => route.fullPath, () => { isMobileMenuOpen.value = false })
+watch(isMobileMenuOpen, (open) => {
+  if (import.meta.client) document.documentElement.style.overflow = open ? 'hidden' : ''
+})
+onBeforeUnmount(() => {
+  if (import.meta.client) document.documentElement.style.overflow = ''
+})
 
 const menuItems = [
   { name: 'Inicio', path: '/' },
@@ -126,12 +137,16 @@ const menuItems = [
 
 .mobile-menu-enter-active,
 .mobile-menu-leave-active {
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.25s ease;
 }
 .mobile-menu-enter-from,
 .mobile-menu-leave-to {
   opacity: 0;
-  transform: translateY(-8px);
+}
+/* Los enlaces del menú entran escalonados */
+.mobile-menu-enter-active .menu-item {
+  animation: enter-up 0.6s var(--ease-out-expo) both;
+  animation-delay: calc(var(--i) * 60ms + 80ms);
 }
 
 .btn-organic-primary {

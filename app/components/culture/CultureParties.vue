@@ -1,16 +1,16 @@
 <template>
   <div class="w-full bg-stone-900 pt-32 pb-0 mt-0">
     <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 text-center space-y-6 pb-24 overflow-hidden">
-      <span class="text-xs font-mono font-black uppercase tracking-[0.3em] text-amber-400 block animate-fade-up">Identidad Popular</span>
-      <h2 class="text-5xl sm:text-7xl lg:text-[6.5rem] font-manual text-white tracking-wide leading-[0.9] m-0 font-normal pb-4 animate-fade-up">
+      <span v-scroll class="text-xs font-mono font-black uppercase tracking-[0.3em] text-amber-400 block">Identidad Popular</span>
+      <h2 v-scroll class="text-5xl sm:text-7xl lg:text-[6.5rem] font-manual text-white tracking-wide leading-[0.9] m-0 font-normal pb-4">
         Fiestas en <span class="font-black text-amber-400">Lobras.</span>
       </h2>
-      <p class="text-stone-300 text-xl md:text-2xl font-medium leading-relaxed max-w-3xl mx-auto m-0 animate-fade-up">
+      <p v-scroll class="text-stone-300 text-xl md:text-2xl font-medium leading-relaxed max-w-3xl mx-auto m-0">
         En Lobras las fiestas son sagradas. Una mezcla de cultura, repostería artesanal y diversión compartida entre vecinos de todas las edades. ¡Te sugerimos venir a vivirlas!
       </p>
     </div>
 
-    <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 p-0 m-0 bg-stone-950 border-t border-stone-800 animate-fade-up">
+    <div v-scroll class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 p-0 m-0 bg-stone-950 border-t border-stone-800">
       <div 
         v-for="index in 9" 
         :key="index"

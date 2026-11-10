@@ -1,10 +1,7 @@
 <template>
   <section id="features" class="relative w-full bg-[#fcfaf7] antialiased select-none overflow-hidden">
     
-    <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-      <div class="absolute -top-10 -left-20 w-[30rem] h-[30rem] md:w-[45rem] md:h-[45rem] rounded-full bg-[#e8decb]/60 blur-[100px] md:blur-[140px]"></div>
-      <div class="absolute top-1/3 -right-24 w-[28rem] h-[28rem] md:w-[40rem] md:h-[40rem] rounded-full bg-[#d6c4ad]/50 blur-[90px] md:blur-[130px]"></div>
-      <div class="absolute -bottom-20 left-10 w-[25rem] h-[25rem] md:w-[38rem] md:h-[38rem] rounded-full bg-[#e2d5c3]/70 blur-[80px] md:blur-[120px]"></div>
+    <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden bg-blobs">
     </div>
 
     <div v-scroll class="relative z-10 max-w-7xl mx-auto py-20 md:py-24 px-6 md:px-12 text-center">
@@ -46,7 +43,7 @@
     <!-- Bloque de Tarjetas Informativas con animación en cascada -->
     <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 pb-24 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 border-t border-stone-300/40 pt-20">
       
-      <div v-scroll class="space-y-4 bg-white/80 backdrop-blur-md p-8 rounded-3xl border border-stone-200/80 shadow-md shadow-stone-900/5 transition-all duration-300 hover:shadow-lg hover:bg-white/95">
+      <div v-scroll class="space-y-4 bg-white/90 p-8 rounded-3xl border border-stone-200/80 shadow-md shadow-stone-900/5 transition-all duration-300 hover:shadow-lg hover:bg-white/95">
         <div class="flex items-center gap-3">
           <h3 class="font-manual text-2xl md:text-3xl text-stone-900 font-black tracking-wide m-0">Lobras en Pura Calma</h3>
         </div>
@@ -55,7 +52,7 @@
         </p>
       </div>
 
-      <div v-scroll class="delay-100 space-y-4 bg-white/80 backdrop-blur-md p-8 rounded-3xl border border-stone-200/80 shadow-md shadow-stone-900/5 transition-all duration-300 hover:shadow-lg hover:bg-white/95">
+      <div v-scroll="{ delay: 100 }" class=" space-y-4 bg-white/90 p-8 rounded-3xl border border-stone-200/80 shadow-md shadow-stone-900/5 transition-all duration-300 hover:shadow-lg hover:bg-white/95">
         <div class="flex items-center gap-3">
           <h3 class="font-manual text-2xl md:text-3xl text-stone-900 font-black tracking-wide m-0">Cádiar a 5 Minutos</h3>
         </div>
@@ -64,7 +61,7 @@
         </p>
       </div>
 
-      <div v-scroll class="delay-200 space-y-4 bg-white/80 backdrop-blur-md p-8 rounded-3xl border border-stone-200/80 shadow-md shadow-stone-900/5 transition-all duration-300 hover:shadow-lg hover:bg-white/95">
+      <div v-scroll="{ delay: 200 }" class=" space-y-4 bg-white/90 p-8 rounded-3xl border border-stone-200/80 shadow-md shadow-stone-900/5 transition-all duration-300 hover:shadow-lg hover:bg-white/95">
         <div class="flex items-center gap-3">
           <h3 class="font-manual text-2xl md:text-3xl text-stone-900 font-black tracking-wide m-0">Atención 100% Humana</h3>
         </div>

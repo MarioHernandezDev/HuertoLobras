@@ -3,7 +3,7 @@
     <div class="max-w-[96%] mx-auto">
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end border-b border-stone-200/60 pb-16 mb-16 overflow-hidden">
-        <div class="lg:col-span-7 lg:col-start-6 space-y-6 lg:text-right animate-slide-right">
+        <div v-scroll="'right'" class="lg:col-span-7 lg:col-start-6 space-y-6 lg:text-right">
           <span class="font-sans font-black text-xs text-[#3b6e4c] uppercase tracking-[0.2em] block">
             Planes & Escapadas
           </span>
@@ -14,11 +14,11 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 animate-fade-up">
+      <div v-scroll class="grid grid-cols-1 lg:grid-cols-12 gap-8">
         
         <div class="lg:col-span-7 bg-[#3b6e4c] rounded-[2.5rem] p-8 sm:p-12 text-white flex flex-col justify-between shadow-[0_20px_50px_-25px_rgba(59,110,76,0.3)] min-h-[380px] transition-all duration-500">
           <div class="space-y-5">
-            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full text-sm font-sans font-black tracking-widest uppercase">
+            <div class="inline-flex items-center gap-2 bg-black/25 border border-white/10 px-4 py-2 rounded-full text-sm font-sans font-black tracking-widest uppercase">
               <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
               {{ ofertaVisualizada.tag }}
             </div>
@@ -46,7 +46,7 @@
           </div>
         </div>
 
-        <div class="lg:col-span-5 bg-[#f6f3eb]/80 backdrop-blur-sm rounded-[2.5rem] p-8 border border-stone-200/40 flex flex-col justify-between gap-6">
+        <div class="lg:col-span-5 bg-[#f6f3eb] rounded-[2.5rem] p-8 border border-stone-200/40 flex flex-col justify-between gap-6">
           <div class="space-y-4 w-full">
             <span class="text-sm font-mono text-stone-400 uppercase tracking-[0.2em] block font-bold">
               Planifica tu escapada

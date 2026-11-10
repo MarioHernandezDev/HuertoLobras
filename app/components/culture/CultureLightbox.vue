@@ -3,7 +3,7 @@
     <Transition name="fade">
       <div 
         v-if="isOpen" 
-        class="fixed inset-0 z-[9999] bg-stone-950/95 backdrop-blur-md flex flex-col items-center justify-center p-4"
+        class="fixed inset-0 z-[9999] bg-stone-950/95 flex flex-col items-center justify-center p-4"
         @click="$emit('close')"
       >
         <button class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors p-2 cursor-pointer border-none bg-transparent" @click="$emit('close')">
